@@ -15,7 +15,7 @@
 npm install
 ```
 
-### Tasks
+### Start
 
 ```sh
 npm start
