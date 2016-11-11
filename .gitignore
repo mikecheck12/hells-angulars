@@ -1,0 +1,12 @@
+## Mac OSX ##
+.DS_Store
+
+## NPM ##
+node_modules/
+
+.baseDir.ts
+.tscache
+
+dist/
+dist/
+dist/
