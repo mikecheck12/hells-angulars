@@ -18,5 +18,5 @@ npm install
 ### Tasks
 
 ```sh
-grunt
+npm start
 ```
