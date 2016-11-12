@@ -57,4 +57,3 @@ var reviews = `CREATE TABLE reviews (
 
 
 module.exports = types + statuses + categories + users + products + transactions + reviews;
-console.log(module.exports);
