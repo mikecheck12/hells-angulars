@@ -14,7 +14,6 @@ import {Hello} from "./app/components/hello.js";
 import {About} from "./app/components/about.js";
 import {People} from "./app/components/people.js";
 import {Person} from "./app/components/person.js";
-import {PeopleService} from "./app/services/people.js";
 import {MyUIRouterConfig} from "./app/config/router.config.js";
 import {helloState, aboutState, peopleState, personState} from "./states.js";
 
@@ -31,9 +30,6 @@ let INITIAL_COMPONENTS =  [ App, Hello, About, People, Person ];
       useHash: true,
       configClass: MyUIRouterConfig
     })
-  ],
-  providers: [ 
-    { provide: PeopleService, useClass: PeopleService },
   ],
   declarations: INITIAL_COMPONENTS,
   bootstrap: [ App ]
