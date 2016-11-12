@@ -8,7 +8,6 @@ import {UIROUTER_DIRECTIVES} from "ui-router-ng2";
   <div class="nav">
     <a uiSref="hello" uiSrefActive="active">Hello</a>
     <a uiSref="about" uiSrefActive="active">About</a>
-    <a uiSref="people" uiSrefActive="active">People</a>
   </div>
   
   <ui-view></ui-view>
