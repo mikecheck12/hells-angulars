@@ -15,10 +15,8 @@ var config = {
   idleTimeoutMillis: 30000 //how long a client can be idle before being closed
 }
 
-
-
-//Use localdb as location in connectionString if you want to test DB locally.
-var localdb = 'postgres://localhost:5432/hells'
+// Uncomment this line if you want to test on your local DB.
+// var dbConfig.url = 'postgres://localhost:5432/hells'
 
 // set database location
 var connectionString = process.env.DATABASE_URL || dbConfig.url;
