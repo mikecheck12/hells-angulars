@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var logger = require('morgan');
 
 var db = require('./db/db.js');
-var routes = require('./routes/routes.js');
+
 
 var app = express();
 
@@ -17,7 +17,8 @@ app.use(bodyParser.json());
 //for more verbose server logging
 app.use(logger('dev'));
 
-
+//to connect to routes
+require('./routes/routes.js')(app, express);
 
 var port = 3002;
 app.listen(port, function() {
