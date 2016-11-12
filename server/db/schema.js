@@ -1,3 +1,13 @@
+var deleteTables = `DROP TABLE IF EXISTS
+  reviews,
+  transactions,
+  products,
+  users,
+  categories,
+  statuses,
+  types
+  ;`
+
 //this table is for review types: buyer review (a buyer reviewing a seller), and seller review (vice versa)
 var types = `CREATE TABLE types (
   id              SERIAL        PRIMARY KEY,
@@ -56,4 +66,4 @@ var reviews = `CREATE TABLE reviews (
 );`
 
 
-module.exports = types + statuses + categories + users + products + transactions + reviews;
+module.exports = deleteTables + types + statuses + categories + users + products + transactions + reviews;
