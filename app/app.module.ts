@@ -16,6 +16,8 @@ import { ProductsComponent } from './components/products/products.component'
 import {MyUIRouterConfig} from "./config/router.config.js";
 import {homeState, aboutState} from "./states.js";
 
+import { ProductsService } from "./components/products/products.service";
+
 let INITIAL_STATES =  [ homeState, aboutState ];
 let INITIAL_COMPONENTS =  [ App, Home, ProductsComponent ];
 
@@ -32,6 +34,7 @@ let INITIAL_COMPONENTS =  [ App, Home, ProductsComponent ];
     })
   ],
   declarations: INITIAL_COMPONENTS,
+  providers: [ProductsService],
   bootstrap: [ App ]
 })
 export class AppModule { }
