@@ -5,7 +5,10 @@ module.exports = {
     console.log('getAllUsers fired');
     var queryStr = 'SELECT * FROM users';
     pool.query(queryStr, function(err, result) {
-      if (err) return console.log(err);
+      if (err) {
+        console.log(err);
+        res.send(err);
+      }
       res.send(result.rows);
     })
   },
