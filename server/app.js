@@ -8,8 +8,6 @@ var app = express();
 //to parse incoming requests so we can access req.body.whatever
 app.use(bodyParser.json());
 
-//serving static files - will we need this with Angular 2?
-// app.use(express.static(path.join(__dirname, '../app')));
 var __projectRoot = path.join(__dirname, '../');
 app.use(express.static(__projectRoot));
 // app.use(express.static(__projectRoot + '/app'));
