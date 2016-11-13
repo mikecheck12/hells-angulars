@@ -1,11 +1,11 @@
-//node-postgres.  Docs link here: https://www.npmjs.com/package/pg
 var pg = require('pg');
 
-// database details - PRIVATE
+//Import private database config information
 var dbConfig = require('./dbConfig.js');
-// dbConfig.url = 'postgres://localhost:5432/hells'  // Uncomment this line if you want to test on your local DB.
+// Uncomment the line below if you want to test on your local DB instead of cloud.
+// dbConfig.url = 'postgres://localhost:5432/hells'
 
-//set up postgres client pooling
+//This section contains the settings to set up Postgres client pooling.
 var config = {
   user: dbConfig.username,
   password: dbConfig.password,
@@ -16,22 +16,18 @@ var config = {
   idleTimeoutMillis: 30000 //how long a client can be idle before being closed
 }
 
+//create a postgres connection pool
 var pool = new pg.Pool(config);
 module.exports = pool;
 
-
+//----------------------
+//Below is the schema implementation.
+//When db.js is run, this section runs the schema query, which creates any tables that don't exist. If the table already exists, it does not overwrite the existing data.
+//I don't see this permanently living here, but it's OK for now.
 var schema = require('./schema');
-// // set database location
-// var connectionString = process.env.DATABASE_URL || dbConfig.url;
-
-// //instantiate a new pg client
-// var client = new pg.Client(connectionString);
-
-// //connect to our database
-// client.connect();
-
-// //set up the schema - THIS WILL DROP ALL TABLES.
-// var query = client.query(schema);
-// query.on('end', () => { client.end(); });
+pool.query(schema, function(err, result) {
+  if (err) return console.log(err);
+  console.log(result);
+});
 
 
