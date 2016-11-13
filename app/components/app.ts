@@ -6,9 +6,8 @@ import {UIROUTER_DIRECTIVES} from "ui-router-ng2";
   template: `
   <div class="nav">
     <a class="btn btn-primary" uiSref="home" uiSrefActive="active">Home</a>
-    <a uiSref="about" uiSrefActive="active">About</a>
+    <a uiSref="gears" uiSrefActive="active">Gears</a>
   </div>
-
 
   <ui-view></ui-view>
 `})

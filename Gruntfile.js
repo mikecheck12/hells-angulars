@@ -23,15 +23,15 @@ module.exports = function(grunt) {
     copy: {
       css: {
         expand: true,
-        flatten: true,
-        src: ['app/**/*.css'],
-        dest: 'dist',
+        cwd:'app',
+        src: ['**/*.css'],
+        dest: 'dist/',
       },
       html: {
         expand: true,
-        flatten: true,
-        src: ['app/**/*.html'],
-        dest: 'dist',
+        cwd:'app',
+        src: ['**/*.html'],
+        dest: 'dist/',
       }
     },
 

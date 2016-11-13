@@ -1,8 +1,8 @@
 import {Home} from "./components/home";
-import {About} from "./components/about";
+import { ProductsComponent } from "./components/products/products.component";
 import {Transition} from "ui-router-ng2";
 
 /** States */
 export const homeState = { name: 'home', url: '/home',  component: Home };
 
-export const aboutState = { name: 'about', url: '/about',  component: About };
+export const aboutState = { name: 'gears', url: '/gears',  component: ProductsComponent };

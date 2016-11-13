@@ -12,11 +12,12 @@ import "rxjs/add/operator/toPromise";
 
 import {Home} from "./components/home.js";
 import {About} from "./components/about.js";
+import { ProductsComponent } from './components/products/products.component'
 import {MyUIRouterConfig} from "./config/router.config.js";
 import {homeState, aboutState} from "./states.js";
 
 let INITIAL_STATES =  [ homeState, aboutState ];
-let INITIAL_COMPONENTS =  [ App, Home, About ];
+let INITIAL_COMPONENTS =  [ App, Home, ProductsComponent ];
 
 @NgModule({
   imports: [
