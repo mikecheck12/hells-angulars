@@ -3,13 +3,11 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
 
-var db = require('./db/db.js');
-
 
 var app = express();
 
 //serving static files - will we need this with Angular 2?
-// app.use(express.static(path.join(__dirname, '../app')));
+app.use(express.static(path.join(__dirname, '../app')));
 
 //to parse incoming requests so we can access req.body.whatever
 app.use(bodyParser.json());
