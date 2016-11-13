@@ -11,8 +11,7 @@
     "include": [
         "app/**/*.ts",
         "states.ts",
-        "app.module.ts",
-        "people.service.ts"
+        "app.module.ts"
     ],
     "exclude": [
         "node_modules"

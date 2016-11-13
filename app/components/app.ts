@@ -6,7 +6,7 @@ import {UIROUTER_DIRECTIVES} from "ui-router-ng2";
   directives: [UIROUTER_DIRECTIVES],
   template: `
   <div class="nav">
-    <a uiSref="hello" uiSrefActive="active">Hello</a>
+    <a uiSref="home" uiSrefActive="active">Home</a>
     <a uiSref="about" uiSrefActive="active">About</a>
   </div>
   

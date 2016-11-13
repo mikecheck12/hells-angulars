@@ -10,15 +10,13 @@ import {App} from "./app/components/app.js";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
 
-import {Hello} from "./app/components/hello.js";
+import {Home} from "./app/components/home.js";
 import {About} from "./app/components/about.js";
-import {People} from "./app/components/people.js";
-import {Person} from "./app/components/person.js";
 import {MyUIRouterConfig} from "./app/config/router.config.js";
-import {helloState, aboutState, peopleState, personState} from "./states.js";
+import {homeState, aboutState} from "./states.js";
 
-let INITIAL_STATES =  [ helloState, aboutState, peopleState, personState ];
-let INITIAL_COMPONENTS =  [ App, Hello, About, People, Person ];
+let INITIAL_STATES =  [ homeState, aboutState ];
+let INITIAL_COMPONENTS =  [ App, Home, About ];
 
 @NgModule({
   imports: [

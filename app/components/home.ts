@@ -5,7 +5,7 @@ import {Component} from '@angular/core';
   <h3>{{greeting}} galaxy!</h3>
   <button (click)="toggleGreeting()">toggle greeting</button>
 `})
-export class Hello { 
+export class Home { 
   greeting = "hello";
   toggleGreeting() {
     this.greeting = this.greeting === 'hello' ? 'whats up' : 'hello';
