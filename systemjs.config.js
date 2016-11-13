@@ -7,7 +7,26 @@ var uirVer = '1.0.0-beta.3';
 var rxjsVer = '5.0.0-beta.12';
 var ng2Ver = '2.1.2';
 var ng2Pkgs = ['core', 'compiler', 'common', 'http', 'platform-browser-dynamic', 'platform-browser'];
-
+var ngBootstrapPackageNames = [
+    'accordion',
+    'alert',
+    'bundles',
+    'buttons',
+    'carousel',
+    'collapse',
+    'dropdown',
+    'esm',
+    'modal',
+    'pagination',
+    'popover',
+    'progressbar',
+    'rating',
+    'tabset',
+    'timepicker',
+    'tooltip',
+    'typeahead',
+    'util'
+];
   System.config({
     paths: {
       // paths serve as alias
@@ -30,7 +49,8 @@ var ng2Pkgs = ['core', 'compiler', 'common', 'http', 'platform-browser-dynamic',
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
       'appModule': "./dist/app.module.js",
-      'ui-router-ng2': 'https://unpkg.com/ui-router-ng2@' + uirVer + '/_bundles/ui-router-ng2'
+      'ui-router-ng2': 'https://unpkg.com/ui-router-ng2@' + uirVer + '/_bundles/ui-router-ng2',
+       '@ng-bootstrap/ng-bootstrap': 'npm:@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js',
     }),
     // packages tells the System loader how to load when no filename and/or no extension
     // Object.assign is assigning the dependencies we've declared at the top
@@ -43,7 +63,7 @@ var ng2Pkgs = ['core', 'compiler', 'common', 'http', 'platform-browser-dynamic',
         defaultExtension: 'js'
       }
     }),
-    meta: { "ui-router-ng2": { format: "cjs" } }
+      meta: { "ui-router-ng2": { format: "cjs" } },
   });
 
 function ng2MapObject(ng2Packages, ng2Ver) {
@@ -59,3 +79,5 @@ function ng2PackagesObject(ng2Packages) {
     return acc;
   }, {});
 }
+
+

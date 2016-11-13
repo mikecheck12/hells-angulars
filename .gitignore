@@ -12,4 +12,4 @@ dist/
 dist/
 
 ## DATABASE CREDENTIALS ##
-## server/db/dbConfig.js
+server/db/dbConfig.js

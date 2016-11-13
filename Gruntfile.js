@@ -1,6 +1,8 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
+    clean: ['dist'],
+
     ts: {
       base: {
         src: ['app/**/*.ts'],
@@ -50,7 +52,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-ts');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
-  grunt.registerTask('build', ['ts', 'copy:css', 'copy:html'])
+  grunt.registerTask('build', ['clean', 'ts', 'copy:css', 'copy:html'])
   grunt.registerTask('default', ['build', 'watch']);
 };

@@ -4,15 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { UIRouterModule } from 'ui-router-ng2';
 import { HttpModule } from '@angular/http';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-import {App} from "./app/components/app.js";
+import {App} from "./components/app.js";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
 
-import {Home} from "./app/components/home.js";
-import {About} from "./app/components/about.js";
-import {MyUIRouterConfig} from "./app/config/router.config.js";
+import {Home} from "./components/home.js";
+import {About} from "./components/about.js";
+import {MyUIRouterConfig} from "./config/router.config.js";
 import {homeState, aboutState} from "./states.js";
 
 let INITIAL_STATES =  [ homeState, aboutState ];
@@ -23,6 +23,7 @@ let INITIAL_COMPONENTS =  [ App, Home, About ];
     BrowserModule,
     FormsModule,
     HttpModule,
+    NgbModule.forRoot(),
     UIRouterModule.forRoot({
       states: INITIAL_STATES,
       useHash: true,
@@ -34,5 +35,4 @@ let INITIAL_COMPONENTS =  [ App, Home, About ];
 })
 export class AppModule { }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-    .catch(err => console.error(err));
+
