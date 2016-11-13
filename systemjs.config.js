@@ -7,26 +7,7 @@ var uirVer = '1.0.0-beta.3';
 var rxjsVer = '5.0.0-beta.12';
 var ng2Ver = '2.1.2';
 var ng2Pkgs = ['core', 'compiler', 'common', 'http', 'platform-browser-dynamic', 'platform-browser'];
-var ngBootstrapPackageNames = [
-    'accordion',
-    'alert',
-    'bundles',
-    'buttons',
-    'carousel',
-    'collapse',
-    'dropdown',
-    'esm',
-    'modal',
-    'pagination',
-    'popover',
-    'progressbar',
-    'rating',
-    'tabset',
-    'timepicker',
-    'tooltip',
-    'typeahead',
-    'util'
-];
+
   System.config({
     paths: {
       // paths serve as alias
