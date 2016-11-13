@@ -51,7 +51,7 @@ var reviews = `CREATE TABLE IF NOT EXISTS reviews (
   buyer_id        INT           references users(id),
   seller_id       INT           references users(id),
   type_id         INT           references types(id),
-  text            VARCHAR(255)  NOT NULL,
+  text            TEXT          NOT NULL,
   rating          INT
 );`
 
