@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "module": "es6",
+        "moduleResolution": "node",
+        "target": "es5",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "removeComments": false,
+        "experimentalDecorators": true
+    },
+    "include": [
+        "app/**/*.ts",
+        "states.ts",
+        "app.module.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
