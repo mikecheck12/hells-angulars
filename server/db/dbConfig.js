@@ -7,4 +7,6 @@ module.exports.password = 'q5sCRhKf8bLDjXTM23DyZ2NB2SdDuejw';
 
 module.exports.dbName = 'gcgfmakv'
 
+module.exports.host = 'elmer.db.elephantsql.com'
+
 module.exports.url = 'postgres://gcgfmakv:q5sCRhKf8bLDjXTM23DyZ2NB2SdDuejw@elmer.db.elephantsql.com:5432/gcgfmakv'
