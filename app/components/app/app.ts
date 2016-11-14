@@ -18,7 +18,10 @@ import {Auth} from "../../auth/auth.service";
 
   <ui-view></ui-view>
 
-  <div>Footer</div>
+  <div class="footer">
+    Footer
+    About
+  </div>
   `,
   styleUrls: [ 'app.css' ],
   providers: [ Auth ]
