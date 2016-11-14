@@ -6,11 +6,11 @@ import { UIRouterModule } from 'ui-router-ng2';
 import { HttpModule } from '@angular/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-import {App} from "./components/app.js";
+import {App} from "./components/app/app.js";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
 
-import {Home} from "./components/home.js";
+import {Home} from "./components/home/home.js";
 import {About} from "./components/about.js";
 import { ProductsComponent } from './components/products/products.component'
 import {MyUIRouterConfig} from "./config/router.config.js";
