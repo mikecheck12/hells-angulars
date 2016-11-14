@@ -1,6 +1,20 @@
 .homeBanner {
-  background: url('../../assets/surfBanner.jpg') no-repeat center center;
   background-size: cover;
   height: 300px;
   padding-top: 200px;
 }
+.homeInfo {
+  height: 70px;
+  text-align: center;
+}
+.homeCarousel {
+  /*height: 10px;*/
+  padding-top: 10px;
+}
+.carouselSlide {
+  height: 50px;
+}
+/*#clip {
+  position: absolute;
+  clip: rect(100px,100px, 200px, 100px);
+}*/

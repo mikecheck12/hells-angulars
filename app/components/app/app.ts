@@ -4,6 +4,7 @@ import {Auth} from "../../auth/auth.service";
 @Component({
   moduleId: module.id,
   selector: 'my-app',
+<<<<<<< 1548e13908a396ab8fb4c82f5bcde8dd762740ea
   template: `
   <div class="nav">
     Gear Box
@@ -25,6 +26,10 @@ import {Auth} from "../../auth/auth.service";
   `,
   styleUrls: [ 'app.css' ],
   providers: [ Auth ]
+=======
+  templateUrl: 'app.html',
+  styleUrls: [ 'app.css' ]
+>>>>>>> carousel working but sizes to window
 })
 
 export class App {
