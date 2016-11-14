@@ -1,0 +1,27 @@
+img {
+  width: 100%;
+  height: 200px;
+}
+
+.thumbnail {
+  margin-top: 20px
+}
+
+.caption {
+  margin-top: 5px
+}
+p {
+  margin-bottom: 0px;
+  font-size: 15px;
+  color: #808080
+}
+.primary {
+  color: #696969
+}
+.right {
+  float: right
+}
+ngb-rating{
+  color: darkblue;
+  font-size: 13px
+}
