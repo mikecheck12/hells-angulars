@@ -6,7 +6,7 @@ import { UIRouterModule } from 'ui-router-ng2';
 import { HttpModule } from '@angular/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-import {App} from "./components/app.js";
+import {App} from "./components/app/app.js";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
 
