@@ -10,7 +10,7 @@ import {App} from "./components/app.js";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
 
-import {Home} from "./components/home.js";
+import {Home} from "./components/home/home.js";
 import {About} from "./components/about.js";
 import { ProductsComponent } from './components/products/products.component'
 import {MyUIRouterConfig} from "./config/router.config.js";

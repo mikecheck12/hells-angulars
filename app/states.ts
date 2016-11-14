@@ -1,4 +1,4 @@
-import {Home} from "./components/home";
+import {Home} from "./components/home/home";
 import { ProductsComponent } from "./components/products/products.component";
 import {Transition} from "ui-router-ng2";
 
