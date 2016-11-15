@@ -14,11 +14,13 @@ import {Home} from "./components/home/home.js";
 import {About} from "./components/about.js";
 import { ProductsComponent } from './components/products/products.component'
 import {MyUIRouterConfig} from "./config/router.config.js";
-import {homeState, aboutState} from "./states.js";
+import {homeState, gearState} from "./states.js";
 
 import { ProductsService } from "./components/products/products.service";
 
-let INITIAL_STATES =  [ homeState, aboutState ];
+import { AUTH_PROVIDERS }      from 'angular2-jwt';
+
+let INITIAL_STATES =  [ homeState, gearState ];
 let INITIAL_COMPONENTS =  [ App, Home, ProductsComponent ];
 
 @NgModule({
@@ -34,7 +36,7 @@ let INITIAL_COMPONENTS =  [ App, Home, ProductsComponent ];
     })
   ],
   declarations: INITIAL_COMPONENTS,
-  providers: [ProductsService],
+  providers: [ProductsService, AUTH_PROVIDERS],
   bootstrap: [ App ]
 })
 export class AppModule { }

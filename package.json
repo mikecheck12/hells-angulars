@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": " ",
   "scripts": {
-    "start": "concurrently \"grunt\" \"npm run lite\" ",
+    "start": "concurrently \"grunt\" \"npm run prod\" ",
     "lite": "lite-server",
     "prod": "node server/app.js",
     "tsc": "tsc",
@@ -31,6 +31,8 @@
     "@angular/upgrade": "~2.1.1",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.13",
     "angular-in-memory-web-api": "~0.1.13",
+    "angular2-jwt": "^0.1.25",
+    "auth0-lock": "^10.6.1",
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
     "bootstrap": "^4.0.0-alpha.5",
