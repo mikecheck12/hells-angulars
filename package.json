@@ -5,7 +5,7 @@
   "scripts": {
     "start": "concurrently \"grunt\" \"npm run prod\" ",
     "lite": "lite-server",
-    "prod": "node server/app.js",
+    "prod": "nodemon server/app.js",
     "tsc": "tsc",
     "tsc:w": "tsc -w"
   },

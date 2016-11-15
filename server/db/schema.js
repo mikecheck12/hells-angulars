@@ -70,6 +70,7 @@ var reviews = `CREATE TABLE IF NOT EXISTS reviews (
   rating          INT
 );`
 
+
 var images = `CREATE TABLE IF NOT EXISTS images (
   id              SERIAL        PRIMARY KEY,
   product_id      INT           references products(id),

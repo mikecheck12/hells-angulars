@@ -3,6 +3,9 @@ img {
   height: 200px;
 }
 
+.container {
+  margin-top: 50px;
+}
 .thumbnail {
   margin-top: 20px
 }
@@ -25,3 +28,4 @@ ngb-rating{
   color: darkblue;
   font-size: 13px
 }
+
