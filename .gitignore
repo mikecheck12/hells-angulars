@@ -16,7 +16,6 @@ dist/
 server/db/dbConfig.js
 
 ## Auth0 CREDENTIALS ##
-
 app/auth/auth.config.ts
 
 ## Typescript command files ##
