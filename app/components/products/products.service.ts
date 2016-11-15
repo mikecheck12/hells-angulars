@@ -13,7 +13,6 @@ export class ProductsService {
   ){}
 
   public getProducts(): Promise<any>{
-    // return Promise.resolve(Data)
 
     return this.http.get('/api/products')
                   .toPromise()
