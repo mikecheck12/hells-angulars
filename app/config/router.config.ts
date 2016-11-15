@@ -8,6 +8,6 @@ export class MyUIRouterConfig {
   constructor(@Inject(UIRouter) router: UIRouter) {
 
     // If no URL matches, go to the `home` state by default
-    router.urlRouterProvider.otherwise('/');
+    router.urlRouterProvider.otherwise(($injector, $location) => JSON.stringify(router.stateService.go('home')));
   }
 }
