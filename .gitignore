@@ -15,6 +15,10 @@ dist/
 ## DATABASE CREDENTIALS ##
 server/db/dbConfig.js
 
+## Auth0 CREDENTIALS ##
+
+app/auth/auth.config.ts
+
 ## Typescript command files ##
 *.tmp.txt
 tscommand-a627fb85.tmp.txt
