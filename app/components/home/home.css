@@ -1,20 +1,27 @@
-.homeBanner {
+h3 {
+  color: white;
+  float: right;
+  height: 40px;
+}
+/*.homeBanner {
   background-size: cover;
   height: 300px;
   padding-top: 200px;
-}
+}*/
 .homeInfo {
-  height: 70px;
+  height: 60px;
   text-align: center;
+  padding: 50px;
+  font-family: 'Open Sans', sans-serif;
 }
 .homeCarousel {
-  /*height: 10px;*/
+  /*max-height: 400px !important;*/
   padding-top: 10px;
 }
 .carouselSlide {
   height: 50px;
 }
-/*#clip {
-  position: absolute;
-  clip: rect(100px,100px, 200px, 100px);
-}*/
+img {
+  height: 400px !important;
+  width: 100%;
+}

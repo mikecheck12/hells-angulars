@@ -1,16 +1,23 @@
-<nav class="navbar navbar-default">
+<nav class="navbar nav-inline">
+  <h1 class="navbar-brand gearbox" href="#">GEAR BOX</h1>
+  <ul class = "nav navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link bg-none" href="#"> Home </a>
+    </li>
+    <li class="nav-item">
+      <a uiSref="gears" uiSrefActive="active">Gear</a>
+    </li>
+  </ul>
+  <a class="navbar-right float-xs-right" uiSref="Login" uiSrefActive="active">Login</a>
+  <form class="form-inline float-xs-right">
+    <input type="text" class="form-control" placeholder="Dig in the Gear Box...">
+    <button type="button" class="btn btn-outline-success">Dig In!</button>
+  </form>
 
-  {{title}} Gear Box
-  <input class="searchbox" type="text" name="search" placeholder="Dig in the Gear Box...">
-  <button class="btn btn-primary" type="button">Dig In!</button>
-
-  <a class="btn btn-primary" uiSref="Home" uiSrefActive="active">Home</a>
-  <a uiSref="gears" uiSrefActive="active">Gears</a>
-  <a class="btn btn-secondary" uiSref="Login" uiSrefActive="active">Login</a>
 </nav>
 
-  <ui-view></ui-view>
+<ui-view></ui-view>
 
-<div class="footer">
-  About
-</div>
+<footer>
+  <a class="footerInfo" style="float: right" href="#">About</a>
+</footer>
