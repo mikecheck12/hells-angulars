@@ -1,7 +1,30 @@
-<div class="homeBanner">
-  <h1>Surf</h1>
+<div class="homeCarousel">
+  <ngb-carousel>
+  <div class="carouselSlide">
+    <template ngbSlide>
+      <img id="clip" src="../../assets/surfBanner.jpg">
+      <div class="carousel-caption">
+        <h3>SURF</h3>
+      </div>
+    </template>
+  </div>
+  <template ngbSlide>
+    <img src="../../assets/chairlift.jpg" >
+    <div class="carousel-caption">
+      <h3>SNOW</h3>
+    </div>
+  </template>
+  <template ngbSlide>
+    <img src="../../assets/enchilada.jpg">
+    <div class="carousel-caption">
+      <h3>BIKE</h3>
+    </div>
+  </template>
+  </ngb-carousel>
 </div>
 <div>
-  <p>RENT GEAR<p>
-  <p>YOUR GEAR + OUR BOX = EXTRA CASH<p>
+  <h1 class="homeInfo">RENT GEAR NOW!</h1>
+    <h2 style="text-align: center">Gear where and when you need it.</h2>
+  <h1 class="homeInfo">YOUR GEAR + OUR BOX = EXTRA CASH</h1>
+    <h2 style="text-align: center">Posting is free, safe, and secure and all $$$ goes straight to you.</h2>
 </div>
