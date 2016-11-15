@@ -20,21 +20,19 @@ module.exports = {
     var searchUserStr = `SELECT * FROM users 
       WHERE username = req.body.username
     `
-
     pool.query(searchUserStr, function(err, result) {
       if (err) return console.log(err);
       if (result.rows.length > 0) {
         res.status(200).send('User already exists');
       } else {
         var queryStr = `INSERT INTO users
-        (username, firstname, lastname, email)
-        VALUES ($1, $2, $3, $4)`
-
-      pool.query(queryStr, [body.username, body.firstname, body.lastname, body.email], function(err, result) {
-        if (err) return console.log(err);
-        console.log('success', result);
-        res.send(result.rows);
-      })
+          (username, firstname, lastname, email, profilepic)
+          VALUES ($1, $2, $3, $4, $5)`
+        pool.query(queryStr, [body.username, body.firstname, body.lastname, body.email, body.picture], function(err, result) {
+          if (err) return console.log(err);
+          console.log('success', result);
+          res.send(result.rows);
+        })
       }
     })
     
