@@ -14,3 +14,6 @@ dist/
 
 ## DATABASE CREDENTIALS ##
 server/db/dbConfig.js
+
+## Typescript command files ##
+*.tmp.txt
