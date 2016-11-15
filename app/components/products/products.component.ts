@@ -29,7 +29,7 @@ export class ProductsComponent implements OnInit {
           let productsWithRows: Array<any> = [];
           let row: Array<any> = [];
           for (let i = 0; i < products.length; i++) {
-            if (i % 4 === 0 && row.length > 0) {
+            if (i % 3 === 0 && row.length > 0) {
               productsWithRows.push(row);
               row = [];
             }

@@ -13,11 +13,11 @@ export class ProductsService {
   ){}
 
   public getProducts(): Promise<any>{
-
-    return this.http.get('/api/products')
-                  .toPromise()
-                  .then(response => response.json())
-                  .catch(this.handleError);
+    return Promise.resolve(Data)
+    // return this.http.get('/api/products')
+    //               .toPromise()
+    //               .then(response => response.json())
+    //               .catch(this.handleError);
   }
 
   private handleError(error: any): Promise<any> {
