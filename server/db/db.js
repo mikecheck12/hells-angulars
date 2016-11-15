@@ -3,7 +3,7 @@ var pg = require('pg');
 //Import private database config information
 var dbConfig = require('./dbConfig.js');
 // Uncomment the line below if you want to test on your local DB instead of cloud.
-// dbConfig.url = 'postgres://localhost:5432/hells'
+//dbConfig.url = 'postgres://localhost:5432/hells'
 
 //This section contains the settings to set up Postgres client pooling.
 var config = {
@@ -15,6 +15,9 @@ var config = {
   max: 10, //max clients in the pool
   idleTimeoutMillis: 30000 //how long a client can be idle before being closed
 }
+// var connection = 'postgres://localhost:5432/hells';
+// var client = new pg.Client(connection);
+// client.connect();
 
 //create a postgres connection pool
 var pool = new pg.Pool(config);
@@ -29,5 +32,10 @@ pool.query(schema, function(err, result) {
   if (err) return console.log(err);
   console.log(result);
 });
+
+// var query = client.query(schema);
+// query.on('end', function () {
+//   client.end();
+// })
 
 

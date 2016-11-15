@@ -14,7 +14,6 @@ export class ProductsService {
 
   public getProducts(): Promise<any>{
     return Promise.resolve(Data)
-    // TBD, UNCOMMENT FOLLING LINES AFTER BACKEND ROUTE SETUP
     // return this.http.get('/api/products')
     //               .toPromise()
     //               .then(response => response.json())
