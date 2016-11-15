@@ -17,15 +17,27 @@ module.exports = {
     console.log(req.body); //we need to parse this out and add the info to the queryStr
     var body = req.body;
     // NOTE: you must use single quotes for the values section of the query
-    var queryStr = `INSERT INTO users
-      (username, firstname, lastname, email)
-      VALUES ($1, $2, $3, $4)`
+    var searchUserStr = `SELECT * FROM users 
+      WHERE username = req.body.username
+    `
 
-    pool.query(queryStr, [body.username, body.firstname, body.lastname, body.email], function(err, result) {
+    pool.query(searchUserStr, function(err, result) {
       if (err) return console.log(err);
-      console.log('success', result);
-      res.send(result.rows);
+      if (result.rows.length > 0) {
+        res.status(200).send('User already exists');
+      } else {
+        var queryStr = `INSERT INTO users
+        (username, firstname, lastname, email)
+        VALUES ($1, $2, $3, $4)`
+
+      pool.query(queryStr, [body.username, body.firstname, body.lastname, body.email], function(err, result) {
+        if (err) return console.log(err);
+        console.log('success', result);
+        res.send(result.rows);
+      })
+      }
     })
+    
   },
 
   getUserById: function (req, res, next) {
