@@ -10,7 +10,8 @@ import {Auth} from "../../auth/auth.service";
   styleUrls: [ 'app.css' ]
 })
 
-export class App implements OnInit {
+export class App {
+
   title: "Gear Box";
 
   constructor(private auth: Auth) {}
