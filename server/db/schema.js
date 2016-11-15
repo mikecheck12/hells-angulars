@@ -1,3 +1,16 @@
+// CAUTION: This first query will delete all tables.
+// USAGE: Uncomment the query here, and uncomment "deleteTables + " from the module.exports at the bottom of this file.
+// var deleteTables = `DROP TABLE IF EXISTS
+//  reviews,
+//  transactions,
+//  products,
+//  images,
+//  users,
+//  categories,
+//  statuses,
+//  types
+//  ;`
+
 //this table is for review types: buyer review (a buyer reviewing a seller), and seller review (vice versa)
 var types = `CREATE TABLE IF NOT EXISTS types (
   id              SERIAL        PRIMARY KEY,
@@ -20,7 +33,9 @@ var users = `CREATE TABLE IF NOT EXISTS users (
   username        VARCHAR(50)   NOT NULL,
   firstname       VARCHAR(50)   NOT NULL,
   lastname        VARCHAR(50)   NOT NULL,
-  email           VARCHAR(255)  NOT NULL
+  email           VARCHAR(255)  NOT NULL,
+  location        VARCHAR(255)  ,
+  profilepic      VARCHAR(2000)
 );`
 
 //this table stores info about each product available to rent
@@ -55,5 +70,10 @@ var reviews = `CREATE TABLE IF NOT EXISTS reviews (
   rating          INT
 );`
 
+var images = `CREATE TABLE IF NOT EXISTS images (
+  id              SERIAL        PRIMARY KEY,
+  product_id      INT           references products(id),
+  url             VARCHAR(2000) NOT NULL
+);`
 
-module.exports = types + statuses + categories + users + products + transactions + reviews;
+module.exports = /* delete tables + */types + statuses + categories + users + products + transactions + reviews + images;
