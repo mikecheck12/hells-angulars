@@ -21,6 +21,7 @@ export class NgbdModalBasic {
     });
   }
 
+//function to determine whether modal was closed by clicking on backdrop, close button, or cross
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';

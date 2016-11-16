@@ -29,7 +29,7 @@
           </div>
         </li>
       </ul>
-      <div [(ngModel)]="model" ngbRadioGroup name="radioBasic" style="text-align: center">
+      <div [(ngModel)]="model" ngbRadioGroup name="radioBasic">
         <label class="btn btn-primary">
           <input type="radio" [value]="1"> Submit
         </label>
@@ -46,4 +46,5 @@
 
 <hr>
 
-<pre>{{closeResult}}</pre>
+<!-- closeResult indicates if modal closed by clicking backdrop/button/cross -->
+<!-- <pre>{{closeResult}}</pre> -->
