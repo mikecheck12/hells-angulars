@@ -9,7 +9,7 @@
     </li>
   </ul>
   <button class="navbar-right float-xs-right" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</button>
-  <button class="navbar-right float-xs-right" (click)="auth.logout()" *ngIf="!auth.authenticated()">Log Out</button>
+  <button class="navbar-right float-xs-right" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</button>
   <form class="form-inline float-xs-right">
     <input type="text" class="form-control" placeholder="Dig in the Gear Box...">
     <button type="button" class="btn btn-outline-success">Dig In!</button>
