@@ -17,7 +17,7 @@ module.exports = {
     console.log(req.body); //we need to parse this out and add the info to the queryStr
     var body = req.body;
     // NOTE: you must use single quotes for the values section of the query
-    var searchUserStr = `SELECT * FROM users 
+    var searchUserStr = `SELECT * FROM users
       WHERE username = ($1)
     `
     pool.query(searchUserStr, [body.username], function(err, result) {
@@ -28,21 +28,27 @@ module.exports = {
       } else {
         var queryStr = `INSERT INTO users
           (username, firstname, lastname, email, profilepic)
-          VALUES ($1, $2, $3, $4, $5)`
-        pool.query(queryStr, [body.username, body.first, body.last, body.email, body.picture], function(err, result) {
+          VALUES ($1, $2, $3, $4, $5)`;
+        var properties;
+        if (body.user_metadata) {
+          properties = [body.nickname, body.user_metadata.firstname, body.user_metadata.lastname, body.email, body.picture];
+        } else {
+          properties = [body.nickname, body.given_name, body.family_name, body.email, body.picture];
+        }
+        pool.query(queryStr, properties, function(err, result) {
           if (err) return console.log(err);
           console.log('success', result);
           res.send(result.rows);
-        })
+        });
       }
-    })
-    
+    });
+
   },
 
   getUserById: function (req, res, next) {
     var id = req.params.id;
     var body = req.body;
-    var queryStr = `SELECT * FROM users 
+    var queryStr = `SELECT * FROM users
       WHERE id=($1)`;
     pool.query(queryStr, [id], function(err, result) {
       if (err) return console.log(err);
@@ -54,10 +60,16 @@ module.exports = {
   updateUser: function (req, res, next) {
     var id = req.params.id;
     var body = req.body;
-    var queryStr = `UPDATE users SET 
+    var queryStr = `UPDATE users SET
       username=($1), firstname=($2), lastname=($3), email=($4) WHERE id=($5)`;
+      var properties;
+      if (body.user_metadata) {
+        properties = [body.username, body.user_metadata.firstname, body.user_metadata.lastname, body.email, body.picture];
+      } else {
+        properties = [body.username, body.given_name, body.family_name, body.email, body.picture];
+      }
 
-    pool.query(queryStr, [body.username, body.firstname, body.lastname, body.email, id], function(err, result) {
+    pool.query(queryStr, properties, function(err, result) {
       if (err) return console.log(err);
       console.log('success', result);
       res.status(201).send('updated user');
