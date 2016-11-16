@@ -3,7 +3,7 @@ import { NgModule, Component }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
 import { UIRouterModule } from 'ui-router-ng2';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {App} from "./components/app/app.js";
@@ -28,6 +28,7 @@ let INITIAL_COMPONENTS =  [ App, Home, ProductsComponent ];
     BrowserModule,
     FormsModule,
     HttpModule,
+    JsonpModule,
     NgbModule.forRoot(),
     UIRouterModule.forRoot({
       states: INITIAL_STATES,
