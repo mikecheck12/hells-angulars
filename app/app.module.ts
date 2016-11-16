@@ -21,7 +21,9 @@ import {homeState, productsState, productDetailsState, profileState } from "./st
 
 
 import { ProductsService } from "./components/products/products.service";
+
 import { ProductDetailsService } from "./components/product-details/product-details.service";
+import { ProfileService } from "./components/profile/profile.service";
 
 import { AUTH_PROVIDERS }      from 'angular2-jwt';
 
@@ -42,7 +44,11 @@ let INITIAL_COMPONENTS =  [ App, Home, Products, ProductDetails, ProfileComponen
     })
   ],
   declarations: INITIAL_COMPONENTS,
+<<<<<<< 5a63321d6b248822802542b30fe17a2ca25b16b9
   providers: [ProductsService, ProductDetailsService, AUTH_PROVIDERS],
+=======
+  providers: [ProductsService, ProfileService, AUTH_PROVIDERS],
+>>>>>>> - Imports ProfileService and adds it to app's providers in app.module.ts
   bootstrap: [ App ]
 })
 export class AppModule { }
