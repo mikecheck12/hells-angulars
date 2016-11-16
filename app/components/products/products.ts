@@ -25,7 +25,7 @@ export class Products implements OnInit {
 
   getProducts() {
     this.productsService
-        .getProducts()
+        .getProductsByQuery()
         .then(products => {
           // Rearrange products to have 3 products in one row
           let productsWithRows: Array<any> = [];
@@ -43,6 +43,7 @@ export class Products implements OnInit {
           this.products = productsWithRows;
         })
   }
+
 
   ngOnInit(): void{
     this.getProducts();

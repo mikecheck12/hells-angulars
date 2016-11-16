@@ -11,10 +11,10 @@
 
   <button class="navbar-right float-xs-right" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</button>
   <button class="navbar-right float-xs-right" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</button>
+  <form class="form-inline float-xs-right" #form="ngForm">
+    <input type="text" class="form-control" placeholder="Dig in the Gear Box..." ngModel name="keyword">
+    <button type="button" class="btn btn-outline-success" type="submit" uiSref="products" (click)="onSearch(form)" >Dig In!</button>
 
-  <form class="form-inline float-xs-right">
-    <input type="text" class="form-control" placeholder="Dig in the Gear Box...">
-    <button type="button" class="btn btn-outline-success">Dig In!</button>
   </form>
 
 </nav>

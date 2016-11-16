@@ -12,7 +12,7 @@ module.exports = function(app, express) {
   app.put('/api/users/:id', userController.updateUser);
 
   //Product routes
-  app.get('/api/products', productController.getAllProducts);
+  app.get('/api/products', productController.getProducts);
   app.get('/api/products/:id', productController.getProductById);
   app.post('/api/products', productController.createProduct);
   app.put('/api/products/:id', productController.updateProduct);

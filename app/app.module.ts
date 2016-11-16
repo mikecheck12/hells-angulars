@@ -17,6 +17,7 @@ import { ProductDetails } from './components/product-details/product-details';
 import {MyUIRouterConfig} from "./config/router.config.js";
 import {homeState, productsState, productDetailsState } from "./states.js";
 
+
 import { ProductsService } from "./components/products/products.service";
 import { ProductDetailsService } from "./components/product-details/product-details.service";
 
