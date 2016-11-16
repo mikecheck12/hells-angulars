@@ -3,10 +3,34 @@
     <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
-    <h4 class="modal-title">Modal title</h4>
+    <h4 class="modal-title">Product Details</h4>
   </div>
   <div class="modal-body">
-    <p>One fine body&hellip;</p>
+    <form>
+      <ul>
+        <li>
+          Product Name: <input type="text" placeholder="Brand/Model">
+        </li>
+        <li>
+          Product Description: <input type="text" placeholder="Description">
+        </li>
+        <li>
+          Price Per Day: <input type="text" placeholder="$ per/day">
+        </li>
+        <li>
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>Toggle dropdown</button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <button class="dropdown-item">Surf</button>
+              <button class="dropdown-item">Snow</button>
+              <button class="dropdown-item">Bike</button>
+              <button class="dropdown-item">Camp</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <input type="submit" value="Submit">
+    </form>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
@@ -14,7 +38,7 @@
 </template>
 
 
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">CLICK HERE</button>
 
 <hr>
 
