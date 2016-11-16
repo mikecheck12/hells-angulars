@@ -5,9 +5,10 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 @Component({
   moduleId: module.id,
   selector: 'ngbd-modal-basic',
-  templateUrl: './modal-basic.html'
+  templateUrl: 'addModal.html'
 })
 export class NgbdModalBasic {
+  ngbModal.keyboard = 'lg';
   closeResult: string;
 
   constructor(private modalService: NgbModal) {}
