@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Auth} from '../../auth/auth.service';
 
 @Component({
   moduleId: module.id,
@@ -7,5 +8,7 @@ import {Component} from '@angular/core';
 })
 
 export class Home {
+ //Injects Auth service to be used in template
+  constructor(private auth: Auth) {}
 
 }
