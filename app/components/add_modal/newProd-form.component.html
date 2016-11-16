@@ -1,0 +1,26 @@
+<form>
+  <ul>
+    <li class="form-group">
+      Product Name <input class="form-control" type="text" placeholder="Brand/Model">
+    </li>
+    <li class="form-group">
+      Product Description <input class="form-control" type="text" placeholder="Description">
+    </li>
+    <li class="form-group">
+      Price Per Day <input class="form-control" type="text" placeholder="$ per/day">
+    </li>
+    <li>
+      <div class="form-group">
+        <label>Category</label>
+          <select class="form-control" id="power" required>
+            <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+          </select>
+      </div>
+    </li>
+  </ul>
+  <div [(ngModel)]="model" ngbRadioGroup name="radioBasic">
+    <label class="btn btn-primary">
+      <input type="radio" [value]="1"> Submit
+    </label>
+  </div>
+</form>

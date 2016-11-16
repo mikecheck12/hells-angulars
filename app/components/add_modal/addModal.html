@@ -6,35 +6,9 @@
     <h4 class="modal-title">Product Details</h4>
   </div>
   <div class="modal-body">
-    <form>
-      <ul>
-        <li class="form-group">
-          Product Name <input class="form-control" type="text" placeholder="Brand/Model">
-        </li>
-        <li class="form-group">
-          Product Description <input class="form-control" type="text" placeholder="Description">
-        </li>
-        <li class="form-group">
-          Price Per Day <input class="form-control" type="text" placeholder="$ per/day">
-        </li>
-        <li>
-          <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-outline-primary" id="dropdownMenu1" ngbDropdownToggle>Select Category</button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <button class="dropdown-item">Surf</button>
-              <button class="dropdown-item">Snow</button>
-              <button class="dropdown-item">Bike</button>
-              <button class="dropdown-item">Camp</button>
-            </div>
-          </div>
-        </li>
-      </ul>
-      <div [(ngModel)]="model" ngbRadioGroup name="radioBasic">
-        <label class="btn btn-primary">
-          <input type="radio" [value]="1"> Submit
-        </label>
-      </div>
-    </form>
+
+    <newprod-form></newprod-form>
+
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
