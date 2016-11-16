@@ -7,6 +7,7 @@ import { ProductDetailsService } from './components/product-details/product-deta
 import { ProfileComponent } from "./components/profile/profile.component";
 
 import {Transition} from "ui-router-ng2";
+import { NgbdModalBasic } from "./components/add_modal/addModal"
 
 /** States */
 export const homeState = { name: 'home', url: '/',  component: Home };
@@ -30,4 +31,5 @@ export const productDetailsState = {
     }
   ]
 };
-export const profileState = { name: 'profile', url: '/profile',  component: ProfileComponent };
+
+export const addProductState = { name: 'addModal', url: '/addModal', component: NgbdModalBasic };
