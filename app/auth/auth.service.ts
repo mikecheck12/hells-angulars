@@ -1,8 +1,8 @@
-import { Injectable }      from '@angular/core';
-import { tokenNotExpired } from 'angular2-jwt';
-import { myConfig }        from './auth.config';
-import { Http, Headers } from '@angular/http';
-import { AuthHttp } from 'angular2-jwt';
+import { Injectable }      from "@angular/core";
+import { tokenNotExpired } from "angular2-jwt";
+import { myConfig }        from "./auth.config";
+import { Http, Headers } from "@angular/http";
+import { AuthHttp } from "angular2-jwt";
 
 // Avoid name not found warnings
 declare var Auth0Lock: any;
@@ -10,8 +10,8 @@ declare var Auth0Lock: any;
 @Injectable()
 export class Auth {
   headers: Headers = new Headers({
-    'Content-Type': 'application/json',
-    Accept: 'application/json'
+    "Content-Type": "application/json",
+    Accept: "application/json"
   });
   // Configure Auth0
   lock = new Auth0Lock(myConfig.clientID, myConfig.domain, {
@@ -31,10 +31,10 @@ export class Auth {
   constructor(private authHttp: AuthHttp, private http: Http) {
     // Set userProfile attribute of already saved profile
     var context = this;
-    this.userProfile = JSON.parse(localStorage.getItem('profile'));
+    this.userProfile = JSON.parse(localStorage.getItem("profile"));
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult: any) => {
-      localStorage.setItem('id_token', authResult.idToken);
+      localStorage.setItem("id_token", authResult.idToken);
       // Fetch profile information
       this.lock.getProfile(authResult.idToken, (error: any, profile: any) => {
         if (error) {
@@ -42,7 +42,7 @@ export class Auth {
           alert(error);
           return;
         }
-        localStorage.setItem('profile', profile);
+        localStorage.setItem("profile", profile);
         context.userProfile = profile;
         this.findOrCreateUser(profile)
       });
@@ -56,20 +56,20 @@ export class Auth {
   };
 
   public authenticated() {
-    // Check if there's an unexpired JWT
-    // This searches for an item in localStorage with key == 'id_token'
+    // Check if there"s an unexpired JWT
+    // This searches for an item in localStorage with key == "id_token"
     return tokenNotExpired();
   };
 
   public logout() {
     // Remove token from localStorage
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('profile');
+    localStorage.removeItem("id_token");
+    localStorage.removeItem("profile");
     this.userProfile = undefined;
   };
 
   public findOrCreateUser(profile) {
-   return this.http.post('api/users', profile, {headers:this.headers})
+   return this.http.post("api/users", profile, {headers:this.headers})
     .map(res => res)
     .subscribe(
       data => data
