@@ -2,12 +2,17 @@ import { Injectable }      from '@angular/core';
 import { tokenNotExpired } from 'angular2-jwt';
 import { myConfig }        from './auth.config';
 import { Http, Headers } from '@angular/http';
+import { AuthHttp } from 'angular2-jwt';
 
 // Avoid name not found warnings
 declare var Auth0Lock: any;
 
 @Injectable()
 export class Auth {
+  headers: Headers = new Headers({
+    'Content-Type': 'application/json',
+    Accept: 'application/json'
+  });
   // Configure Auth0
   lock = new Auth0Lock(myConfig.clientID, myConfig.domain, {
     additionalSignUpFields: [{
@@ -23,7 +28,7 @@ export class Auth {
   userProfile: Object;
   getData: string;
 
-  constructor(private http: Http) {
+  constructor(private authHttp: AuthHttp, private http: Http) {
     // Set userProfile attribute of already saved profile
     var context = this;
     this.userProfile = JSON.parse(localStorage.getItem('profile'));
@@ -37,8 +42,9 @@ export class Auth {
           alert(error);
           return;
         }
-        localStorage.setItem('profile', JSON.stringify(profile));
+        localStorage.setItem('profile', profile);
         context.userProfile = profile;
+        this.findOrCreateUser(profile)
       });
     });
 
@@ -61,6 +67,14 @@ export class Auth {
     localStorage.removeItem('profile');
     this.userProfile = undefined;
   };
+
+  public findOrCreateUser(profile) {
+   return this.http.post('api/users', profile, {headers:this.headers})
+    .map(res => res)
+    .subscribe(
+      data => data
+    )
+  }
 }
 
 
