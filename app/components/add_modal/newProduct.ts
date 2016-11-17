@@ -4,7 +4,8 @@ export class NewProduct {
     public productName: string,
     public pricePerDay: number,
     public ownerId: number,
-    public category_id: number,
-    public location?: string
+    public categoryId: number,
+    public location?: string,
+    public imageLink?: string
   )
 }

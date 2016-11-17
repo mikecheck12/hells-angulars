@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import { NewProduct } from './newProduct';
 
+import { NewProductService } from './newProduct.service'
+
 @Component({
   moduleId: module.id,
   selector: 'newprod-form',
@@ -12,5 +14,7 @@ export class NewProductForm {
 
   categories = ["Backpacking", "Bike", "Surf", "Snowboard", "Ski", "SUP", "Kayak"];
 
-  onSubmit() {console.log('submitted')};
+  model = new NewProduct();
+
+  onSubmit(model) {console.log(model)};
 }
