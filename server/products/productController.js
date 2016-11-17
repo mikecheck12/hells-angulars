@@ -38,12 +38,9 @@ module.exports = {
     var queryStr = `INSERT INTO products
       (category_id, owner_id, productname, priceperday, location)
       VALUES ((SELECT id from categories where category = $1), (SELECT id from users where username = $2), $3, $4, $5)`;
-    // query string to retrieve new created product id
-    var productIdQueryStr = `SELECT id from products `
+
     //query string for storing images in images table after product id created
-    var imageQueryStr = `INSERT INTO images
-      (product_id, url)
-      VALUES ((SELECT id from products where category = $1), (SELECT id from users where username = $2), $3, $4, $5)`
+    var imageQueryStr;
 
     pool.query(queryStr, [body.category, body.owner, body.productname, body.priceperday, body.location], function(err, result) {
       if (err) return console.log(err);
