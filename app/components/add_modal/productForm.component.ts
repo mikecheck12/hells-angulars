@@ -12,9 +12,17 @@ import { NewProductService } from './newProduct.service'
 
 export class NewProductForm {
 
+  constructor(private newProductService: NewProductService) {
+
+  }
+
   categories = ["Backpacking", "Bike", "Surf", "Snowboard", "Ski", "SUP", "Kayak"];
 
   model = new NewProduct();
 
-  onSubmit(model) {console.log(model)};
+  onSubmit(model) {
+    console.log(model);
+    console.log(this);
+    this.newProductService.postProduct(model)
+  };
 }

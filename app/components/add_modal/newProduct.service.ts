@@ -15,7 +15,7 @@ export class NewProductService {
   }
 
   public postProduct(newProduct) {
-    return this.http.post('api/product', newProduct, {headers:this.headers})
+    return this.http.post('api/products', newProduct, {headers:this.headers})
     .map(res => res)
     .subscribe(data => data)
   }
