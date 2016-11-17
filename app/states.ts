@@ -33,3 +33,9 @@ export const productDetailsState = {
 };
 
 export const addProductState = { name: "addModal", url: "/addModal", component: NgbdModalBasic };
+
+export const profileState = {
+  name: "profile",
+  url: "/profile",
+  component: ProfileComponent,
+};
