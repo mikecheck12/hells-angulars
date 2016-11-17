@@ -1,4 +1,3 @@
-
 import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -50,5 +49,3 @@ let INITIAL_COMPONENTS =  [ App, Home, Products, ProductDetails, ProfileComponen
   bootstrap: [ App ]
 })
 export class AppModule { }
-
-
