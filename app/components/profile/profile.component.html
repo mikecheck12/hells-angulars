@@ -1,3 +1,11 @@
 <h1>This is the profile page</h1>
-<div>User info</div>
-<p>{{user}}</p>
+<div *ngFor="let user of users">User info
+  <div *ngIf="user.profilepic">
+    <img [src]="user.profilepic" />
+  </div>
+
+  <p>Name: {{user.firstname}} {{user.lastname}}</p>
+  <p>Email: {{user.email}}</p>
+  <p *ngIf="user.location">Location: {{user.location}}</p>
+
+</div>
