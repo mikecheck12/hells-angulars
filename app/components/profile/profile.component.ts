@@ -10,23 +10,26 @@ import { ProfileService } from "./profile.service";
 })
 
 export class ProfileComponent implements OnInit {
-  public user: Array<any>;
+  public users: Array<any>;
 
   constructor(
     private profileService: ProfileService
   ) { }
 
-  public getUserInfo() {
+  getUserInfo() {
     this.profileService
       .getUserInfo()
-      .then(info => {
+      .then(users => {
         // do something with the info returned from request
-        this.user = info;
-        console.log(this.user);
+        this.users = users;
+        console.log(this.users);
+      })
+      .catch(err => {
+        console.log(err);
       });
   }
 
-  public ngOnInit(): void {
+  ngOnInit(): void {
     this.getUserInfo();
   }
 }
