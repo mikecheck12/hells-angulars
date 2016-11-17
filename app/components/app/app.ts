@@ -1,6 +1,7 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {UIROUTER_DIRECTIVES} from "ui-router-ng2";
 import {Auth} from "../../auth/auth.service";
+
 @Component({
   moduleId: module.id,
   selector: 'my-app',
@@ -9,8 +10,12 @@ import {Auth} from "../../auth/auth.service";
   styleUrls: [ 'app.css' ]
 })
 
-export class App {
+export class App implements OnInit {
   title: "Gear Box";
 
   constructor(private auth: Auth) {}
+
+  ngOnInit(): void {
+    this.auth.findOrCreateUser(localStorage.getItem('profile'));
+  }
 }
