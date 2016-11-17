@@ -31,7 +31,6 @@ var categories = `CREATE TABLE IF NOT EXISTS categories (
 var users = `CREATE TABLE IF NOT EXISTS users (
   id              SERIAL        PRIMARY KEY,
   username        VARCHAR(50)   NOT NULL,
-  password        VARCHAR(150)   NOT NULL,
   firstname       VARCHAR(50)   NOT NULL,
   lastname        VARCHAR(50)   NOT NULL,
   email           VARCHAR(255)  NOT NULL,
@@ -45,6 +44,7 @@ var products = `CREATE TABLE IF NOT EXISTS products (
   id              SERIAL        PRIMARY KEY,
   category_id     INT           references categories(id),
   owner_id        INT           references users(id),
+  description     VARCHAR(255)  NOT NULL,
   productname     VARCHAR(30)   NOT NULL,
   priceperday     INT           NOT NULL,
   location        VARCHAR(255)  NOT NULL
