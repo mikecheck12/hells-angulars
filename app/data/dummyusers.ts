@@ -7,7 +7,7 @@ export const UsersData = [
     "lastname": "test",
     "email": "test@test.com",
     "location": null,
-    "profilepic": null
+    "profilepic": null,
   },
   {
     "id": 3,
@@ -17,7 +17,7 @@ export const UsersData = [
     "lastname": "test",
     "email": "alex@alex.com",
     "location": null,
-    "profilepic": null
+    "profilepic": null,
   },
   {
     "id": 13,
@@ -27,7 +27,7 @@ export const UsersData = [
     "lastname": "test1",
     "email": "test1@test1.com",
     "location": null,
-    "profilepic": null
+    "profilepic": null,
   },
   {
     "id": 15,
@@ -37,7 +37,7 @@ export const UsersData = [
     "lastname": "test2",
     "email": "test2@test2.com",
     "location": null,
-    "profilepic": null
+    "profilepic": null,
   },
   {
     "id": 19,
@@ -47,8 +47,8 @@ export const UsersData = [
     "lastname": "test3",
     "email": "test3@test3.com",
     "location": null,
-    "profilepic": null
-  }
+    "profilepic": null,
+  },
 ];
 
 export const UserData = [
@@ -60,6 +60,6 @@ export const UserData = [
     "lastname": "test",
     "email": "test@test.com",
     "location": null,
-    "profilepic": null
-  }
+    "profilepic": null,
+  },
 ];
