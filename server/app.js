@@ -8,6 +8,8 @@ var app = express();
 //to parse incoming requests so we can access req.body.whatever
 app.use(bodyParser.json());
 
+app.use(function(req, res, next) {   console.log(     `${Date()} ${req.method} ${req.url}     ${req.body}`);   next(); });
+
 var __projectRoot = path.join(__dirname, '../');
 app.use(express.static(__projectRoot));
 // app.use(express.static(__projectRoot + '/app'));

@@ -14,26 +14,26 @@ module.exports = {
   },
 
   createUser: function(req, res, next) {
-    console.log(req.body); //we need to parse this out and add the info to the queryStr
+    //console.log('request body is ' + JSON.stringify(req)); //we need to parse this out and add the info to the queryStr
     var body = req.body;
     // NOTE: you must use single quotes for the values section of the query
     var searchUserStr = `SELECT * FROM users
       WHERE username = ($1)
     `
-    pool.query(searchUserStr, [body.username], function(err, result) {
+    pool.query(searchUserStr, [body.nickname], function(err, result) {
       if (err) return console.log(err);
       console.log(result);
       if (result.rows.length > 0) {
         res.status(200).send('User already exists');
       } else {
         var queryStr = `INSERT INTO users
-          (username, firstname, lastname, email, profilepic)
-          VALUES ($1, $2, $3, $4, $5)`;
+          (username, firstname, lastname, email)
+          VALUES ($1, $2, $3, $4)`;
         var properties;
         if (body.user_metadata) {
-          properties = [body.nickname, body.user_metadata.firstname, body.user_metadata.lastname, body.email, body.picture];
+          properties = [body.nickname, body.user_metadata.firstname, body.user_metadata.lastname, body.email];
         } else {
-          properties = [body.nickname, body.given_name, body.family_name, body.email, body.picture];
+          properties = [body.nickname, body.given_name, body.family_name, body.email];
         }
         pool.query(queryStr, properties, function(err, result) {
           if (err) return console.log(err);
