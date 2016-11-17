@@ -13,9 +13,9 @@ import { ActivatedRoute } from "@angular/router";
 })
 
 export class ProductDetails implements OnInit {
-  @Input() product;
+  @Input() public product;
 
-  @Input() selectedPic: String;
+  @Input() public selectedPic: String;
 
   constructor(
     private config: NgbRatingConfig
@@ -24,13 +24,13 @@ export class ProductDetails implements OnInit {
     config.readonly = true;
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     console.log(this.product);
     this.selectedPic = this.product.pic[0];
     console.log(this.selectedPic);
   }
 
-  onSelect(n: number) {
+  public onSelect(n: number) {
     this.selectedPic = this.product.pic[n];
   }
 

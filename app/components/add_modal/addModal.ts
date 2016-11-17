@@ -9,8 +9,10 @@ import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 })
 export class NgbdModalBasic {
 
+
   //public ngbModal.keyboard = "lg";
   public closeResult: string;
+
 
   constructor(private modalService: NgbModal) {}
 

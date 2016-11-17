@@ -9,12 +9,12 @@ declare var Auth0Lock: any;
 
 @Injectable()
 export class Auth {
-  headers: Headers = new Headers({
+  public headers: Headers = new Headers({
     "Content-Type": "application/json",
     Accept: "application/json",
   });
   // Configure Auth0
-  lock = new Auth0Lock(myConfig.clientID, myConfig.domain, {
+  public lock = new Auth0Lock(myConfig.clientID, myConfig.domain, {
     additionalSignUpFields: [
       {
         name: "firstname",                              // required
@@ -27,8 +27,8 @@ export class Auth {
     ],
   });
 
-  userProfile: Object;
-  getData: string;
+  public userProfile: Object;
+  public getData: string;
 
   constructor(private authHttp: AuthHttp, private http: Http) {
     // Set userProfile attribute of already saved profile
@@ -74,7 +74,7 @@ export class Auth {
    return this.http.post("api/users", profile, {headers: this.headers})
     .map(res => res)
     .subscribe(
-      data => data;
-    )
+      data => data
+    );
   }
 }

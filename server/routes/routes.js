@@ -26,11 +26,16 @@ module.exports = function(app, express) {
   app.get('/api/products/:id', productController.getProductById);
   app.post('/api/products', productController.createProduct);
   app.put('/api/products/:id', productController.updateProduct);
-  //Review routes
 
+  //Review routes
+  // app.get('/api/reviews', productController.getReviews);
+  // app.get('/api/reviews/:id', productController.getReviewByProductId);
+  // app.post('/api/reviews', productController.createReview);
 
   //Transaction routes
-
+  // app.get('/api/transactions', productController.getTransactions);
+  // app.get('/api/transactions/:id', productController.getTransactionsById);
+  // app.post('/api/transactions', productController.createTransaction);
 
 }
 

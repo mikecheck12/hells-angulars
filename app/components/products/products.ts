@@ -12,7 +12,7 @@ import {UIROUTER_DIRECTIVES} from "ui-router-ng2";
 })
 
 export class Products implements OnInit {
-  products: Array<any>;
+  public products: Array<any>;
 
   constructor(
     private productsService: ProductsService,
@@ -22,7 +22,7 @@ export class Products implements OnInit {
     config.readonly = true;
   }
 
-  getProducts() {
+  public getProducts() {
     this.productsService
         .getProducts()
         .then(products => {
@@ -43,7 +43,7 @@ export class Products implements OnInit {
         });
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.getProducts();
   }
 }

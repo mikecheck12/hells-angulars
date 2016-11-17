@@ -1,6 +1,9 @@
 var pool = require('../db/db.js')
 
 module.exports = {
+
+  // Return products that match the query string.
+  // If no string was provided, will return all products
   getProducts: function(req, res, next) {
     console.log(req.query.productname);
     console.log(req.query.productname)
@@ -31,16 +34,24 @@ module.exports = {
 
   createProduct: function (req, res, next) {
     var body = req.body;
-
+    // query string for storing product in product table
     var queryStr = `INSERT INTO products
       (category_id, owner_id, productname, priceperday, location)
-      VALUES ((SELECT id from categories where category = $1), (SELECT id from users where username = $2), $3, $4, $5)`
+      VALUES ((SELECT id from categories where category = $1), (SELECT id from users where username = $2), $3, $4, $5)`;
+    // query string to retrieve new created product id
+    var productIdQueryStr = `SELECT id from products `
+    //query string for storing images in images table after product id created
+    var imageQueryStr = `INSERT INTO images
+      (product_id, url)
+      VALUES ((SELECT id from products where category = $1), (SELECT id from users where username = $2), $3, $4, $5)`
 
     pool.query(queryStr, [body.category, body.owner, body.productname, body.priceperday, body.location], function(err, result) {
       if (err) return console.log(err);
       console.log('success', result);
       res.status(201).send('product created');
-    })
+    });
+    // add images to images table
+
   },
 
   updateProduct: function (req, res, next) {

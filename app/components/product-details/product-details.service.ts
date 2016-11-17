@@ -27,3 +27,4 @@ export class ProductDetailsService {
   private handleError(error: any): Promise<any> {
     return Promise.reject(error.message || error);
   }
+}
