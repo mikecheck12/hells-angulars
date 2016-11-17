@@ -31,7 +31,7 @@ module.exports = function(grunt) {
       files: {
         src: ['app/**/*.ts']
       }
-    }
+    },
 
     copy: {
       css: {
@@ -84,6 +84,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks("grunt-tslint");
 
-  grunt.registerTask('build', ['clean', 'ts','tslint', 'copy:css', 'copy:html']);
+  grunt.registerTask('build', ['clean', 'tslint', 'ts','copy:css', 'copy:html']);
   grunt.registerTask('default', ['build', 'concurrent']);
 };
