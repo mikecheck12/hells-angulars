@@ -85,9 +85,21 @@ export const Data = [
         "http://images.evo.com/imgp/700/67566/325844/arbor-formula-snowboard-2014.jpg",
     ],
     "location": "Milwaukee, WI",
-    "description": `An insect staggered across an airplane.
-        Andrew happily trapped a sandwich.
-        The hyena jogged above a toilet.`,
-    "rating": 3,
-  },
+    "description": "An insect staggered across an airplane. Andrew happily trapped a sandwich. The hyena jogged above a toilet.",
+    "rating": 3
+  }
+];
+
+export const Rentals = [
+  {
+    "id": "5",
+    "category": "snow",
+    "owner": "Daisy",
+    "productname": "snow board",
+    "priceperday": "20",
+    "pic":["http://images.evo.com/imgp/700/67566/325844/arbor-formula-snowboard-2014.jpg", "http://images.evo.com/imgp/700/67566/325844/arbor-formula-snowboard-2014.jpg", "http://images.evo.com/imgp/700/67566/325844/arbor-formula-snowboard-2014.jpg", "http://images.evo.com/imgp/700/67566/325844/arbor-formula-snowboard-2014.jpg"],
+    "location": "Milwaukee, WI",
+    "description": "An insect staggered across an airplane. Andrew happily trapped a sandwich. The hyena jogged above a toilet.",
+    "rating": 3
+  }
 ];

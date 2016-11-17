@@ -11,6 +11,8 @@ import { ProfileService } from "./profile.service";
 
 export class ProfileComponent implements OnInit {
   public users: Array<any>;
+  public products: Array<any>;
+  public rentals: Array<any>;
 
   constructor(
     private profileService: ProfileService
@@ -24,12 +26,32 @@ export class ProfileComponent implements OnInit {
         this.users = users;
         console.log(this.users);
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => console.log(err));
+  }
+
+  getUserProducts() {
+    this.profileService
+      .getUserProducts()
+      .then(products => {
+        this.products = products;
+        console.log("products", products)
+      })
+      .catch(err => console.log(err));
+  }
+
+  getUserRentals() {
+    this.profileService
+      .getUserRentals()
+      .then(rentals => {
+        this.rentals = rentals;
+        console.log("rentals", rentals)
+      })
+      .catch(err => console.log(err));
   }
 
   ngOnInit(): void {
     this.getUserInfo();
+    this.getUserProducts();
+    this.getUserRentals();
   }
 }

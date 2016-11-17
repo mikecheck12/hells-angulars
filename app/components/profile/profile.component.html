@@ -1,11 +1,46 @@
-<h1>This is the profile page</h1>
-<div *ngFor="let user of users">User info
-  <div *ngIf="user.profilepic">
-    <img [src]="user.profilepic" />
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div *ngFor="let user of users" class="card">
+        <img class="card-img-top" [src]="user.profilepic" alt="Card image cap">
+        <div class="card-block">
+          <h4 class="card-title">{{user.firstname}} {{user.lastname}}</h4>
+          <p class="card-text">{{user.email}}</p>
+          <p class="card-text">{{user.location}}</p>
+          <a href="#" class="btn btn-primary">Edit account details</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          My Gear
+        </div>
+        <a href="#" class="btn btn-primary">View all my gear</a>
+        <a href="#" class="btn btn-primary">Add gear</a>
+        <div *ngFor="let product of products" class="card">
+          <div class="row">
+            <div class="col-md-6">
+              <p class="right card-text"><strong>${{product.priceperday}}</strong> / day</p>
+              <p class="primary card-text">{{product.productname}}</p>
+              <img class="gear card-img-left" [src]="product.pic[0]">
+            </div>
+            <div class="col-md-6">
+              <p>{{product.description}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          My Rentals
+        </div>
+        <div class="card-block">
+          <h4 class="card-title">Special title treatment</h4>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">View all my rentals</a>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <p>Name: {{user.firstname}} {{user.lastname}}</p>
-  <p>Email: {{user.email}}</p>
-  <p *ngIf="user.location">Location: {{user.location}}</p>
-
 </div>
