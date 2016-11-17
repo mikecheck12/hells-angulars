@@ -25,6 +25,7 @@ export class ProductDetails implements OnInit{
   }
 
   ngOnInit() {
+    console.log(this.product);
     this.selectedPic = this.product.pic[0];
     console.log(this.selectedPic);
   }

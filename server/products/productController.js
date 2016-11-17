@@ -3,8 +3,10 @@ var pool = require('../db/db.js')
 module.exports = {
   getProducts: function(req, res, next) {
     console.log(req.query.productname);
-    var queryStr = 'SELECT * FROM products WHERE (productname LIKE ($1))';
-    pool.query(queryStr, [req.query.productname], function(err, result) {
+    console.log(req.query.productname)
+    var queryStr = "SELECT * FROM products WHERE (productname LIKE '%" + req.query.productname+ "%')";
+    pool.query(queryStr, function(err, result) {
+      console.log(queryStr)
       if (err) {
         console.log(err);
         res.send(err);

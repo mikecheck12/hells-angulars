@@ -20,13 +20,13 @@ export class App {
 
   constructor(
     private auth: Auth,
-    private productsService: ProductsService,
+    private productsService: ProductsService
    ) {}
 
   public onSearch(form:any) {
     console.log(form.value.keyword);
     this.productsService.keyword = form.value.keyword;
-    // this.stateService.go('products');
+
   };
 
   ngOnInit(): void {

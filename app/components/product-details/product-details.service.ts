@@ -20,9 +20,9 @@ export class ProductDetailsService {
 
     // let url = '/api/products/' + id;
     // return this.http.get(url)
-    //               .toPromise()
-    //               .then(response => response.json())
-    //               .catch(this.handleError);
+    //     .toPromise()
+    //     .then(response => response.json())
+    //     .catch(this.handleError);
   }
   private handleError(error: any): Promise<any> {
     return Promise.reject(error.message || error);
