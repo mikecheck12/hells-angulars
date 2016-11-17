@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component }                     from "@angular/core";
 
 import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 
@@ -9,16 +9,14 @@ import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 })
 export class NgbdModalBasic {
 
-
-  //public ngbModal.keyboard = "lg";
+  // public ngbModal.keyboard = "lg";
   public closeResult: string;
-
 
   constructor(private modalService: NgbModal) {}
 
-  //this.modalService.keyboard = "lg";
+  // this.modalService.keyboard = "lg";
 
-  public open(content) {
+  public open(content: any) {
     this.modalService.open(content).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
