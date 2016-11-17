@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
     private profileService: ProfileService
   ) { }
 
-  getUserInfo() {
+  public getUserInfo() {
     this.profileService
       .getUserInfo()
       .then(info => {
@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.getUserInfo();
   }
 }
