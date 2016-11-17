@@ -1,8 +1,30 @@
 import {Home} from "./components/home/home";
-import { ProductsComponent } from "./components/products/products.component";
+import { Products } from "./components/products/products";
+import { ProductDetails } from "./components/product-details/product-details";
+
+import { ProductDetailsService } from './components/product-details/product-details.service';
+
 import {Transition} from "ui-router-ng2";
 
 /** States */
 export const homeState = { name: 'home', url: '/',  component: Home };
 
-export const gearState = { name: 'gear', url: '/gear',  component: ProductsComponent };
+export const productsState = {
+  name: 'products',
+  url: '/products',
+  component: Products,
+
+};
+
+export const productDetailsState = {
+  name: 'productDetails',
+  url: '/product/:productId',
+  component: ProductDetails,
+  resolve: [
+    {
+      token: 'product',
+      deps: [Transition, ProductDetailsService],
+      resolveFn: (trans, productDetailsSvc) => productDetailsSvc.getProductDetails(trans.params().productId)
+    }
+  ]
+};

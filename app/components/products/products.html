@@ -30,8 +30,8 @@
           <div class="form-group">
             <label for="datefrom" class="control-label">From</label>
             <div class="input-group">
-              <input class="form-control" placeholder="yyyy-mm-dd"  ngbDatepicker #d="ngbDatepicker">
-              <div class="input-group-addon" (click)="d.toggle()" >
+              <input class="form-control" placeholder="yyyy-mm-dd"  ngbDatepicker #df="ngbDatepicker">
+              <div class="input-group-addon" (click)="df.toggle()" >
                 <i class="fa fa-calendar"></i>
               </div>
             </div>
@@ -40,8 +40,8 @@
           <div class="form-group">
             <label for="dateto" class="control-label">To</label>
             <div class="input-group">
-              <input class="form-control" placeholder="yyyy-mm-dd"  ngbDatepicker #d="ngbDatepicker">
-              <div class="input-group-addon" (click)="d.toggle()" >
+              <input class="form-control" placeholder="yyyy-mm-dd"  ngbDatepicker #dt="ngbDatepicker">
+              <div class="input-group-addon" (click)="dt.toggle()" >
                 <i class="fa fa-calendar"></i>
               </div>
             </div>
@@ -55,8 +55,8 @@
     <div class="col-md-9">
       <div *ngFor="let row of products" class="row">
         <div *ngFor="let product of row" class="col-md-4">
-          <div class="card">
-            <img class="card-img-top" [src]="product.pic" alt="image">
+          <div class="card" uiSref="productDetails" [uiParams]="{ productId: product.id }">
+            <img class="card-img-top" [src]="product.pic[0]" alt="image">
             <div class="card-block">
               <p class="right card-text"><strong>${{product.priceperday}}</strong> / day</p>
               <p class="primary card-text">{{product.productname}}</p>

@@ -20,6 +20,19 @@ module.exports = function(grunt) {
       }
     },
 
+    tslint: {
+      options: {
+          // can be a configuration object or a filepath to tslint.json
+        configuration: "tslint.json",
+        // If set to true, tslint errors will be reported, but not fail the task
+        // If set to false, tslint errors will be reported, and the task will fail
+        force: false
+      },
+      files: {
+        src: ['app/**/*.ts']
+      }
+    },
+
     copy: {
       css: {
         expand: true,
@@ -69,7 +82,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-concurrent');
+  grunt.loadNpmTasks("grunt-tslint");
 
-  grunt.registerTask('build', ['clean', 'ts', 'copy:css', 'copy:html']);
+  grunt.registerTask('build', ['clean', 'tslint', 'ts','copy:css', 'copy:html']);
   grunt.registerTask('default', ['build', 'concurrent']);
 };

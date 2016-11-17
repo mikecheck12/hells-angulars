@@ -1,13 +1,17 @@
 var pool = require('../db/db.js')
 
 module.exports = {
-  getAllProducts: function(req, res, next) {
-    var queryStr = 'SELECT * FROM products';
+  getProducts: function(req, res, next) {
+    console.log(req.query.productname);
+    console.log(req.query.productname)
+    var queryStr = "SELECT * FROM products WHERE (productname LIKE '%" + req.query.productname+ "%')";
     pool.query(queryStr, function(err, result) {
+      console.log(queryStr)
       if (err) {
         console.log(err);
         res.send(err);
       }
+      console.log(result);
       res.send(result.rows);
     })
   },
@@ -27,7 +31,7 @@ module.exports = {
 
   createProduct: function (req, res, next) {
     var body = req.body;
-    
+
     var queryStr = `INSERT INTO products
       (category_id, owner_id, productname, priceperday, location)
       VALUES ((SELECT id from categories where category = $1), (SELECT id from users where username = $2), $3, $4, $5)`
@@ -42,7 +46,7 @@ module.exports = {
   updateProduct: function (req, res, next) {
     var id = req.params.id;
     var body = req.body;
-    var queryStr = `UPDATE products SET 
+    var queryStr = `UPDATE products SET
       category_id=((SELECT id from categories where category = $1)), productname=($2), priceperday=($3), location=($4) WHERE id=($5)`;
 
     pool.query(queryStr, [body.category, body.productname, body.priceperday, body.location, id], function(err, result) {
