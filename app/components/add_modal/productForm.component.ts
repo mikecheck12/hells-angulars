@@ -20,9 +20,7 @@ export class NewProductForm {
 
   }
 
-  public onSubmit(model) {
-    // console.log(model);
-    // console.log(this);
+  public onSubmit(model: NewProduct) {
     this.newProductService.postProduct(model);
   };
 }
