@@ -14,7 +14,10 @@
     "interface-name": false,
     "no-console": false,
     "no-unused-variable":false,
-    "curly": true
+    "curly": true,
+    "member-access": false
+
+
   },
   "jsRules": {
     /*

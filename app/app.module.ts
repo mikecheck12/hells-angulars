@@ -24,6 +24,8 @@ import { NgbdModalBasic } from './components/add_modal/addModal'
 import { ProductsService } from "./components/products/products.service";
 import { ProductDetailsService } from "./components/product-details/product-details.service";
 import { ProfileService } from "./components/profile/profile.service";
+import { NewProductService } from "./components/add_modal/newProduct.service";
+
 
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
@@ -44,7 +46,7 @@ let INITIAL_COMPONENTS =  [ App, Home, Products, ProductDetails, ProfileComponen
     })
   ],
   declarations: INITIAL_COMPONENTS,
-  providers: [ProductsService, ProfileService, ProductDetailsService, AUTH_PROVIDERS],
+  providers: [ProductsService, ProfileService, ProductDetailsService, AUTH_PROVIDERS, NewProductService],
 
   bootstrap: [ App ]
 })
