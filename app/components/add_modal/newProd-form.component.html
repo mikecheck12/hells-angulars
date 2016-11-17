@@ -1,0 +1,40 @@
+<form>
+  <ul>
+    <li class="form-group">
+      Product Name <input class="form-control" type="text" placeholder="Brand/Model"
+       required
+       [(ngModel)]="model.productName" [ngModelOptions]="{standalone: true}">
+       TODO: remove this: {{model.productName}}
+    </li>
+    <li class="form-group">
+      Product Description <input class="form-control" type="text" placeholder="Description" required
+      [(ngModel)]="model.productDescription" [ngModelOptions]="{standalone: true}">
+    </li>
+    <li class="form-group">
+      Price Per Day <input class="form-control" type="text" placeholder="$ per/day"
+      required
+      [(ngModel)]="model.pricePerDay" [ngModelOptions]="{standalone: true}">
+    </li>
+    <li class="form-group">
+      Picture URL <input class="form-control" type="text" placeholder="image link"
+      required
+      [(ngModel)]="model.imageLink" [ngModelOptions]="{standalone: true}">
+    </li>
+    <li>
+      <div class="form-group">
+        <label>Category</label>
+          <select class="form-control" id="power"
+          required
+          [(ngModel)]="model.categoryId" [ngModelOptions]="{standalone: true}">
+            <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+          </select>
+      </div>
+    </li>
+  </ul>
+  <div ngbRadioGroup name="radioBasic">
+    <label class="btn btn-primary">
+    <!-- bootstrap had the below button as input with a value corresponding to ngModel -->
+      <button type="radio" (click)="onSubmit(model)"> Submit </button>
+    </label>
+  </div>
+</form>

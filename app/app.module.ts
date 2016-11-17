@@ -1,12 +1,12 @@
 
-import { NgModule, Component }      from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { UIRouterModule } from 'ui-router-ng2';
 import { HttpModule, JsonpModule } from '@angular/http';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import {App} from "./components/app/app.js";
+import { App } from "./components/app/app.js";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
 
@@ -17,18 +17,19 @@ import { Products } from './components/products/products';
 import { ProductDetails } from './components/product-details/product-details';
 import { ProfileComponent } from './components/profile/profile.component';
 import {MyUIRouterConfig} from "./config/router.config.js";
-import {homeState, productsState, productDetailsState, profileState } from "./states.js";
+import {homeState, productsState, productDetailsState, addProductState} from "./states.js";
+import { NewProductForm } from './components/add_modal/productForm.component'
 
+import { NgbdModalBasic } from './components/add_modal/addModal'
 
 import { ProductsService } from "./components/products/products.service";
-
 import { ProductDetailsService } from "./components/product-details/product-details.service";
 import { ProfileService } from "./components/profile/profile.service";
 
-import { AUTH_PROVIDERS }      from 'angular2-jwt';
+import { AUTH_PROVIDERS } from 'angular2-jwt';
 
-let INITIAL_STATES =  [ homeState, productsState, productDetailsState, profileState ];
-let INITIAL_COMPONENTS =  [ App, Home, Products, ProductDetails, ProfileComponent ];
+let INITIAL_STATES =  [ homeState, productsState, productDetailsState, addProductState ];
+let INITIAL_COMPONENTS =  [ App, Home, Products, ProductDetails, ProfileComponent, NgbdModalBasic, NewProductForm ];
 
 @NgModule({
   imports: [
@@ -44,11 +45,8 @@ let INITIAL_COMPONENTS =  [ App, Home, Products, ProductDetails, ProfileComponen
     })
   ],
   declarations: INITIAL_COMPONENTS,
-<<<<<<< 5a63321d6b248822802542b30fe17a2ca25b16b9
-  providers: [ProductsService, ProductDetailsService, AUTH_PROVIDERS],
-=======
-  providers: [ProductsService, ProfileService, AUTH_PROVIDERS],
->>>>>>> - Imports ProfileService and adds it to app's providers in app.module.ts
+  providers: [ProductsService, ProfileService, ProductDetailsService, AUTH_PROVIDERS],
+
   bootstrap: [ App ]
 })
 export class AppModule { }
