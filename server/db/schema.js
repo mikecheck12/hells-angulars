@@ -30,6 +30,7 @@ var categories = `CREATE TABLE IF NOT EXISTS categories (
 
 var users = `CREATE TABLE IF NOT EXISTS users (
   id              SERIAL        PRIMARY KEY,
+  authid          VARCHAR(100)  ,
   username        VARCHAR(50)   NOT NULL,
   firstname       VARCHAR(50)   NOT NULL,
   lastname        VARCHAR(50)   NOT NULL,
