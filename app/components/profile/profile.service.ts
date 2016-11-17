@@ -1,17 +1,11 @@
-import { Injectable } from "@angular/core";
-// import { Headers, Http } from "@angular/http";
-import { Http } from "@angular/http";
-import { AuthHttp } from "angular2-jwt";
-
 import "rxjs/add/operator/toPromise";
-
-
-import { UserData } from "../../data/dummyusers";
+import { AuthHttp }      from "angular2-jwt";
 import { Data, Rentals } from "../../data/dummydata";
-
+import { Http }          from "@angular/http";
+import { Injectable }    from "@angular/core";
+import { UserData }      from "../../data/dummyusers";
 
 @Injectable()
-
 export class ProfileService {
 
   constructor(
