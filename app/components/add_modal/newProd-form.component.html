@@ -20,7 +20,8 @@
   </ul>
   <div [(ngModel)]="model" ngbRadioGroup name="radioBasic">
     <label class="btn btn-primary">
-      <input type="radio" [value]="1"> Submit
+    <!-- bootstrap had the below button as input with a value corresponding to ngModel -->
+      <button type="radio" (click)="onSubmit()"> Submit </button>
     </label>
   </div>
 </form>
