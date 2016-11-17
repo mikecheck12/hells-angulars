@@ -11,6 +11,7 @@ import { ProductsService } from '../products/products.service';
   providers: [Auth],
   templateUrl: 'app.html',
   styleUrls: [ 'app.css' ]
+
 })
 
 export class App {

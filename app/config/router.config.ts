@@ -1,5 +1,6 @@
 import {UIRouter} from "ui-router-ng2";
-import {homeState, productsState, productDetailsState} from "../states";
+import {homeState, productsState, productDetailsState, profileState} from "../states";
+
 import {Inject, Injectable} from "@angular/core";
 
 /** UIRouter Config  */
