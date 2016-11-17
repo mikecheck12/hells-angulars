@@ -42,7 +42,7 @@ export class Auth {
           alert(error);
           return;
         }
-        localStorage.setItem("profile", profile);
+        localStorage.setItem("profile", JSON.stringify(profile));
         context.userProfile = profile;
         this.findOrCreateUser(profile)
       });
