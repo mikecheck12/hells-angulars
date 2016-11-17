@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductsService } from './products.service';
-import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
-import {UIROUTER_DIRECTIVES} from 'ui-router-ng2';
-
+import { Component, OnInit } from "@angular/core";
+import { ProductsService } from "./products.service";
+import { NgbRatingConfig } from "@ng-bootstrap/ng-bootstrap";
+import {UIROUTER_DIRECTIVES} from "ui-router-ng2";
 
 @Component({
   moduleId: module.id,
-  selector: 'products',
-  templateUrl: 'products.html',
-  styleUrls: ['products.css'],
-  providers: [NgbRatingConfig]
+  selector: "products",
+  templateUrl: "products.html",
+  styleUrls: [ "products.css" ],
+  providers: [ NgbRatingConfig ],
 })
 
 export class Products implements OnInit {
@@ -18,7 +17,7 @@ export class Products implements OnInit {
   constructor(
     private productsService: ProductsService,
     private config: NgbRatingConfig
-  ){
+  ) {
     config.max = 5;
     config.readonly = true;
   }
@@ -35,17 +34,16 @@ export class Products implements OnInit {
               productsWithRows.push(row);
               row = [];
             }
-            row.push(products[i])
+            row.push(products[i]);
             if (i === products.length - 1) {
               productsWithRows.push(row);
             }
           }
           this.products = productsWithRows;
-        })
+        });
   }
 
-
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.getProducts();
   }
 }

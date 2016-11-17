@@ -11,18 +11,20 @@ declare var Auth0Lock: any;
 export class Auth {
   headers: Headers = new Headers({
     "Content-Type": "application/json",
-    Accept: "application/json"
+    Accept: "application/json",
   });
   // Configure Auth0
   lock = new Auth0Lock(myConfig.clientID, myConfig.domain, {
-    additionalSignUpFields: [{
-      name: "firstname",                              // required
-      placeholder: "enter your first name"
-    },
-    {
-      name: "lastname",                              // required
-      placeholder: "enter your last name"
-    }]
+    additionalSignUpFields: [
+      {
+        name: "firstname",                              // required
+        placeholder: "enter your first name",
+      },
+      {
+        name: "lastname",                              // required
+        placeholder: "enter your last name",
+      },
+    ],
   });
 
   userProfile: Object;
@@ -30,7 +32,7 @@ export class Auth {
 
   constructor(private authHttp: AuthHttp, private http: Http) {
     // Set userProfile attribute of already saved profile
-    var context = this;
+    let context = this;
     this.userProfile = JSON.parse(localStorage.getItem("profile"));
     // Add callback for lock `authenticated` event
     this.lock.on("authenticated", (authResult: any) => {
@@ -44,7 +46,7 @@ export class Auth {
         }
         localStorage.setItem("profile", JSON.stringify(profile));
         context.userProfile = profile;
-        this.findOrCreateUser(profile)
+        this.findOrCreateUser(profile);
       });
     });
 
@@ -69,14 +71,10 @@ export class Auth {
   };
 
   public findOrCreateUser(profile) {
-   return this.http.post("api/users", profile, {headers:this.headers})
+   return this.http.post("api/users", profile, {headers: this.headers})
     .map(res => res)
     .subscribe(
-      data => data
+      data => data;
     )
   }
 }
-
-
-
-
