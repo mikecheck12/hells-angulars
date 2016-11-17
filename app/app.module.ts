@@ -16,7 +16,7 @@ import { Products } from './components/products/products';
 import { ProductDetails } from './components/product-details/product-details';
 import { ProfileComponent } from './components/profile/profile.component';
 import {MyUIRouterConfig} from "./config/router.config.js";
-import {homeState, productsState, productDetailsState, addProductState} from "./states.js";
+import {homeState, productsState, productDetailsState, addProductState, profileState} from "./states.js";
 import { NewProductForm } from './components/add_modal/productForm.component'
 
 import { NgbdModalBasic } from './components/add_modal/addModal'
@@ -27,7 +27,7 @@ import { ProfileService } from "./components/profile/profile.service";
 
 import { AUTH_PROVIDERS } from 'angular2-jwt';
 
-let INITIAL_STATES =  [ homeState, productsState, productDetailsState, addProductState ];
+let INITIAL_STATES =  [ homeState, productsState, productDetailsState, addProductState, profileState ];
 let INITIAL_COMPONENTS =  [ App, Home, Products, ProductDetails, ProfileComponent, NgbdModalBasic, NewProductForm ];
 
 @NgModule({
