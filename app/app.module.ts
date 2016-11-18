@@ -26,8 +26,8 @@ import { MyUIRouterConfig }        from "./config/router.config.js";
 import { homeState, productsState, productDetailsState, addProductState, profileState } from "./states.js";
 
 let INITIAL_COMPONENTS =  [ App, Home, Products, ProductDetails, ProfileComponent, NgbdModalBasic, NewProductForm ];
-let INITIAL_STATES     =  [ homeState, productsState, productDetailsState, addProductState, profileState ];
 let INITIAL_PROVIDERS  =  [ ProductsService, ProfileService, ProductDetailsService, AUTH_PROVIDERS, NewProductService ];
+let INITIAL_STATES     =  [ addProductState, homeState, productsState, productDetailsState, profileState ];
 
 @NgModule({
   imports: [
