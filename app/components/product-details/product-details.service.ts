@@ -29,7 +29,7 @@ export class ProductDetailsService {
     //     .catch(this.handleError);
   }
   public charge(token) {
-    return this.http.post('api/charge', token, {headers: this.headers})
+    return this.http.post("api/charge", token, {headers: this.headers})
       .map(res => res)
       .subscribe(data => data);
   }
@@ -38,5 +38,3 @@ export class ProductDetailsService {
     return Promise.reject(error.message || error);
   }
 }
-
-
