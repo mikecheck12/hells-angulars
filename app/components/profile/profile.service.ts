@@ -13,16 +13,15 @@ export class ProfileService {
     private authHttp: AuthHttp
   ) {}
 
-  // need to write this for when the DB is populated
-  public getUserInfo(): Promise<any> {
+  public getUserInfo(userId): Promise<any> {
     // dummy data version
-    return Promise.resolve(UserData);
+    // return Promise.resolve(UserData);
 
     // live database version
-    // return this.authHttp.get(`/api/users`)
-    //   .toPromise()
-    //   .then(response => console.log(response))
-    //   .catch(this.handleError);
+    return this.authHttp.get(`/api/users/${userId}`)
+      .toPromise()
+      .then(response => response)
+      .catch(this.handleError);
   }
 
   public getUserProducts(): Promise<any> {
@@ -30,11 +29,10 @@ export class ProfileService {
   }
 
   public getUserRentals(): Promise<any> {
-    console.log("getting rentals");
     return Promise.resolve(Rentals);
   }
 
   private handleError(error: any): Promise<any> {
     return Promise.reject(error.message || error);
   }
-}
+};
