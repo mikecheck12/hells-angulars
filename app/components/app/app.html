@@ -1,31 +1,35 @@
 <div class="page-wrap">
-  <nav class="navbar nav-inline">
-    <h1 class="navbar-brand gearbox" href="#">GEAR BOX</h1>
-    <div class="float-xs-right">
-      <ul class = "nav navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" uiSref="home" uiSrefActive="active"> Home </a>
-        </li>
-        <li class="nav-item">
-          <a uiSref="products" uiSrefActive="active">Gear</a>
-          <a uiSref="profile" uiSrefActive="active">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a uiSref="addModal" uiSrefActive="active">List Gear</a>
-        </li>
-        <li class="nav-item">
-          <a class="navbar-right float-xs-right" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</a>
-          <a class="navbar-right float-xs-right" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</a>
-        </li>
-      </ul>
+  <nav class="navbar nav-inline row">
+    <div class="col-md-6 float-xs-left">
+      <h1 class="left-nav navbar-brand gearbox" href="#">GEAR BOX</h1>
+      <form class="form-inline float-xs-left" #form="ngForm">
+        <input type="text" class="left-nav form-control" placeholder="Dig in the Gear Box..." ngModel name="keyword">
+        <a class="left-nav btn" uiSref="products" (click)="onSearch(form)" >Dig In!</a>
 
+      </form>
     </div>
-    <form class="form-inline float-xs-left" #form="ngForm">
-      <input type="text" class="form-control" placeholder="Dig in the Gear Box..." ngModel name="keyword">
-      <button type="button" class="btn btn-outline-success" type="submit" uiSref="products" (click)="onSearch(form)" >Dig In!</button>
-
-    </form>
-
+    <div class="col-md-6 float-xs-right">
+      <div class="float-xs-right">
+        <ul class = "nav navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" uiSref="home" uiSrefActive="active"> Home </a>
+          </li>
+          <li class="nav-item">
+            <a uiSref="products" uiSrefActive="active">Gear</a>
+          </li>
+          <li class="nav-item">
+            <a uiSref="profile" uiSrefActive="active">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a uiSref="addModal" uiSrefActive="active">List Gear</a>
+          </li>
+          <li class="nav-item">
+            <a class="navbar-right float-xs-right" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</a>
+            <a class="navbar-right float-xs-right" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
 
   <ui-view></ui-view>

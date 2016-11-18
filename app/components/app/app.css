@@ -27,17 +27,26 @@ nav a.active {
   color: #039be5;
 }*/
 
+nav {
+  border-bottom: 2px solid #2A4E75;
+  background: linear-gradient(45deg, #e4f5fc 0%,#bfe8f9 50%,#9fd8ef 51%,#2ab0ed 100%);
+}
+
+.left-nav {
+  margin-top: 10px;
+}
+
 .page-wrap {
   min-height: 100%;
   /* equal to footer height */
-  margin-bottom: -100px;
+  margin-bottom: -50px;
 }
 
 .page-wrap:after {
   content: "";
   display: table;
   clear: both;
-  height: 100px;
+  height: 50px;
 }
 
 .gearbox {
@@ -52,7 +61,7 @@ nav a.active {
 }
 
 .site-footer {
-  height: 100px;
+  height: 50px;
   background: #579ed1;
   color: white;
   padding: 10px 10px 0px 10px;
