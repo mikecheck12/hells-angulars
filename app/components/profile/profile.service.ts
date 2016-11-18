@@ -7,7 +7,7 @@ import { UserData }      from "../../data/dummyusers";
 
 @Injectable()
 export class ProfileService {
-  public userId: number;
+  public userId: any;
 
   constructor(
     private http: Http,
@@ -22,21 +22,23 @@ export class ProfileService {
     return this.authHttp.get(`/api/users/${authId}`)
       .toPromise()
       .then(response => {
+        console.log('vvvvv')
+        console.log(typeof response);
         this.userId = JSON.parse(response._body).id;
-        return JSON.parse(response._body);
+        return response;
       })
       .catch(this.handleError);
   }
 
   public getUserProducts(): Promise<any> {
     // dummy data version
-    //return Promise.resolve(Data);
+    // return Promise.resolve(Data);
 
     // live database version
     return this.http.get(`/api/products/byuser/${this.userId}`)
       .toPromise()
       .then(response => {
-        return JSON.parse(response._body);
+        return response;
       })
       .catch(this.handleError);
   }
@@ -45,19 +47,19 @@ export class ProfileService {
     return Promise.resolve(Rentals);
   }
 
-  public getUserRatingAsBuyer(): Promise<any> {
+  // public getUserRatingAsBuyer(): Promise<any> {
 
-  }
+  // }
 
-  public getUserRatingAsSeller(): Promise<any> {
+  // public getUserRatingAsSeller(): Promise<any> {
 
-  }
+//  }
 
   public getImages(productId): Promise<any> {
     return this.http.get(`/api/products/images/${productId}`)
     .toPromise()
     .then(response => {
-      return JSON.parse(response._body);
+      return response;
     })
     .catch(this.handleError);
   }
