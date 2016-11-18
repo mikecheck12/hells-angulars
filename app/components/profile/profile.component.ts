@@ -9,7 +9,7 @@ import { ProfileService }    from "./profile.service";
 })
 
 export class ProfileComponent implements OnInit {
-  public user: Object<any>;
+  public user: any;
   public products: Array<any>;
   public rentals: Array<any>;
   public userId: string;
@@ -25,21 +25,28 @@ export class ProfileComponent implements OnInit {
   getUserInfo() {
     this.profileService
       .getUserInfo(this.userId)
-      .then(user => {
+      .then(response => {
+        const user = JSON.parse(response._body);
         this.user = user;
         this.getUserProducts();
         this.getUserRentals();
       })
-      .catch(this.handleError);
+      .catch(err => console.log(err));
   }
 
   getUserProducts() {
     this.profileService
       .getUserProducts()
-      .then(products => {
+      .then(response => {
+        const products = JSON.parse(response._body);
         products.forEach(element => {
-          element.primaryImage = this.getPrimaryImage(element.id);
-        })
+          this.profileService
+            .getImages(element.id)
+            .then(response2 => {
+              const imageUrls = JSON.parse(response2._body);
+              element.primaryImage = imageUrls[0].url;
+            });
+        });
         this.products = products;
       })
       .catch(err => console.log(err));
@@ -50,17 +57,6 @@ export class ProfileComponent implements OnInit {
       .getUserRentals()
       .then(rentals => {
         this.rentals = rentals;
-      })
-      .catch(err => console.log(err));
-  }
-
-  getPrimaryImage(productId) {
-    console.log("getImages: ", productId);
-    this.profileService
-      .getImages(productId)
-      .then(picUrls => {
-        console.log(picUrls)
-        return picUrls[0].url;
       })
       .catch(err => console.log(err));
   }
