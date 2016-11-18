@@ -45,6 +45,7 @@ module.exports = {
     pool.query(queryStr, [body.category, body.owner, body.productname, body.priceperday, body.location], function(err, result) {
       if (err) return console.log(err);
       console.log('success', result);
+
       res.status(201).send('product created');
     });
     // add images to images table

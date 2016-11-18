@@ -27,13 +27,13 @@ module.exports = {
         res.status(200).send('User already exists');
       } else {
         var queryStr = `INSERT INTO users
-          (username, firstname, lastname, email, authid)
-          VALUES ($1, $2, $3, $4, $5)`;
+          (username, firstname, lastname, email, authid, profilepic)
+          VALUES ($1, $2, $3, $4, $5, $6)`;
         var properties;
         if (body.user_metadata) {
-          properties = [body.nickname, body.user_metadata.firstname, body.user_metadata.lastname, body.email, body.user_id];
+          properties = [body.nickname, body.user_metadata.firstname, body.user_metadata.lastname, body.email, body.user_id, body.picture];
         } else {
-          properties = [body.nickname, body.given_name, body.family_name, body.email, body.user_id];
+          properties = [body.nickname, body.given_name, body.family_name, body.email, body.user_id, body.picture];
         }
         pool.query(queryStr, properties, function(err, result) {
           if (err) return console.log(err);
