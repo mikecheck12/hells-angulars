@@ -32,6 +32,14 @@ export class ProfileService {
     return Promise.resolve(Rentals);
   }
 
+  public getUserRatingAsBuyer(): Promise<any> {
+
+  }
+
+  public getUserRatingAsSeller(): Promise<any> {
+
+  }
+
   private handleError(error: any): Promise<any> {
     return Promise.reject(error.message || error);
   }
