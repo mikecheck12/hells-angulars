@@ -32,7 +32,8 @@ var ng2Pkgs = ['core', 'compiler', 'common', 'http', 'platform-browser-dynamic',
       'appModule': "./dist/app.module.js",
       'ui-router-ng2': 'https://unpkg.com/ui-router-ng2@' + uirVer + '/_bundles/ui-router-ng2',
        '@ng-bootstrap/ng-bootstrap': 'npm:@ng-bootstrap/ng-bootstrap/bundles/ng-bootstrap.js',
-       'angular2-jwt': 'npm:angular2-jwt/angular2-jwt.js'
+       'angular2-jwt': 'npm:angular2-jwt/angular2-jwt.js',
+       'ng2-uploader': 'npm:ng2-uploader/ng2-uploader.js'
     }),
     // packages tells the System loader how to load when no filename and/or no extension
     // Object.assign is assigning the dependencies we've declared at the top
@@ -46,6 +47,9 @@ var ng2Pkgs = ['core', 'compiler', 'common', 'http', 'platform-browser-dynamic',
       },
       'angular2-jwt': {
           defaultExtension: 'js'
+      },
+      'ng2-file-upload': {
+        defaultExtension: 'js'
       }
     }),
       meta: { "ui-router-ng2": { format: "cjs" } },

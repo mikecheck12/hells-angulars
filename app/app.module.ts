@@ -1,3 +1,14 @@
+
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { FormsModule } from "@angular/forms";
+import { UIRouterModule } from "ui-router-ng2";
+import { HttpModule, JsonpModule } from "@angular/http";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { UPLOAD_DIRECTIVES } from "ng2-uploader";
+
+
+import { App } from "./components/app/app.js";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
 
@@ -28,6 +39,7 @@ import { homeState, productsState, productDetailsState, addProductState, profile
 let INITIAL_COMPONENTS =  [ App, Home, Products, ProductDetails, ProfileComponent, NgbdModalBasic, NewProductForm ];
 let INITIAL_PROVIDERS  =  [ ProductsService, ProfileService, ProductDetailsService, AUTH_PROVIDERS, NewProductService ];
 let INITIAL_STATES     =  [ addProductState, homeState, productsState, productDetailsState, profileState ];
+
 
 @NgModule({
   imports: [

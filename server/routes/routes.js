@@ -45,6 +45,10 @@ module.exports = function(app, express) {
   // Use
   app.get('/connect', stripeController.getCode);
   app.post('/api/charge', stripeController.createCharge);
+
+  // Image Routes
+
+
 }
 
 
