@@ -12,7 +12,7 @@ export class NgbdModalBasic {
   // public ngbModal.keyboard = "lg";
   public closeResult: string;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal) { }
 
   // this.modalService.keyboard = "lg";
 

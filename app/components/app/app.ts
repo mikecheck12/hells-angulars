@@ -5,10 +5,10 @@ import { UIROUTER_DIRECTIVES } from "ui-router-ng2";
 
 @Component({
   moduleId: module.id,
-  selector: "my-app",
   providers: [ Auth ],
-  templateUrl: "app.html",
+  selector: "my-app",
   styleUrls: [ "app.css" ],
+  templateUrl: "app.html",
 })
 
 export class App {
@@ -18,15 +18,14 @@ export class App {
   constructor(
     private auth: Auth,
     private productsService: ProductsService
-   ) {}
+   ) { }
 
   public onSearch(form: any) {
-    console.log(form.value.keyword);
     this.productsService.keyword = form.value.keyword;
-
   };
 
   ngOnInit(): void {
+    // checks for user based on profile from Auth0 in localstorage
     this.auth.findOrCreateUser(localStorage.getItem("profile"));
   }
 

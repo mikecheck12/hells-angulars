@@ -1,14 +1,14 @@
-import { Component, OnInit } from "@angular/core";
-import { ProductsService } from "./products.service";
-import { NgbRatingConfig } from "@ng-bootstrap/ng-bootstrap";
-import {UIROUTER_DIRECTIVES} from "ui-router-ng2";
+import { Component, OnInit }   from "@angular/core";
+import { NgbRatingConfig }     from "@ng-bootstrap/ng-bootstrap";
+import { ProductsService }     from "./products.service";
+import { UIROUTER_DIRECTIVES } from "ui-router-ng2";
 
 @Component({
   moduleId: module.id,
-  selector: "products",
-  templateUrl: "products.html",
-  styleUrls: [ "products.css" ],
   providers: [ NgbRatingConfig ],
+  selector: "products",
+  styleUrls: [ "products.css" ],
+  templateUrl: "products.html",
 })
 
 export class Products implements OnInit {
