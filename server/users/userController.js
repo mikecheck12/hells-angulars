@@ -26,12 +26,13 @@ module.exports = {
       if (result.rows.length > 0) {
         res.status(200).send('User already exists');
       } else {
+        var defaultProfilePic = "https://d30y9cdsu7xlg0.cloudfront.net/png/81143-200.png";
         var queryStr = `INSERT INTO users
           (username, firstname, lastname, email, authid, profilepic)
           VALUES ($1, $2, $3, $4, $5, $6)`;
         var properties;
         if (body.user_metadata) {
-          properties = [body.nickname, body.user_metadata.firstname, body.user_metadata.lastname, body.email, body.user_id, body.picture];
+          properties = [body.nickname, body.user_metadata.firstname, body.user_metadata.lastname, body.email, body.user_id, defaultProfilePic];
         } else {
           properties = [body.nickname, body.given_name, body.family_name, body.email, body.user_id, body.picture];
         }
