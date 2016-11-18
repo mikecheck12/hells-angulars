@@ -18,8 +18,13 @@ export class ProductDetails implements OnInit {
 
   @Input() public selectedPic: String;
 
+  public user_id = JSON.parse(localStorage.getItem('profile')).user_id;
+
+  public amount = 2000;
+
   constructor(
-    private config: NgbRatingConfig
+    private config: NgbRatingConfig,
+    private productDetailsService: ProductDetailsService
   ) {
     config.max = 5;
     config.readonly = true;
@@ -32,6 +37,23 @@ export class ProductDetails implements OnInit {
 
   public onSelect(n: number) {
     this.selectedPic = this.product.pic[n];
+  }
+
+  public openCheckOut(){
+
+    let handler = (<any>window).StripeCheckout.configure({
+      key: "pk_test_SinOFPSlSYA2hQQ11RFKAYh5",
+      locale: 'auto',
+      token: (token: any) => {
+        this.productDetailsService.charge(token);
+      }
+    });
+
+    handler.open({
+      name: 'Hell\'s Angulars',
+      amount: 2000
+    })
+
   }
 
 }

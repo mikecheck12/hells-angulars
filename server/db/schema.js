@@ -35,6 +35,7 @@ var users = `CREATE TABLE IF NOT EXISTS users (
   firstname       VARCHAR(50)   NOT NULL,
   lastname        VARCHAR(50)   NOT NULL,
   email           VARCHAR(255)  NOT NULL,
+  stripeaccountid VARCHAR(255)  ,
   location        VARCHAR(255)  ,
   profilepic      VARCHAR(2000)
 );`
@@ -45,8 +46,8 @@ var products = `CREATE TABLE IF NOT EXISTS products (
   id              SERIAL        PRIMARY KEY,
   category_id     INT           references categories(id),
   owner_id        INT           references users(id),
-  description     VARCHAR(255)  NOT NULL,
-  productname     VARCHAR(30)   NOT NULL,
+  description     TEXT          NOT NULL,
+  productname     VARCHAR(50)   NOT NULL,
   priceperday     INT           NOT NULL,
   location        VARCHAR(255)  NOT NULL
 );`
@@ -79,4 +80,4 @@ var images = `CREATE TABLE IF NOT EXISTS images (
   url             VARCHAR(2000) NOT NULL
 );`
 
-module.exports = /* delete tables + */types + statuses + categories + users + products + transactions + reviews + images;
+module.exports =   /*deleteTables +*/  types + statuses + categories + users + products + transactions + reviews + images;
