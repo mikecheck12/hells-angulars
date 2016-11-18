@@ -49,7 +49,7 @@ module.exports = {
     var id = req.params.id;
     var body = req.body;
     var queryStr = `SELECT * FROM users
-      WHERE id=($1)`;
+      WHERE authid=($1)`;
     pool.query(queryStr, [id], function(err, result) {
       if (err) return console.log(err);
       console.log('success', result);
