@@ -31,8 +31,13 @@ module.exports = {
           (username, firstname, lastname, email, authid, profilepic)
           VALUES ($1, $2, $3, $4, $5, $6)`;
         var properties;
+        //check for large picture
+        if (body.picture_large) { body.picture = body.picture_large; }
+
+        //check for auth0-created account
         if (body.user_metadata) {
           properties = [body.nickname, body.user_metadata.firstname, body.user_metadata.lastname, body.email, body.user_id, defaultProfilePic];
+        // if no user_metadata, then account was created via google or facebook
         } else {
           properties = [body.nickname, body.given_name, body.family_name, body.email, body.user_id, body.picture];
         }
