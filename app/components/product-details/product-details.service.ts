@@ -8,7 +8,11 @@ import { Data } from "../../data/dummydata";
 @Injectable()
 
 export class ProductDetailsService {
-
+  public headers: Headers = new Headers({
+  "Content-Type": "application/json",
+  Accept: "application/json",
+  "Access-Control-Allow-Origin": "*"
+  });
   constructor(
     private http: Http
   ) {}
@@ -23,6 +27,12 @@ export class ProductDetailsService {
     //     .toPromise()
     //     .then(response => response.json())
     //     .catch(this.handleError);
+  }
+
+  public stripeAuthorize() {
+    this.http.get('/authorize', null, {headers: this.headers})
+             .map(res => res)
+             .subscribe(data => data);
   }
   private handleError(error: any): Promise<any> {
     return Promise.reject(error.message || error);

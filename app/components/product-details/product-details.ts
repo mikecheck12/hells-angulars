@@ -19,7 +19,8 @@ export class ProductDetails implements OnInit {
   @Input() public selectedPic: String;
 
   constructor(
-    private config: NgbRatingConfig
+    private config: NgbRatingConfig,
+    private productDetailsService: ProductDetailsService
   ) {
     config.max = 5;
     config.readonly = true;
@@ -32,6 +33,10 @@ export class ProductDetails implements OnInit {
 
   public onSelect(n: number) {
     this.selectedPic = this.product.pic[n];
+  }
+
+  public authorize() {
+    this.productDetailsService.stripeAuthorize()
   }
 
 }
