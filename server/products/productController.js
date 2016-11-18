@@ -19,6 +19,24 @@ module.exports = {
     })
   },
 
+  getProductsByUser: function(req, res, next) {
+    var queryStr = `SELECT * FROM products WHERE owner_id=${req.params.id}`;
+    pool.query(queryStr, function(err, result) {
+      if (err) return console.log(err);
+      console.log('success', result);
+      res.json(result.rows);
+    })
+  },
+
+  getImages: function(req, res, next) {
+    var queryStr = `SELECT url FROM images WHERE product_id=${req.params.id}`;
+    pool.query(queryStr, function(err, result) {
+      if (err) return console.log(err);
+      console.log('success', result);
+      res.json(result.rows);
+    })
+  },
+
   getProductById: function(req, res, next) {
     console.log('received', req.params.id)
     var id = req.params.id;
