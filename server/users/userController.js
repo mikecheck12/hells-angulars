@@ -18,9 +18,9 @@ module.exports = {
     var body = req.body;
     // NOTE: you must use single quotes for the values section of the query
     var searchUserStr = `SELECT * FROM users
-      WHERE username = ($1)
+      WHERE authid = ($1)
     `
-    pool.query(searchUserStr, [body.nickname], function(err, result) {
+    pool.query(searchUserStr, [body.user_id], function(err, result) {
       if (err) return console.log(err);
       console.log(result);
       if (result.rows.length > 0) {
