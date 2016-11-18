@@ -20,16 +20,6 @@
       required
       [(ngModel)]="model.imageLink" [ngModelOptions]="{standalone: true}">
     </li>
-    <li>
-      <div
-        ngFileDrop
-        [options]="options"
-        (onUpload)="handleUpload($event)"
-        [ngClass]="{'file-over': hasBaseDropZoneOver}"
-        (onFileOver)="fileOverBase($event)">
-        <span>Drop files here</span>
-      </div>
-    </li>
     <li class="form-group">
       Location <input class="form-control" type="text" placeholder="City, State"
       required

@@ -10,11 +10,6 @@ import { NewProductService } from "./newProduct.service";
 })
 
 export class NewProductForm {
-  public uploadFile: any;
-  public hasBaseDropZoneOver: boolean = false;
-  public options: Object = {
-    url: 'http://localhost:8000/upload'
-  };
 
   public categories = [ "Backpacking", "Bike", "Surf", "Snowboard", "Ski", "SUP", "Kayak" ];
 
@@ -29,13 +24,4 @@ export class NewProductForm {
     model.userId = JSON.parse(localStorage.getItem('profile')).user_id;
     this.newProductService.postProduct(model);
   };
-
-  public handleUpload(data): void {
-
-  }
-
-  public fileOverBase(e: any): void {
-    this.hasBaseDropZoneOver = e;
-  }
-
 }

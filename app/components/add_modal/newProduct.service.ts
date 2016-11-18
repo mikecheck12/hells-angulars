@@ -19,7 +19,7 @@ export class NewProductService {
     .subscribe(data => data);
   }
 
-  public postImage(){
+  // public postImage(){
 
-  }
+  // }
 }
