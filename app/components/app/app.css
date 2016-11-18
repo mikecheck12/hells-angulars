@@ -26,23 +26,39 @@ nav a:hover {
 nav a.active {
   color: #039be5;
 }*/
-footer {
- height: 40px;
- margin-top: 50px;
- background: #579ed1;
- width: 100%;
- bottom: 0;
+
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -100px;
 }
-.footerInfo {
-  color: white;
-  padding: 10px 10px 0px 10px;
+
+.page-wrap:after {
+  content: "";
+  display: table;
+  clear: both;
+  height: 100px;
 }
+
 .gearbox {
   height: 50px;
   color: #579ed1;
 }
+
 .searchbox {
   margin: 0 40%;
   width: 300px;
   height: 25px;
+}
+
+.site-footer {
+  height: 100px;
+  background: #579ed1;
+  color: white;
+  padding: 10px 10px 0px 10px;
+}
+
+.footer-content {
+  display: inline;
+  padding: 0 1%;
 }
