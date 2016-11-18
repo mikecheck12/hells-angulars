@@ -1,19 +1,20 @@
+import { ActivatedRoute }           from "@angular/router";
 import { Component, Input, OnInit } from "@angular/core";
-import { ProductDetailsService } from "./product-details.service";
-import { NgbRatingConfig } from "@ng-bootstrap/ng-bootstrap";
-import { UIROUTER_DIRECTIVES } from "ui-router-ng2";
-import { ActivatedRoute } from "@angular/router";
+import { NgbRatingConfig }          from "@ng-bootstrap/ng-bootstrap";
+import { ProductDetailsService }    from "./product-details.service";
+import { UIROUTER_DIRECTIVES }      from "ui-router-ng2";
 
 @Component({
   moduleId: module.id,
-  selector: "products",
-  templateUrl: "product-details.html",
-  styleUrls: ["product-details.css"],
   providers: [ NgbRatingConfig ],
+  selector: "products",
+  styleUrls: [ "product-details.css" ],
+  templateUrl: "product-details.html",
 })
 
 export class ProductDetails implements OnInit {
-  @Input() public product;
+
+  @Input() public product: any;
 
   @Input() public selectedPic: String;
 
@@ -25,7 +26,6 @@ export class ProductDetails implements OnInit {
   }
 
   public ngOnInit() {
-    console.log(this.product);
     this.selectedPic = this.product.pic[0];
     console.log(this.selectedPic);
   }

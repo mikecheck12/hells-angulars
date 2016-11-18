@@ -1,28 +1,34 @@
-import {Home} from "./components/home/home";
-
-import { Products } from "./components/products/products";
-import { ProductDetails } from "./components/product-details/product-details";
-
+import { Home }                  from "./components/home/home";
+import { NgbdModalBasic }        from "./components/add_modal/addModal";
+import { Products }              from "./components/products/products";
+import { ProductDetails }        from "./components/product-details/product-details";
 import { ProductDetailsService } from "./components/product-details/product-details.service";
-import { ProfileComponent } from "./components/profile/profile.component";
-
-import {Transition} from "ui-router-ng2";
-import { NgbdModalBasic } from "./components/add_modal/addModal";
+import { ProfileComponent }      from "./components/profile/profile.component";
+import { Transition }            from "ui-router-ng2";
 
 /** States */
-export const homeState = { name: "home", url: "/",  component: Home };
+export const addProductState = {
+  component: NgbdModalBasic,
+  name: "addModal",
+  url: "/addModal",
+};
+
+export const homeState = {
+  component: Home,
+  name: "home",
+  url: "/",
+};
 
 export const productsState = {
+  component: Products,
   name: "products",
   url: "/products",
-  component: Products,
-
 };
 
 export const productDetailsState = {
+  component: ProductDetails,
   name: "productDetails",
   url: "/product/:productId",
-  component: ProductDetails,
   resolve: [
     {
       token: "product",
@@ -32,10 +38,8 @@ export const productDetailsState = {
   ],
 };
 
-export const addProductState = { name: "addModal", url: "/addModal", component: NgbdModalBasic };
-
 export const profileState = {
+  component: ProfileComponent,
   name: "profile",
   url: "/profile",
-  component: ProfileComponent,
 };

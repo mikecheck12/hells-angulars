@@ -1,38 +1,32 @@
-import {Component, OnInit} from "@angular/core";
-import {UIROUTER_DIRECTIVES} from "ui-router-ng2";
-import {Auth} from "../../auth/auth.service";
-
-import { ProductsService } from '../products/products.service';
-
+import { Auth }                from "../../auth/auth.service";
+import { Component, OnInit }   from "@angular/core";
+import { ProductsService }     from "../products/products.service";
+import { UIROUTER_DIRECTIVES } from "ui-router-ng2";
 
 @Component({
   moduleId: module.id,
-  selector: 'my-app',
-  providers: [Auth],
-  templateUrl: 'app.html',
-  styleUrls: [ 'app.css' ]
-
+  providers: [ Auth ],
+  selector: "my-app",
+  styleUrls: [ "app.css" ],
+  templateUrl: "app.html",
 })
 
 export class App {
 
   title: "Gear Box";
 
-
   constructor(
     private auth: Auth,
     private productsService: ProductsService
-   ) {}
+   ) { }
 
-  public onSearch(form:any) {
-    console.log(form.value.keyword);
+  public onSearch(form: any) {
     this.productsService.keyword = form.value.keyword;
-
   };
 
   ngOnInit(): void {
-    this.auth.findOrCreateUser(localStorage.getItem('profile'));
+    // checks for user based on profile from Auth0 in localstorage
+    this.auth.findOrCreateUser(localStorage.getItem("profile"));
   }
-
 
 }

@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { Http, Headers } from "@angular/http";
+import { Headers, Http } from "@angular/http";
+import { Injectable }    from "@angular/core";
+import { NewProduct }    from "./newProduct";
 
 @Injectable()
-
 export class NewProductService {
 
   public headers: Headers = new Headers({
@@ -10,21 +10,12 @@ export class NewProductService {
   Accept: "application/json",
   });
 
-  constructor(private http: Http) {
+  constructor(private http: Http) { }
 
-  }
-
-  public postProduct(newProduct) {
+  // adds a product to the database
+  public postProduct(newProduct: NewProduct) {
     return this.http.post("api/products", newProduct, { headers: this.headers })
     .map(res => res)
     .subscribe(data => data);
   }
 }
-
-// public findOrCreateUser(profile) {
-//   return this.http.post('api/users', profile, {headers:this.headers})
-//   .map(res => res)
-//   .subscribe(
-//   data => data
-//   )
-//   }

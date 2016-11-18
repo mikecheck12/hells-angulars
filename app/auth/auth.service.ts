@@ -1,8 +1,8 @@
+import { AuthHttp }        from "angular2-jwt";
+import { Headers, Http }   from "@angular/http";
 import { Injectable }      from "@angular/core";
-import { tokenNotExpired } from "angular2-jwt";
 import { myConfig }        from "./auth.config";
-import { Http, Headers } from "@angular/http";
-import { AuthHttp } from "angular2-jwt";
+import { tokenNotExpired } from "angular2-jwt";
 
 // Avoid name not found warnings
 declare var Auth0Lock: any;
@@ -52,22 +52,10 @@ export class Auth {
 
   }
 
-  public login() {
-    // Call the show method to display the widget.
-    this.lock.show();
-  };
-
   public authenticated() {
     // Check if there"s an unexpired JWT
     // This searches for an item in localStorage with key == "id_token"
     return tokenNotExpired();
-  };
-
-  public logout() {
-    // Remove token from localStorage
-    localStorage.removeItem("id_token");
-    localStorage.removeItem("profile");
-    this.userProfile = undefined;
   };
 
   public findOrCreateUser(profile) {
@@ -77,4 +65,17 @@ export class Auth {
       data => data
     );
   }
+
+  public login() {
+    // Call the show method to display the widget.
+    this.lock.show();
+  };
+
+  public logout() {
+    // Remove token from localStorage
+    localStorage.removeItem("id_token");
+    localStorage.removeItem("profile");
+    this.userProfile = undefined;
+  };
+
 }

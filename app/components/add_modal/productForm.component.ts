@@ -1,7 +1,5 @@
-import { Component } from "@angular/core";
-
-import { NewProduct } from "./newProduct";
-
+import { Component }         from "@angular/core";
+import { NewProduct }        from "./newProduct";
 import { NewProductService } from "./newProduct.service";
 
 @Component({
@@ -12,17 +10,13 @@ import { NewProductService } from "./newProduct.service";
 
 export class NewProductForm {
 
-  public categories = ["Backpacking", "Bike", "Surf", "Snowboard", "Ski", "SUP", "Kayak"];
+  public categories = [ "Backpacking", "Bike", "Surf", "Snowboard", "Ski", "SUP", "Kayak" ];
 
-  public model = new NewProduct();
+  public model      = new NewProduct();
 
-  constructor(private newProductService: NewProductService) {
+  constructor(private newProductService: NewProductService) { }
 
-  }
-
-  public onSubmit(model) {
-    // console.log(model);
-    // console.log(this);
+  public onSubmit(model: NewProduct) {
     this.newProductService.postProduct(model);
   };
 }
