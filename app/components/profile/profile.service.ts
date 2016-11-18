@@ -13,14 +13,16 @@ export class ProfileService {
     private authHttp: AuthHttp
   ) {}
 
-  public getUserInfo(userId): Promise<any> {
+  public getUserInfo(authId): Promise<any> {
     // dummy data version
     // return Promise.resolve(UserData);
 
     // live database version
-    return this.authHttp.get(`/api/users/${userId}`)
+    return this.authHttp.get(`/api/users/${authId}`)
       .toPromise()
-      .then(response => response)
+      .then(response => {
+        return response;
+      })
       .catch(this.handleError);
   }
 
