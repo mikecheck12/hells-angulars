@@ -20,15 +20,17 @@
         <a href="#" class="btn btn-primary">Add gear</a>
         <div *ngFor="let product of products" class="card">
           <div class="row">
-            <div *ngIf="product.primaryImage" class="col-md-4">
+            <div class="col-md-4">
               <img [src]=product.primaryImage />
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
               <p class="left card-text">{{product.productname}}</p>
-              <p class="primary card-text">{{product.description}}</p>
             </div>
-            <div class="col-md-6">
-              <p class="right card-text">{{product.location}} <strong>${{product.priceperday}}</strong> / day</p>
+            <div class="col-md-3">
+              <p class="right card-text border"><strong>${{product.priceperday}}</strong> / day <br>{{product.location}}</p>
+            </div>
+            <div class="col-md-8">
+              <p class="primary card-text">{{product.description}}</p>
             </div>
           </div>
         </div>
