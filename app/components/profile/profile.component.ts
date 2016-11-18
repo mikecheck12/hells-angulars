@@ -19,14 +19,16 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   getUserIdFromProfile() {
-    this.userId = JSON.parse(localStorage.getItem('profile')).user_id;
+    this.userId = JSON.parse(localStorage.getItem("profile")).user_id;
   }
 
   getUserInfo() {
     this.profileService
       .getUserInfo(this.userId)
-      .then(response => {
-        this.user = JSON.parse(response._body);
+      .then(user => {
+        this.user = user;
+        this.getUserProducts();
+        this.getUserRentals();
       })
       .catch(this.handleError);
   }
@@ -35,6 +37,9 @@ export class ProfileComponent implements OnInit {
     this.profileService
       .getUserProducts()
       .then(products => {
+        products.forEach(element => {
+          element.primaryImage = this.getPrimaryImage(element.id);
+        })
         this.products = products;
       })
       .catch(err => console.log(err));
@@ -49,10 +54,19 @@ export class ProfileComponent implements OnInit {
       .catch(err => console.log(err));
   }
 
+  getPrimaryImage(productId) {
+    console.log("getImages: ", productId);
+    this.profileService
+      .getImages(productId)
+      .then(picUrls => {
+        console.log(picUrls)
+        return picUrls[0].url;
+      })
+      .catch(err => console.log(err));
+  }
+
   ngOnInit(): void {
     this.getUserIdFromProfile();
     this.getUserInfo();
-    this.getUserProducts();
-    this.getUserRentals();
   }
 }
