@@ -18,6 +18,8 @@ export class ProductDetails implements OnInit {
 
   @Input() public selectedPic: String;
 
+  public amount = 2000;
+
   constructor(
     private config: NgbRatingConfig,
     private productDetailsService: ProductDetailsService
@@ -35,8 +37,21 @@ export class ProductDetails implements OnInit {
     this.selectedPic = this.product.pic[n];
   }
 
-  public authorize() {
-    this.productDetailsService.stripeAuthorize()
+  public openCheckOut(){
+
+    let handler = (<any>window).StripeCheckout.configure({
+      key: "pk_test_SinOFPSlSYA2hQQ11RFKAYh5",
+      locale: 'auto',
+      token: (token: any) => {
+        this.productDetailsService.charge(token);
+      }
+    });
+
+    handler.open({
+      name: 'Hell\'s Angulars',
+      amount: 2000
+    })
+
   }
 
 }
