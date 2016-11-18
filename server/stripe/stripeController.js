@@ -33,11 +33,11 @@ module.exports = {
         var stripeUserId = JSON.parse(body).stripe_user_id;
         var queryString = `UPDATE users SET
       stripeaccountid=($1) WHERE authId=($2)`;
-        pool.query(queryString, [stripeUserId, userId], function(err, result) {
+        pool.query(queryString , [stripeUserId, userId], function(err, result) {
           if (err) return console.log(err);
           console.log('success', result);
         })
-        res.redirect('/');
+        res.redirect('/#/profile');
       });
     }
   },

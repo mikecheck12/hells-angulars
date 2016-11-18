@@ -1,8 +1,10 @@
 import { ActivatedRoute }           from "@angular/router";
 import { Component, Input, OnInit } from "@angular/core";
 import { NgbRatingConfig }          from "@ng-bootstrap/ng-bootstrap";
+import { stripeConfig }        from "../../stripe/stripe.config";
 import { ProductDetailsService }    from "./product-details.service";
 import { UIROUTER_DIRECTIVES }      from "ui-router-ng2";
+
 
 @Component({
   moduleId: module.id,
@@ -18,8 +20,9 @@ export class ProductDetails implements OnInit {
 
   @Input() public selectedPic: String;
 
-  public fromDate: Date;
-  public toDate: Date;
+  @Input() fromDate: Date;
+  @Input() toDate: Date;
+
   public totalAmount: Number = 10;
 
   public userId = JSON.parse(localStorage.getItem("profile")).user_id;
@@ -46,7 +49,7 @@ export class ProductDetails implements OnInit {
   public openCheckOut() {
 
     let handler = (<any> window).StripeCheckout.configure({
-      key: "pk_test_SinOFPSlSYA2hQQ11RFKAYh5",
+      key: stripeConfig.apiKey,
       locale: "auto",
       token: (token: any) => {
         this.productDetailsService.charge(token);
