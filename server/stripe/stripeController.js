@@ -15,27 +15,31 @@ module.exports = {
   // retrive code after user authorize stripe
   getCode: function (req, res) {
     var code = req.query.code;
-    console.log(req.query);
+    var userId = req.query.state;
+    console.log(code, userId);
     // send the code to stripe for accesstoken
-    request.post({
-      url: TOKEN_URI,
-      form: {
-        grant_type: 'authorization_code',
-        client_id: stripeAPI.CLIENT_ID,
-        code: code,
-        client_secret: stripeAPI.API_KEY
-      }
-    }, function(err, r, body) {
-      console.log(JSON.parse(body));
-      console.log('locals', req.locals)
-    var accessToken = JSON.parse(body).access_token;
-
-    // Do something with your accessToken
-
-    // For demo's sake, output in response:
-    res.redirect('/')
-
-    });
+    if (code) {
+      var postBody = {
+        url: TOKEN_URI,
+        form: {
+          grant_type: 'authorization_code',
+          client_id: stripeAPI.CLIENT_ID,
+          code: code,
+          client_secret: stripeAPI.API_KEY
+        }
+      };
+      request.post(postBody, function(err, r, body) {
+        console.log(JSON.parse(body));
+        var stripeUserId = JSON.parse(body).stripe_user_id;
+        var queryString = `UPDATE users SET
+      stripeaccountid=($1) WHERE authId=($2)`;
+        pool.query(queryString, [stripeUserId, userId], function(err, result) {
+          if (err) return console.log(err);
+          console.log('success', result);
+        })
+        res.redirect('/');
+      });
+    }
   },
 
   createCharge: function (req, res) {
