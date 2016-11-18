@@ -15,6 +15,7 @@ module.exports = {
   // retrive code after user authorize stripe
   getCode: function (req, res) {
     var code = req.query.code;
+    console.log(req.query);
     // send the code to stripe for accesstoken
     request.post({
       url: TOKEN_URI,
@@ -32,7 +33,6 @@ module.exports = {
     // Do something with your accessToken
 
     // For demo's sake, output in response:
-    req.flash('info', 'Flash is back!')
     res.redirect('/')
 
     });

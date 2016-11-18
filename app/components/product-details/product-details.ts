@@ -18,6 +18,8 @@ export class ProductDetails implements OnInit {
 
   @Input() public selectedPic: String;
 
+  public user_id = JSON.parse(localStorage.getItem('profile')).user_id;
+
   public amount = 2000;
 
   constructor(
