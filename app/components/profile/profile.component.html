@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <div *ngFor="let user of users" class="card">
-        <img class="card-img-top" [src]="user.profilepic" alt="Card image cap">
+      <div *ngIf="user" class="card">
+        <img class="card-img-top" [src]="user.profilepic" alt="profilepic goes here">
         <div class="card-block">
           <h4 class="card-title">{{user.firstname}} {{user.lastname}}</h4>
           <p class="card-text">{{user.email}}</p>
