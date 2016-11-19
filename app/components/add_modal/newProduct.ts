@@ -1,5 +1,6 @@
 export class NewProduct {
     public id: number;
+    public userId: number;
     public productName: string;
     public pricePerDay: number;
     public ownerId: number;
