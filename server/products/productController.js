@@ -54,16 +54,21 @@ module.exports = {
     console.log(req.body);
     var body = req.body;
     // query string for storing product in product table
-    var queryStr = `INSERT INTO products
-      (category_id, owner_id, description, productname, priceperday, location) VALUES ((SELECT id from categories where category = $1), (SELECT id from users where authid = $2), $3, $4, $5, $6)`;
+    var queryStr = `WITH ins1 AS (
+                      INSERT INTO products(category_id, owner_id, description, productname, priceperday, location)
+                      VALUES ((SELECT id from categories where category = $1), (SELECT id from users where authid = $2), $3, $4, $5, $6)
+                      RETURNING id
+                      )
+                      INSERT INTO images(product_id, url)
+                      SELECT id, $7
+                      FROM ins1`;
 
     // query string for storing images in images table after product id createProductated
-    var imageQueryStr;
+    // var imageQueryStr = `INSERT INTO images (product_id, url) VALUES ((SELECT id from products where product = product`
 
-    pool.query(queryStr, [body.categoryId, body.userId, body.productDescription, body.productName, body.pricePerDay, body.location], function(err, result) {
+    pool.query(queryStr, [body.categoryId, body.userId, body.productDescription, body.productName, body.pricePerDay, body.location, body.imageLink], function(err, result) {
       if (err) return console.log(err);
       console.log('success', result);
-
       res.status(201).send('product created');
     });
     // add images to images table
