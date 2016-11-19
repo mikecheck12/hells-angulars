@@ -5,17 +5,18 @@ module.exports = function(config) {
   var appSrcBase = 'app/';       // app source TS files
   var appAssets  = 'base/app/'; // component assets fetched by Angular's compiler
 
-  var testBase    = 'spec/';       // transpiled test JS and map files
-  var testSrcBase = 'spec/';       // test source TS files
+  var testBase    = 'dist/spec/';       // transpiled test JS and map files
+  var testSrcBase = 'app/spec/';       // test source TS files
 
   config.set({
     basePath: '',
     frameworks: ['jasmine'],
     plugins: [
       require('karma-jasmine'),
+      require('karma-coverage'),
       require('karma-chrome-launcher'),
-      require('karma-jasmine-html-reporter'), // click "Debug" in browser to see it
-      require('karma-htmlfile-reporter'), // crashing w/ strange socket error
+      //require('karma-jasmine-html-reporter'), // click "Debug" in browser to see it
+      //require('karma-htmlfile-reporter'), // crashing w/ strange socket error
       require('karma-spec-reporter')
     ],
 
@@ -55,7 +56,7 @@ module.exports = function(config) {
 
       { pattern: 'systemjs.config.js', included: false, watched: false },
       // { pattern: 'systemjs.config.extras.js', included: false, watched: false },
-      // 'karma-test-shim.js',
+      {pattern: 'karma-test-shim.js', included: true, watched: true},
 
       // transpiled application & spec code paths loaded via module imports
       { pattern: appBase + '**/*.js', included: false, watched: true },

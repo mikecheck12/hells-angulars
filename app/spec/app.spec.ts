@@ -1,5 +1,6 @@
 import { TestBed, async } from "@angular/core/testing";
-import { App }            from "../app/components/app/app";
+import { App }            from "../components/app/app";
+import {  }               from "jasmine";
 
 describe("Gear Box Application", () => {
   beforeEach(() => {
