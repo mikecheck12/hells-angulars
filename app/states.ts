@@ -1,4 +1,5 @@
 import { About }                  from "./components/about/about";
+import { Google }                from "./components/google/google.component";
 import { Home }                  from "./components/home/home";
 import { Products }              from "./components/products/products";
 import { ProductDetails }        from "./components/product-details/product-details";
@@ -7,6 +8,12 @@ import { ProfileComponent }      from "./components/profile/profile.component";
 import { Transition }            from "ui-router-ng2";
 
 /** States */
+export const googleState = {
+  component: Google,
+  name: "google",
+  url: "/google",
+}
+
 export const homeState = {
   component: Home,
   name: "home",
