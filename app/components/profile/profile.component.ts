@@ -41,14 +41,6 @@ export class ProfileComponent implements OnInit {
       .getUserProducts(userId)
       .then(response => {
         const products = JSON.parse(response._body);
-        products.forEach(element => {
-          this.profileService
-            .getImages(element.id)
-            .then(response2 => {
-              const imageUrls = JSON.parse(response2._body);
-              element.primaryImage = imageUrls[0].url;
-            });
-        });
         this.products = products;
       })
       .catch(err => console.log(err));

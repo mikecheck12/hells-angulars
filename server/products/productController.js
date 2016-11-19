@@ -38,22 +38,22 @@ module.exports = {
   },
 
   getProductsByUser: function(req, res, next) {
-    var queryStr = `SELECT * FROM products WHERE owner_id=${req.params.id}`;
-    pool.query(queryStr, function(err, result) {
+    var queryStr = queryStrWithImages + ` WHERE products.owner_id = ($1)`;
+    pool.query(queryStr, [req.params.id], function(err, result) {
       if (err) return console.log(err);
       console.log('success', result);
-      res.json(result.rows);
+      res.json(addImagesArray(result));
     })
   },
 
-  getImages: function(req, res, next) {
-    var queryStr = `SELECT url FROM images WHERE product_id=${req.params.id}`;
-    pool.query(queryStr, function(err, result) {
-      if (err) return console.log(err);
-      console.log('success', result);
-      res.json(result.rows);
-    })
-  },
+  // getImages: function(req, res, next) {
+  //   var queryStr = `SELECT url FROM images WHERE product_id=${req.params.id}`;
+  //   pool.query(queryStr, function(err, result) {
+  //     if (err) return console.log(err);
+  //     console.log('success', result);
+  //     res.json(result.rows);
+  //   })
+  // },
 
   getProductById: function(req, res, next) {
     var id = req.params.id;

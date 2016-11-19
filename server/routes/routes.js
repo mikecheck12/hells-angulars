@@ -26,7 +26,7 @@ module.exports = function(app, express) {
   app.get('/api/products', productController.getProducts);
   app.get('/api/products/byuser/:id', productController.getProductsByUser);
   app.get('/api/products/:id', productController.getProductById);
-  app.get('/api/products/images/:id', productController.getImages);
+  // app.get('/api/products/images/:id', productController.getImages);
   app.post('/api/products', productController.createProduct);
   app.put('/api/products/:id', productController.updateProduct);
 
