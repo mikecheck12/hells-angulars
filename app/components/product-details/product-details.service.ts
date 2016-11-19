@@ -26,8 +26,8 @@ export class ProductDetailsService {
         .catch(this.handleError);
   }
 
-  public charge(token, amount) {
-    let requestBody = {token: token, amount: amount};
+  public charge(token, transaction) {
+    let requestBody = {token: token, transaction: transaction};
     return this.http.post("api/charge", requestBody, {headers: this.headers})
       .map(res => res)
       .subscribe(data => data);

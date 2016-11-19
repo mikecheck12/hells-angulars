@@ -37,9 +37,7 @@ export class ProductDetails implements OnInit, DoCheck {
   }
 
   public ngOnInit() {
-    console.log(this.product);
     this.selectedPic = this.product.pic;
-    console.log(this.selectedPic);
   }
 
   public onSelect(n: number) {
@@ -52,7 +50,15 @@ export class ProductDetails implements OnInit, DoCheck {
       key: stripeConfig.apiKey,
       locale: "auto",
       token: (token: any) => {
-        this.productDetailsService.charge(token, this.totalAmount);
+        this.productDetailsService.charge(token, {
+          amount: this.totalAmount,
+          buyer_id: this.userId,
+          seller_id: this.product.owner_id,
+          status_id: 1,
+          product_id: this.product.id,
+          bookedfrom: this.convertObjToDate(this.fromDate),
+          bookedto: this.convertObjToDate(this.toDate),
+        });
       },
     });
 
@@ -65,6 +71,9 @@ export class ProductDetails implements OnInit, DoCheck {
 
   public ngDoCheck() {
     if (this.oldFromDate !== this.fromDate && this.oldToDate !== this.toDate) {
+      // set OldFromDate and oldToDate to current date
+      this.oldFromDate = this.fromDate;
+      this.oldToDate = this.toDate;
       // this.convert date objects to date fromat
       let fromDate = this.convertObjToDate(this.fromDate);
       let toDate = this.convertObjToDate(this.toDate);
