@@ -22,10 +22,10 @@ export class ProductDetails implements OnInit, DoCheck {
   @Input() fromDate: any;
   @Input() toDate: any;
 
-  private minDate:any = {
-    'year': new Date().getFullYear(),
-    'month': +new Date().getMonth() + 1,
-    'day': +new Date().getDate(),
+  private minDate: any = {
+    "year": new Date().getFullYear(),
+    "month": +new Date().getMonth() + 1,
+    "day": +new Date().getDate(),
   };
 
   private oldFromDate: any = undefined;
