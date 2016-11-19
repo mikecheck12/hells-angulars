@@ -7,4 +7,5 @@ export class NewProduct {
     public categoryId: number;
     public location?: string;
     public imageLink?: string;
+    public userId: string;
 }
