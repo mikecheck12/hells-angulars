@@ -59,3 +59,7 @@ ngb-rating, .fa-map-marker{
   background: darkblue;
   color: #fff;
 }
+
+.right {
+  float: right;
+}

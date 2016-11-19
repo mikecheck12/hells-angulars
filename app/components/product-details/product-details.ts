@@ -1,10 +1,9 @@
 import { ActivatedRoute }           from "@angular/router";
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, DoCheck } from "@angular/core";
 import { NgbRatingConfig }          from "@ng-bootstrap/ng-bootstrap";
 import { stripeConfig }        from "../../stripe/stripe.config";
 import { ProductDetailsService }    from "./product-details.service";
 import { UIROUTER_DIRECTIVES }      from "ui-router-ng2";
-
 
 @Component({
   moduleId: module.id,
@@ -14,16 +13,18 @@ import { UIROUTER_DIRECTIVES }      from "ui-router-ng2";
   templateUrl: "product-details.html",
 })
 
-export class ProductDetails implements OnInit {
+export class ProductDetails implements OnInit, DoCheck {
 
   @Input() public product: any;
 
   @Input() public selectedPic: String;
 
-  @Input() fromDate: Date;
-  @Input() toDate: Date;
+  @Input() fromDate: any;
+  @Input() toDate: any;
 
-  public totalAmount: Number = 10;
+  private oldFromDate: any = undefined;
+  private oldToDate: any = undefined;
+  public totalAmount: Number;
 
   public userId = JSON.parse(localStorage.getItem("profile")).user_id;
 
@@ -63,4 +64,38 @@ export class ProductDetails implements OnInit {
 
   }
 
+  public ngDoCheck() {
+    if (this.oldFromDate !== this.fromDate && this.oldToDate !== this.toDate) {
+      // this.convert date objects to date fromat
+      let fromDate = this.convertObjToDate(this.fromDate);
+      let toDate = this.convertObjToDate(this.toDate);
+      // Calculate days between
+      let daysBetween = this.getDaysBetween(fromDate, toDate);
+      // if days between is more than 1
+      if (daysBetween > 0) {
+        this.totalAmount = this.product.priceperday * daysBetween;
+        console.log(this.totalAmount);
+      }
+    }
+  }
+
+  public convertObjToDate(obj: any) {
+    let date = obj.year + '-' + obj.month + '-' + obj.day;
+    console.log(new Date(date));
+    return new Date(date);
+  }
+
+  public getDaysBetween(date1:Date, date2:Date) {
+    let one_day=1000*60*60*24;
+
+    // this.Convert both dates to milliseconds
+    let date1_ms = date1.getTime();
+    let date2_ms = date2.getTime();
+
+    // Calculate the difference in milliseconds
+    let difference_ms = date2_ms - date1_ms;
+
+    // this.Convert back to days and return
+    return Math.round(difference_ms/one_day);
+  }
 }
