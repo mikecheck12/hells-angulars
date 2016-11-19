@@ -28,8 +28,6 @@ export class ProductDetails implements OnInit, DoCheck {
 
   public userId = JSON.parse(localStorage.getItem("profile")).user_id;
 
-  public amount = 2000;
-
   constructor(
     private config: NgbRatingConfig,
     private productDetailsService: ProductDetailsService
@@ -53,13 +51,13 @@ export class ProductDetails implements OnInit, DoCheck {
       key: stripeConfig.apiKey,
       locale: "auto",
       token: (token: any) => {
-        this.productDetailsService.charge(token);
+        this.productDetailsService.charge(token, this.totalAmount);
       },
     });
 
     handler.open({
-      name: "Hell\"s Angulars",
-      amount: 2000,
+      name: "Gear Box",
+      amount: +this.totalAmount * 100,
     });
 
   }

@@ -44,12 +44,12 @@ module.exports = {
 
   createCharge: function (req, res) {
     console.log(req.body)
-    var token = req.body.id;
+    var token = req.body.token.id;
+    var amount = req.body.amount
     stripe.charges.create({
-      amount: 1000,
+      amount: amount * 100,
       currency: 'usd',
       source: token,
-      destination: 'acct_19End4Cm1eI1OU4w'
     });
   }
 }
