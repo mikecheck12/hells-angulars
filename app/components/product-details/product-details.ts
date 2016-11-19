@@ -24,9 +24,9 @@ export class ProductDetails implements OnInit, DoCheck {
 
   private oldFromDate: any = undefined;
   private oldToDate: any = undefined;
-  public totalAmount: Number;
+  private totalAmount: Number;
 
-  public userId = JSON.parse(localStorage.getItem("profile")).user_id;
+  private userId = JSON.parse(localStorage.getItem("profile")).user_id;
 
   constructor(
     private config: NgbRatingConfig,
@@ -78,22 +78,21 @@ export class ProductDetails implements OnInit, DoCheck {
   }
 
   public convertObjToDate(obj: any) {
-    let date = obj.year + '-' + obj.month + '-' + obj.day;
-    console.log(new Date(date));
+    let date = obj.year + "-" + obj.month + "-" + obj.day;
     return new Date(date);
   }
 
-  public getDaysBetween(date1:Date, date2:Date) {
-    let one_day=1000*60*60*24;
+  public getDaysBetween(date1: Date, date2: Date) {
+    let oneDay = 1000 * 60 * 60 * 24;
 
     // this.Convert both dates to milliseconds
-    let date1_ms = date1.getTime();
-    let date2_ms = date2.getTime();
+    let date1Ms = date1.getTime();
+    let date2Ms = date2.getTime();
 
     // Calculate the difference in milliseconds
-    let difference_ms = date2_ms - date1_ms;
+    let differenceMs = date2Ms - date1Ms;
 
     // this.Convert back to days and return
-    return Math.round(difference_ms/one_day);
+    return Math.round(differenceMs / oneDay);
   }
 }
