@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   public userId: string;
   public gearView: boolean = true;
   public rentalView: boolean = false;
+  private stripeAccount: any;
 
   constructor(
     private profileService: ProfileService
@@ -30,7 +31,10 @@ export class ProfileComponent implements OnInit {
       .then(response => {
         const user = JSON.parse(response._body);
         this.user = user;
+        this.stripeAccount = user.stripeaccountid;
+        console.log(this.stripeAccount)
         this.getUserProducts(this.user.id);
+
         this.getUserRentals();
       })
       .catch(err => console.log(err));
