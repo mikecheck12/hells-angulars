@@ -63,6 +63,7 @@
   "devDependencies": {
     "@types/core-js": "^0.9.34",
     "@types/node": "^6.0.45",
+    "angular-mocks": "^1.5.8",
     "concurrently": "^3.0.0",
     "grunt": "^0.4.5",
     "grunt-concurrent": "^2.3.1",
@@ -78,6 +79,7 @@
     "karma-chrome-launcher": "^2.0.0",
     "karma-coverage": "^1.1.1",
     "karma-jasmine": "^1.0.2",
+    "karma-spec-reporter": "0.0.26",
     "lite-server": "^2.2.2",
     "remap-istanbul": "^0.7.0",
     "systemjs": "^0.19.39",
