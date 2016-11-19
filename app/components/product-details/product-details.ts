@@ -37,12 +37,13 @@ export class ProductDetails implements OnInit, DoCheck {
   }
 
   public ngOnInit() {
-    this.selectedPic = this.product.pic[0];
+    console.log(this.product);
+    this.selectedPic = this.product.pic;
     console.log(this.selectedPic);
   }
 
   public onSelect(n: number) {
-    this.selectedPic = this.product.pic[n];
+    this.selectedPic = this.product.pic;
   }
 
   public openCheckOut() {

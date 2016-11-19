@@ -43,13 +43,19 @@ module.exports = {
   },
 
   createCharge: function (req, res) {
-    console.log(req.body)
     var token = req.body.token.id;
     var amount = req.body.amount
     stripe.charges.create({
       amount: amount * 100,
       currency: 'usd',
       source: token,
+    }, function (error, body) {
+      if (error) {
+        res.send(400, 'Payment rejected');
+      } else {
+        console.log(body);
+        res.send(200, 'Success');
+      }
     });
   }
 }
