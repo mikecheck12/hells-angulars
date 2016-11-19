@@ -7,7 +7,6 @@ import { UserData }      from "../../data/dummyusers";
 
 @Injectable()
 export class ProfileService {
-  // public userId: any;
 
   constructor(
     private http: Http,
@@ -22,9 +21,6 @@ export class ProfileService {
     return this.authHttp.get(`/api/users/${authId}`)
       .toPromise()
       .then(response => {
-        // console.log("vvvvv");
-        // console.log(response);
-        // this.userId = JSON.parse(response._body).id;
         return response;
       })
       .catch(this.handleError);
