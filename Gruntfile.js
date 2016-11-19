@@ -49,7 +49,7 @@ module.exports = function(grunt) {
     },
     concurrent: {
       dev: {
-        tasks: ['nodemon', 'watch'],
+        tasks: ['nodemon', 'karma', 'watch'],
         options: {
           logConcurrentOutput: true
         }
@@ -72,7 +72,12 @@ module.exports = function(grunt) {
         tasks: ['copy:css', 'copy:html']
       }
     },
-
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js',
+        autoWatch: true
+      }
+    },
 
   });
 
@@ -83,6 +88,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks("grunt-tslint");
+  grunt.loadNpmTasks('grunt-karma');
 
   grunt.registerTask('build', ['clean', 'tslint', 'ts','copy:css', 'copy:html']);
   grunt.registerTask('default', ['build', 'concurrent']);
