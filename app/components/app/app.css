@@ -26,23 +26,48 @@ nav a:hover {
 nav a.active {
   color: #039be5;
 }*/
-footer {
- height: 40px;
- margin-top: 50px;
- background: #579ed1;
- width: 100%;
- bottom: 0;
+
+nav {
+  border-bottom: 2px solid #2A4E75;
+  background: linear-gradient(45deg, #e4f5fc 0%,#bfe8f9 50%,#9fd8ef 51%,#2ab0ed 100%);
 }
-.footerInfo {
-  color: white;
-  padding: 10px 10px 0px 10px;
+
+.left-nav {
+  margin-top: 10px;
 }
+
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -50px;
+}
+
+.page-wrap:after {
+  content: "";
+  display: table;
+  clear: both;
+  height: 50px;
+}
+
 .gearbox {
   height: 50px;
   color: #579ed1;
 }
+
 .searchbox {
   margin: 0 40%;
   width: 300px;
   height: 25px;
+}
+
+.site-footer {
+  height: 50px;
+  background: #579ed1;
+  color: white;
+  padding: 10px 10px 0px 10px;
+}
+
+.footer-content {
+  display: inline;
+  padding: 0 1%;
 }
