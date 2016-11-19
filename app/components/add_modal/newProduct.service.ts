@@ -18,4 +18,8 @@ export class NewProductService {
     .map(res => res)
     .subscribe(data => data);
   }
+
+  // public postImage(){
+
+  // }
 }

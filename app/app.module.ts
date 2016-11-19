@@ -1,3 +1,12 @@
+
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
+import { FormsModule } from "@angular/forms";
+import { UIRouterModule } from "ui-router-ng2";
+import { HttpModule, JsonpModule } from "@angular/http";
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+
+import { App } from "./components/app/app.js";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
 

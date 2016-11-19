@@ -4,7 +4,6 @@
       Product Name <input class="form-control" type="text" placeholder="Brand/Model"
        required
        [(ngModel)]="model.productName" [ngModelOptions]="{standalone: true}">
-       TODO: remove this: {{model.productName}}
     </li>
     <li class="form-group">
       Product Description <input class="form-control" type="text" placeholder="Description" required
@@ -19,6 +18,11 @@
       Picture URL <input class="form-control" type="text" placeholder="image link"
       required
       [(ngModel)]="model.imageLink" [ngModelOptions]="{standalone: true}">
+    </li>
+    <li class="form-group">
+      Location <input class="form-control" type="text" placeholder="City, State"
+      required
+      [(ngModel)]="model.location" [ngModelOptions]="{standalone: true}">
     </li>
     <li>
       <div class="form-group">
