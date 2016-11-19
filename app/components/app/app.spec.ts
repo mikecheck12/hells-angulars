@@ -1,12 +1,11 @@
 import { TestBed, async } from "@angular/core/testing";
-import { ProductDetails } from "./app/product-details/product-details";
+import { App }            from "../app/components/app/app";
 
 describe("Gear Box Application", () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         App,
-        ProductDetails,
       ],
     });
   });

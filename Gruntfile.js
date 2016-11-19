@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 
     ts: {
       base: {
-        src: ['app/**/*.ts'],
+        src: ['app/**/*.ts', 'spec/*.ts'],
         dest: 'dist',
         options: {
           "target": "es5",
@@ -64,7 +64,7 @@ module.exports = function(grunt) {
 
     watch: {
       ts: {
-        files: ['app/**/*.ts'],
+        files: ['app/**/*.ts', 'spec/*.ts'],
         tasks: ['ts']
       },
       copy: {
