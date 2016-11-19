@@ -7,7 +7,7 @@ import { UserData }      from "../../data/dummyusers";
 
 @Injectable()
 export class ProfileService {
-  public userId: any;
+  // public userId: any;
 
   constructor(
     private http: Http,
@@ -22,20 +22,21 @@ export class ProfileService {
     return this.authHttp.get(`/api/users/${authId}`)
       .toPromise()
       .then(response => {
-        console.log('vvvvv')
-        console.log(typeof response);
-        this.userId = JSON.parse(response._body).id;
+        // console.log("vvvvv");
+        // console.log(response);
+        // this.userId = JSON.parse(response._body).id;
         return response;
       })
       .catch(this.handleError);
   }
 
-  public getUserProducts(): Promise<any> {
+  public getUserProducts(userId): Promise<any> {
     // dummy data version
     // return Promise.resolve(Data);
 
     // live database version
-    return this.http.get(`/api/products/byuser/${this.userId}`)
+    userId = JSON.stringify(userId);
+    return this.http.get(`/api/products/byuser/${userId}`)
       .toPromise()
       .then(response => {
         return response;
