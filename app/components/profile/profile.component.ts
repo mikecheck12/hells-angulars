@@ -13,6 +13,8 @@ export class ProfileComponent implements OnInit {
   public products: Array<any>;
   public rentals: Array<any>;
   public userId: string;
+  public gearView: boolean = true;
+  public rentalView: boolean = false;
 
   constructor(
     private profileService: ProfileService
@@ -59,6 +61,18 @@ export class ProfileComponent implements OnInit {
         this.rentals = rentals;
       })
       .catch(err => console.log(err));
+  }
+
+  selectGearView() {
+    this.rentalView = false;
+    this.gearView = true;
+    return "active";
+  }
+
+  selectRentalView() {
+    this.gearView = false;
+    this.rentalView = true;
+    return "active";
   }
 
   ngOnInit(): void {
