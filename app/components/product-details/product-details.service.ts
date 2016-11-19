@@ -33,15 +33,6 @@ export class ProductDetailsService {
       .subscribe(data => data);
   }
 
-  public getImages(productId): Promise<any> {
-    return this.http.get(`/api/products/images/${productId}`)
-    .toPromise()
-    .then(response => {
-      return response;
-    })
-    .catch(this.handleError);
-  }
-
   private handleError(error: any): Promise<any> {
     return Promise.reject(error.message || error);
   }

@@ -37,15 +37,16 @@ export class ProductDetails implements OnInit, DoCheck {
   }
 
   public ngOnInit() {
-    this.selectedPic = this.product.pic;
+    this.product = this.product[0];
+    this.selectedPic = this.product.url[0];
   }
 
   public onSelect(n: number) {
-    this.selectedPic = this.product.pic;
+    this.selectedPic = this.product.pic[n];
   }
 
   public openCheckOut() {
-
+    console.log(this.product);
     let handler = (<any> window).StripeCheckout.configure({
       key: stripeConfig.apiKey,
       locale: "auto",
