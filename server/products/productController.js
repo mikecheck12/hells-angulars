@@ -1,52 +1,69 @@
-var pool = require('../db/db.js')
+var pool = require('../db/db.js');
+
+var queryStrWithImages = `SELECT products.id, products.category_id, products.owner_id, products.description, products.productname, products.priceperday, products.location, images.url
+      FROM products
+      LEFT JOIN images
+      ON products.id=images.product_id`;
+
+var addImagesArray = function (result) {
+  var resultWithImages = [];
+  for (var i = 0; i < result.rows.length; i++) {
+    if (!resultWithImages[i]){
+      var url = result.rows[i].url;
+      result.rows[i].url = [url];
+      resultWithImages.push(result.rows[i]);
+    } else {
+      resultWithImages[i].url.push(result.rows[i].url);
+    }
+  }
+  return resultWithImages;
+}
 
 module.exports = {
 
   // Return products that match the query string.
   // If no string was provided, will return all products
   getProducts: function(req, res, next) {
-    console.log(req.query.productname);
-    console.log(req.query.productname)
-    var queryStr = "SELECT * FROM products WHERE (productname LIKE '%" + req.query.productname+ "%')";
-    pool.query(queryStr, function(err, result) {
-      console.log(queryStr)
+    // console.log(req.query.productname);
+    // console.log(req.query.productname)
+    // req.query.productname = req.query.productname || '';
+    // var queryStr = "SELECT * FROM products WHERE (productname LIKE '%" + req.query.productname+ "%')";
+    pool.query(queryStrWithImages, function(err, result) {
       if (err) {
         console.log(err);
         res.send(err);
       }
-      console.log(result);
-      res.send(result.rows);
+      res.json(addImagesArray(result));
     })
   },
 
   getProductsByUser: function(req, res, next) {
-    var queryStr = `SELECT * FROM products WHERE owner_id=${req.params.id}`;
-    pool.query(queryStr, function(err, result) {
+    var queryStr = queryStrWithImages + ` WHERE products.owner_id = ($1)`;
+    pool.query(queryStr, [req.params.id], function(err, result) {
       if (err) return console.log(err);
       console.log('success', result);
-      res.json(result.rows);
+      res.json(addImagesArray(result));
     })
   },
 
-  getImages: function(req, res, next) {
-    var queryStr = `SELECT url FROM images WHERE product_id=${req.params.id}`;
-    pool.query(queryStr, function(err, result) {
-      if (err) return console.log(err);
-      console.log('success', result);
-      res.json(result.rows);
-    })
-  },
+  // getImages: function(req, res, next) {
+  //   var queryStr = `SELECT url FROM images WHERE product_id=${req.params.id}`;
+  //   pool.query(queryStr, function(err, result) {
+  //     if (err) return console.log(err);
+  //     console.log('success', result);
+  //     res.json(result.rows);
+  //   })
+  // },
 
   getProductById: function(req, res, next) {
-    console.log('received', req.params.id)
     var id = req.params.id;
     var body = req.body;
-    var queryStr = `SELECT * FROM products
-      WHERE id=($1)`;
+    var queryStr = queryStrWithImages + `
+      WHERE products.id = ($1)`;
     pool.query(queryStr, [id], function(err, result) {
       if (err) return console.log(err);
       console.log('success', result);
-      res.json(result.rows[0]);
+      res.json(addImagesArray(result));
     })
   },
 
@@ -62,9 +79,6 @@ module.exports = {
                       INSERT INTO images(product_id, url)
                       SELECT id, $7
                       FROM ins1`;
-
-    // query string for storing images in images table after product id createProductated
-    // var imageQueryStr = `INSERT INTO images (product_id, url) VALUES ((SELECT id from products where product = product`
 
     pool.query(queryStr, [body.categoryId, body.userId, body.productDescription, body.productName, body.pricePerDay, body.location, body.imageLink], function(err, result) {
       if (err) return console.log(err);

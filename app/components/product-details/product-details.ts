@@ -22,6 +22,12 @@ export class ProductDetails implements OnInit, DoCheck {
   @Input() fromDate: any;
   @Input() toDate: any;
 
+  private minDate: any = {
+    "year": new Date().getFullYear(),
+    "month": +new Date().getMonth() + 1,
+    "day": +new Date().getDate(),
+  };
+
   private oldFromDate: any = undefined;
   private oldToDate: any = undefined;
   private totalAmount: Number;
@@ -37,8 +43,8 @@ export class ProductDetails implements OnInit, DoCheck {
   }
 
   public ngOnInit() {
-    this.selectedPic = this.product.pic[0];
-    console.log(this.selectedPic);
+    this.product = this.product[0];
+    this.selectedPic = this.product.url[0];
   }
 
   public onSelect(n: number) {
@@ -46,12 +52,20 @@ export class ProductDetails implements OnInit, DoCheck {
   }
 
   public openCheckOut() {
-
+    console.log(this.product);
     let handler = (<any> window).StripeCheckout.configure({
       key: stripeConfig.apiKey,
       locale: "auto",
       token: (token: any) => {
-        this.productDetailsService.charge(token, this.totalAmount);
+        this.productDetailsService.charge(token, {
+          amount: this.totalAmount,
+          buyer_id: this.userId,
+          seller_id: this.product.owner_id,
+          status_id: 1,
+          product_id: this.product.id,
+          bookedfrom: this.convertObjToDate(this.fromDate),
+          bookedto: this.convertObjToDate(this.toDate),
+        });
       },
     });
 
@@ -64,6 +78,9 @@ export class ProductDetails implements OnInit, DoCheck {
 
   public ngDoCheck() {
     if (this.oldFromDate !== this.fromDate && this.oldToDate !== this.toDate) {
+      // set OldFromDate and oldToDate to current date
+      this.oldFromDate = this.fromDate;
+      this.oldToDate = this.toDate;
       // this.convert date objects to date fromat
       let fromDate = this.convertObjToDate(this.fromDate);
       let toDate = this.convertObjToDate(this.toDate);
@@ -72,7 +89,8 @@ export class ProductDetails implements OnInit, DoCheck {
       // if days between is more than 1
       if (daysBetween > 0) {
         this.totalAmount = this.product.priceperday * daysBetween;
-        console.log(this.totalAmount);
+      } else if (daysBetween === 0) {
+        this.totalAmount = this.product.priceperday;
       }
     }
   }

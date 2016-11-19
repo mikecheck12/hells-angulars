@@ -6,9 +6,9 @@
           <img [src]="selectedPic" />
         </div>
         <ul class="nav nav-tabs">
-          <li><a (click)="onSelect(1)"><img [src]="product.pic[1]" /></a></li>
-          <li><a (click)="onSelect(2)"><img [src]="product.pic[2]" /></a></li>
-          <li><a (click)="onSelect(3)"><img [src]="product.pic[3]" /></a></li>
+          <li *ngIf="product.url[1]"><a (click)="onSelect(1)"><img [src]="product.url[1]" /></a></li>
+          <li *ngIf="product.url[2]"><a (click)="onSelect(2)"><img [src]="product.url[2]" /></a></li>
+          <li *ngIf="product.url[3]"><a (click)="onSelect(3)"><img [src]="product.url[3]" /></a></li>
         </ul>
       </div>
 
@@ -25,7 +25,7 @@
         <div class="form-group">
           <label for="datefrom" class="control-label">From</label>
           <div class="input-group">
-            <input class="form-control" placeholder="yyyy-mm-dd"  ngbDatepicker #df="ngbDatepicker" [(ngModel)]="fromDate">
+            <input class="form-control" placeholder="yyyy-mm-dd"  ngbDatepicker #df="ngbDatepicker" [(ngModel)]="fromDate" [minDate]="minDate">
             <div class="input-group-addon" (click)="df.toggle()" >
               <i class="fa fa-calendar"></i>
             </div>
@@ -34,7 +34,7 @@
         <div class="form-group">
           <label for="dateto" class="control-label">To</label>
             <div class="input-group">
-              <input class="form-control" placeholder="yyyy-mm-dd"  ngbDatepicker #dt="ngbDatepicker" [(ngModel)]="toDate">
+              <input class="form-control" placeholder="yyyy-mm-dd"  ngbDatepicker #dt="ngbDatepicker" [(ngModel)]="toDate" [minDate]="minDate">
               <div class="input-group-addon" (click)="dt.toggle()" >
                 <i class="fa fa-calendar"></i>
               </div>

@@ -18,18 +18,16 @@ export class ProductDetailsService {
   ) {}
 
   public getProductDetails(id: any) {
-    console.log(id);
-    let productDetail = Data.filter(product => product.id === id);
-    return productDetail[0];
 
-    // let url = "/api/products/" + id;
-    // return this.http.get(url)
-    //     .toPromise()
-    //     .then(response => response.json())
-    //     .catch(this.handleError);
+    let url = "/api/products/" + id;
+    return this.http.get(url)
+        .toPromise()
+        .then(response => response.json())
+        .catch(this.handleError);
   }
-  public charge(token, amount) {
-    let requestBody = {token: token, amount: amount};
+
+  public charge(token, transaction) {
+    let requestBody = {token: token, transaction: transaction};
     return this.http.post("api/charge", requestBody, {headers: this.headers})
       .map(res => res)
       .subscribe(data => data);
