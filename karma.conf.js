@@ -56,7 +56,7 @@ module.exports = function(config) {
 
       { pattern: 'systemjs.config.js', included: false, watched: false },
       // { pattern: 'systemjs.config.extras.js', included: false, watched: false },
-      {pattern: 'karma-test-shim.js', included: true, watched: true},
+      // {pattern: 'karma-test-shim.js', included: true, watched: true},
 
       // transpiled application & spec code paths loaded via module imports
       { pattern: appBase + '**/*.js', included: false, watched: true },
