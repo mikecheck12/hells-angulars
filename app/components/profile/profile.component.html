@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <div *ngFor="let user of users" class="card">
-        <img class="card-img-top" [src]="user.profilepic" alt="Card image cap">
+      <div *ngIf="user" class="card">
+        <img class="card-img-top" [src]="user.profilepic" alt="profilepic goes here">
         <div class="card-block">
           <h4 class="card-title">{{user.firstname}} {{user.lastname}}</h4>
           <p class="card-text">{{user.email}}</p>
@@ -20,13 +20,17 @@
         <a href="#" class="btn btn-primary">Add gear</a>
         <div *ngFor="let product of products" class="card">
           <div class="row">
-            <div class="col-md-6">
-              <p class="right card-text"><strong>${{product.priceperday}}</strong> / day</p>
-              <p class="primary card-text">{{product.productname}}</p>
-              <img class="gear card-img-left" [src]="product.pic[0]">
+            <div class="col-md-4">
+              <img [src]=product.primaryImage />
             </div>
-            <div class="col-md-6">
-              <p>{{product.description}}</p>
+            <div class="col-md-5">
+              <p class="left card-text">{{product.productname}}</p>
+            </div>
+            <div class="col-md-3">
+              <p class="right card-text border"><strong>${{product.priceperday}}</strong> / day <br>{{product.location}}</p>
+            </div>
+            <div class="col-md-8">
+              <p class="primary card-text">{{product.description}}</p>
             </div>
           </div>
         </div>

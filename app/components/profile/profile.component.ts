@@ -9,31 +9,45 @@ import { ProfileService }    from "./profile.service";
 })
 
 export class ProfileComponent implements OnInit {
+  public user: any;
   public products: Array<any>;
   public rentals: Array<any>;
-  public users: Array<any>;
+  public userId: string;
 
   constructor(
     private profileService: ProfileService
   ) { }
 
+  getUserIdFromProfile() {
+    this.userId = JSON.parse(localStorage.getItem("profile")).user_id;
+  }
+
   getUserInfo() {
     this.profileService
-      .getUserInfo()
-      .then(users => {
-        // do something with the info returned from request
-        this.users = users;
-        console.log(this.users);
+      .getUserInfo(this.userId)
+      .then(response => {
+        const user = JSON.parse(response._body);
+        this.user = user;
+        this.getUserProducts(this.user.id);
+        this.getUserRentals();
       })
       .catch(err => console.log(err));
   }
 
-  getUserProducts() {
+  getUserProducts(userId: number) {
     this.profileService
-      .getUserProducts()
-      .then(products => {
+      .getUserProducts(userId)
+      .then(response => {
+        const products = JSON.parse(response._body);
+        products.forEach(element => {
+          this.profileService
+            .getImages(element.id)
+            .then(response2 => {
+              const imageUrls = JSON.parse(response2._body);
+              element.primaryImage = imageUrls[0].url;
+            });
+        });
         this.products = products;
-        console.log("products", products);
       })
       .catch(err => console.log(err));
   }
@@ -43,14 +57,12 @@ export class ProfileComponent implements OnInit {
       .getUserRentals()
       .then(rentals => {
         this.rentals = rentals;
-        console.log("rentals", rentals);
       })
       .catch(err => console.log(err));
   }
 
   ngOnInit(): void {
+    this.getUserIdFromProfile();
     this.getUserInfo();
-    this.getUserProducts();
-    this.getUserRentals();
   }
 }

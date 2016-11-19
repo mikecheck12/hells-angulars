@@ -18,20 +18,26 @@ module.exports = {
     var body = req.body;
     // NOTE: you must use single quotes for the values section of the query
     var searchUserStr = `SELECT * FROM users
-      WHERE username = ($1)
+      WHERE authid = ($1)
     `
-    pool.query(searchUserStr, [body.nickname], function(err, result) {
+    pool.query(searchUserStr, [body.user_id], function(err, result) {
       if (err) return console.log(err);
       console.log(result);
       if (result.rows.length > 0) {
         res.status(200).send('User already exists');
       } else {
+        var defaultProfilePic = "https://d30y9cdsu7xlg0.cloudfront.net/png/81143-200.png";
         var queryStr = `INSERT INTO users
           (username, firstname, lastname, email, authid, profilepic)
           VALUES ($1, $2, $3, $4, $5, $6)`;
         var properties;
+        //check for large picture
+        if (body.picture_large) { body.picture = body.picture_large; }
+
+        //check for auth0-created account
         if (body.user_metadata) {
-          properties = [body.nickname, body.user_metadata.firstname, body.user_metadata.lastname, body.email, body.user_id, body.picture];
+          properties = [body.nickname, body.user_metadata.firstname, body.user_metadata.lastname, body.email, body.user_id, defaultProfilePic];
+        // if no user_metadata, then account was created via google or facebook
         } else {
           properties = [body.nickname, body.given_name, body.family_name, body.email, body.user_id, body.picture];
         }
@@ -49,7 +55,7 @@ module.exports = {
     var id = req.params.id;
     var body = req.body;
     var queryStr = `SELECT * FROM users
-      WHERE id=($1)`;
+      WHERE authid=($1)`;
     pool.query(queryStr, [id], function(err, result) {
       if (err) return console.log(err);
       console.log('success', result);
