@@ -28,15 +28,15 @@ export class ProfileComponent implements OnInit {
       .then(response => {
         const user = JSON.parse(response._body);
         this.user = user;
-        this.getUserProducts();
+        this.getUserProducts(this.user.id);
         this.getUserRentals();
       })
       .catch(err => console.log(err));
   }
 
-  getUserProducts() {
+  getUserProducts(userId: number) {
     this.profileService
-      .getUserProducts()
+      .getUserProducts(userId)
       .then(response => {
         const products = JSON.parse(response._body);
         products.forEach(element => {
