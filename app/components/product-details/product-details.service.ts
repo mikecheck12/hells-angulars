@@ -28,8 +28,9 @@ export class ProductDetailsService {
     //     .then(response => response.json())
     //     .catch(this.handleError);
   }
-  public charge(token) {
-    return this.http.post("api/charge", token, {headers: this.headers})
+  public charge(token, amount) {
+    let requestBody = {token: token, amount: amount};
+    return this.http.post("api/charge", requestBody, {headers: this.headers})
       .map(res => res)
       .subscribe(data => data);
   }

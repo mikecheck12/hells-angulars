@@ -1,6 +1,7 @@
 import { ActivatedRoute }           from "@angular/router";
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, DoCheck } from "@angular/core";
 import { NgbRatingConfig }          from "@ng-bootstrap/ng-bootstrap";
+import { stripeConfig }        from "../../stripe/stripe.config";
 import { ProductDetailsService }    from "./product-details.service";
 import { UIROUTER_DIRECTIVES }      from "ui-router-ng2";
 
@@ -12,15 +13,20 @@ import { UIROUTER_DIRECTIVES }      from "ui-router-ng2";
   templateUrl: "product-details.html",
 })
 
-export class ProductDetails implements OnInit {
+export class ProductDetails implements OnInit, DoCheck {
 
   @Input() public product: any;
 
   @Input() public selectedPic: String;
 
-  public userId = JSON.parse(localStorage.getItem("profile")).user_id;
+  @Input() fromDate: any;
+  @Input() toDate: any;
 
-  public amount = 2000;
+  private oldFromDate: any = undefined;
+  private oldToDate: any = undefined;
+  private totalAmount: Number;
+
+  private userId = JSON.parse(localStorage.getItem("profile")).user_id;
 
   constructor(
     private config: NgbRatingConfig,
@@ -42,18 +48,51 @@ export class ProductDetails implements OnInit {
   public openCheckOut() {
 
     let handler = (<any> window).StripeCheckout.configure({
-      key: "pk_test_SinOFPSlSYA2hQQ11RFKAYh5",
+      key: stripeConfig.apiKey,
       locale: "auto",
       token: (token: any) => {
-        this.productDetailsService.charge(token);
+        this.productDetailsService.charge(token, this.totalAmount);
       },
     });
 
     handler.open({
-      name: "Hell\"s Angulars",
-      amount: 2000,
+      name: "Gear Box",
+      amount: +this.totalAmount * 100,
     });
 
   }
 
+  public ngDoCheck() {
+    if (this.oldFromDate !== this.fromDate && this.oldToDate !== this.toDate) {
+      // this.convert date objects to date fromat
+      let fromDate = this.convertObjToDate(this.fromDate);
+      let toDate = this.convertObjToDate(this.toDate);
+      // Calculate days between
+      let daysBetween = this.getDaysBetween(fromDate, toDate);
+      // if days between is more than 1
+      if (daysBetween > 0) {
+        this.totalAmount = this.product.priceperday * daysBetween;
+        console.log(this.totalAmount);
+      }
+    }
+  }
+
+  public convertObjToDate(obj: any) {
+    let date = obj.year + "-" + obj.month + "-" + obj.day;
+    return new Date(date);
+  }
+
+  public getDaysBetween(date1: Date, date2: Date) {
+    let oneDay = 1000 * 60 * 60 * 24;
+
+    // this.Convert both dates to milliseconds
+    let date1Ms = date1.getTime();
+    let date2Ms = date2.getTime();
+
+    // Calculate the difference in milliseconds
+    let differenceMs = date2Ms - date1Ms;
+
+    // this.Convert back to days and return
+    return Math.round(differenceMs / oneDay);
+  }
 }
