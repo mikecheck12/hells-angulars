@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row">
     <div class="col-md-4">
@@ -12,30 +13,39 @@
       </div>
     </div>
     <div class="col-md-8">
-      <div class="card">
+      <nav>
+        <ul class="nav nav-tabs">
+          <li (click)="selectGearView()" [ngClass]="{active: gearView}" role="presentation" class="active"><a>my gear</a></li>
+          <li (click)="selectRentalView()" [ngClass]="{active: rentalView}" role="presentation"><a>my rentals</a></li>
+        </ul>
+      </nav>
+      <div *ngIf="gearView" class="card">
         <div class="card-header">
           My Gear
         </div>
-        <a href="#" class="btn btn-primary">View all my gear</a>
-        <a href="#" class="btn btn-primary">Add gear</a>
+        <a uiSref="addModal" class="btn btn-primary">Add gear</a>
         <div *ngFor="let product of products" class="card">
+          <a href="#/product/{{product.id}}">
           <div class="row">
             <div class="col-md-4">
               <img [src]=product.primaryImage />
             </div>
-            <div class="col-md-5">
-              <p class="left card-text">{{product.productname}}</p>
-            </div>
-            <div class="col-md-3">
-              <p class="right card-text border"><strong>${{product.priceperday}}</strong> / day <br>{{product.location}}</p>
-            </div>
-            <div class="col-md-8">
-              <p class="primary card-text">{{product.description}}</p>
+            <div class="row col-md-8 border">
+              <div class="col-md-8">
+                <h4 class="card-title">{{product.productname}}</h4>
+              </div>
+              <div class="col-md-4">
+                <p class="text-right"><strong>${{product.priceperday}}</strong> / day <br>{{product.location}}</p>
+              </div>
+              <div class="col-md-12">
+                <p class="primary card-text">{{product.description}}</p>
+              </div>
             </div>
           </div>
+          </a>
         </div>
       </div>
-      <div class="card">
+      <div *ngIf="rentalView" class="card">
         <div class="card-header">
           My Rentals
         </div>
