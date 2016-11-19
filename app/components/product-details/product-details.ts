@@ -22,6 +22,12 @@ export class ProductDetails implements OnInit, DoCheck {
   @Input() fromDate: any;
   @Input() toDate: any;
 
+  private minDate:any = {
+    'year': new Date().getFullYear(),
+    'month': +new Date().getMonth() + 1,
+    'day': +new Date().getDate(),
+  };
+
   private oldFromDate: any = undefined;
   private oldToDate: any = undefined;
   private totalAmount: Number;
@@ -83,7 +89,8 @@ export class ProductDetails implements OnInit, DoCheck {
       // if days between is more than 1
       if (daysBetween > 0) {
         this.totalAmount = this.product.priceperday * daysBetween;
-        console.log(this.totalAmount);
+      } else if (daysBetween === 0) {
+        this.totalAmount = this.product.priceperday;
       }
     }
   }
