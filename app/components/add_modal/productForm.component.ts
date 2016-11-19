@@ -2,7 +2,6 @@ import { Component }         from "@angular/core";
 import { NewProduct }        from "./newProduct";
 import { NewProductService } from "./newProduct.service";
 
-
 @Component({
   moduleId: module.id,
   selector: "newprod-form",
@@ -17,11 +16,10 @@ export class NewProductForm {
 
   constructor(private newProductService: NewProductService) { }
 
-
   public onSubmit(model: NewProduct) {
     // console.log(model);
     // console.log(this);
-    model.userId = JSON.parse(localStorage.getItem('profile')).user_id;
+    model.userId = JSON.parse(localStorage.getItem("profile")).user_id;
     this.newProductService.postProduct(model);
   };
 }
