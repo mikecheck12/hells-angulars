@@ -46,19 +46,12 @@ ngb-rating, .fa-map-marker{
   margin-bottom: 15px;
 }
 
-.rent, .like {
-  background: #579ed1;
-  padding: 1.2em 1.5em;
-  border: none;
+.rent  {
+  padding: 1em 2em;
   text-transform: UPPERCASE;
   font-weight: bold;
-  color: #fff;
 }
 
-.rent:hover{
-  background: darkblue;
-  color: #fff;
-}
 
 .right {
   float: right;

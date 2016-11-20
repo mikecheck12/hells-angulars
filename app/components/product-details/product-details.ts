@@ -31,6 +31,7 @@ export class ProductDetails implements OnInit, DoCheck {
   private oldFromDate: any = undefined;
   private oldToDate: any = undefined;
   private totalAmount: Number;
+  private daysBetween: Number;
 
   private userId = JSON.parse(localStorage.getItem("profile")).user_id;
 
@@ -48,7 +49,7 @@ export class ProductDetails implements OnInit, DoCheck {
   }
 
   public onSelect(n: number) {
-    this.selectedPic = this.product.pic[n];
+    this.selectedPic = this.product.url[n];
   }
 
   public openCheckOut() {
@@ -88,8 +89,10 @@ export class ProductDetails implements OnInit, DoCheck {
       let daysBetween = this.getDaysBetween(fromDate, toDate);
       // if days between is more than 1
       if (daysBetween > 0) {
+        this.daysBetween = daysBetween;
         this.totalAmount = this.product.priceperday * daysBetween;
       } else if (daysBetween === 0) {
+        this.daysBetween = 1;
         this.totalAmount = this.product.priceperday;
       }
     }

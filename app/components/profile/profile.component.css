@@ -1,12 +1,57 @@
 img {
-  max-width: 100%;
+  width: 100%;
 }
 
-.gear {
-  height: 50%;
-  width: 50%;
+.profile {
+  text-align: center;
 }
 
-.border {
-  border: 1px dashed black;
+.center{
+  margin: 0 auto;
+  text-align: center
+}
+
+.container {
+  margin-top: 50px;
+}
+
+.stripeImage {
+  max-width: 80%;
+}
+
+.description, .price{
+  margin-top: 10px;
+}
+
+.productImage{
+  height: 100%;
+  width: 150px;
+}
+
+.products {
+  overflow: scroll;
+  height: 550px;
+}
+
+.product {
+  margin: 0;
+  border: 0px;
+  padding: 0 15px 0 15px;
+}
+.fa-plus-circle{
+  color: #579ed1
+}
+
+.btn-primary {
+  border: 1px solid #579ed1;
+  background-color: transparent;
+  color: #579ed1;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #579ed1;
+}
+a: visited {
+  color: #607D8B
 }
