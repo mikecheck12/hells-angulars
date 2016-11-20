@@ -27,9 +27,9 @@
     </div>
     <div class="col-md-9">
       <ngb-tabset>
-        <ngb-tab title="My Gears">
+        <ngb-tab title="My Gear">
         <template ngbTabContent>
-          <div class="card products">
+          <div class="card rentals">
             <div class="card-block">
               <a href="#"><i class="fa fa-plus-circle fa-2x pull-right"></i></a>
             </div>
@@ -55,18 +55,58 @@
           </div>
       </template>
       </ngb-tab>
-      <ngb-tab title="My Rentals">
+      <ngb-tab title="Rentals For Me">
       <template ngbTabContent>
-        <div class="card">
-          <div class="card-header">
-            My Rentals
+          <div class="card rentals">
+            <div class="card-block">
+            </div>
+            <div *ngFor="let product of products" class="card product">
+                <a href="#/product/{{product.id}}">
+                  <div class="row">
+                    <div class="col-xs-4 productImage">
+                      <img [src]=product.url[0] />
+                    </div>
+                    <div class="row col-xs-9 description">
+                      <div class="col-xs-9">
+                        <h4 class="card-title">{{product.productname}}</h4>
+                        <p class="primary card-text">{{product.description}}</p>
+                      </div>
+                      <div class="col-xs-3 price">
+                        <p class="text-right"><strong>${{product.priceperday}}</strong> / day <br>{{product.location}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <hr>
+            </div>
           </div>
-          <div class="card-block">
-            <h4 class="card-title">Special title treatment</h4>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">View all my rentals</a>
+      </template>
+      </ngb-tab>
+      <ngb-tab title="Rentals For Others">
+      <template ngbTabContent>
+          <div class="card rentals">
+            <div class="card-block">
+            </div>
+            <div *ngFor="let product of products" class="card product">
+                <a href="#/product/{{product.id}}">
+                  <div class="row">
+                    <div class="col-xs-4 productImage">
+                      <img [src]=product.url[0] />
+                    </div>
+                    <div class="row col-xs-9 description">
+                      <div class="col-xs-9">
+                        <h4 class="card-title">{{product.productname}}</h4>
+                        <p class="primary card-text">{{product.description}}</p>
+                      </div>
+                      <div class="col-xs-3 price">
+                        <p class="text-right"><strong>${{product.priceperday}}</strong> / day <br>{{product.location}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <hr>
+            </div>
           </div>
-        </div>
       </template>
       </ngb-tab>
       </ngb-tabset>

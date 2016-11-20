@@ -32,7 +32,6 @@ export class ProfileComponent implements OnInit {
         const user = JSON.parse(response._body);
         this.user = user;
         this.stripeAccount = user.stripeaccountid;
-        console.log(this.stripeAccount)
         this.getUserProducts(this.user.id);
 
         this.getUserRentals();
