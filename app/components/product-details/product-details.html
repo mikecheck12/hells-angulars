@@ -6,6 +6,7 @@
           <img [src]="selectedPic" />
         </div>
         <ul class="nav nav-tabs">
+          <li *ngIf="product.url[0]"><a (click)="onSelect(0)"><img [src]="product.url[0]" /></a></li>
           <li *ngIf="product.url[1]"><a (click)="onSelect(1)"><img [src]="product.url[1]" /></a></li>
           <li *ngIf="product.url[2]"><a (click)="onSelect(2)"><img [src]="product.url[2]" /></a></li>
           <li *ngIf="product.url[3]"><a (click)="onSelect(3)"><img [src]="product.url[3]" /></a></li>

@@ -8,15 +8,18 @@ var queryStrWithImages = `SELECT products.id, products.category_id, products.own
 var addImagesArray = function (result) {
   var resultWithImages = [];
   for (var i = 0; i < result.length; i++) {
+    var found = false;
     for (var j = 0; j < resultWithImages.length; j++) {
       if (resultWithImages[j].id === result[i].id) {
         resultWithImages[j].url.push(result[i].url);
-        return resultWithImages;
+        found = true;
       }
     }
-    var url = result[i].url;
-    result[i].url = [url];
-    resultWithImages.push(result[i]);
+    if (!found) {
+      var url = result[i].url;
+      result[i].url = [url];
+      resultWithImages.push(result[i]);
+    }
   }
   return resultWithImages;
 }
@@ -35,7 +38,7 @@ module.exports = {
         console.log(err);
         res.send(err);
       }
-      res.json(addImagesArray(result));
+      res.json(addImagesArray(result.rows));
     })
   },
 
