@@ -7,8 +7,12 @@ img {
   width: 50%;
 }
 
-.profile, {
+.profile {
   text-align: center;
+}
+.center{
+  margin: 0 auto;
+  text-align: center
 }
 .border {
   border: 1px dashed black;
@@ -17,10 +21,28 @@ img {
   margin-top: 50px;
 }
 
-.gearList {
-  border: none;
-}
-
 .stripeImage {
   max-width: 80%;
 }
+.description, .price{
+  margin-top: 10px;
+}
+
+.productImage{
+  height: 100%;
+  width: 150px;
+}
+
+.products {
+  overflow: scroll;
+  height: 550px;
+}
+.product {
+  margin: 0;
+  border: 0px;
+  padding: 0 15px 0 15px;
+}
+.fa-plus-circle{
+  color: #579ed1
+}
+

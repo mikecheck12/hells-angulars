@@ -20,6 +20,7 @@
           </div>
           <div *ngIf="stripeAccount">
             <p>Available Fund <span class="pull-right"></span></p>
+            <div class="center"><a href="#" class="btn btn-primary">Transfer to Bank</a></div>
           </div>
         </div>
       </div>
@@ -28,29 +29,28 @@
       <ngb-tabset>
         <ngb-tab title="My Gears">
         <template ngbTabContent>
-          <div class="card">
-            <div class="card-header">
-              <i class="fa fa-plus-circle pull-right"></i>
+          <div class="card products">
+            <div class="card-block">
+              <i class="fa fa-plus-circle fa-2x pull-right"></i>
             </div>
-            <div *ngFor="let product of products" class="card">
+            <div *ngFor="let product of products" class="card product">
                 <a href="#/product/{{product.id}}">
                   <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-xs-4 productImage">
                       <img [src]=product.url[0] />
                     </div>
-                    <div class="row col-md-8 border">
-                      <div class="col-md-8">
+                    <div class="row col-xs-9 description">
+                      <div class="col-xs-9">
                         <h4 class="card-title">{{product.productname}}</h4>
-                      </div>
-                      <div class="col-md-4">
-                        <p class="text-right"><strong>${{product.priceperday}}</strong> / day <br>{{product.location}}</p>
-                      </div>
-                      <div class="col-md-12">
                         <p class="primary card-text">{{product.description}}</p>
+                      </div>
+                      <div class="col-xs-3 price">
+                        <p class="text-right"><strong>${{product.priceperday}}</strong> / day <br>{{product.location}}</p>
                       </div>
                     </div>
                   </div>
                 </a>
+                <hr>
             </div>
           </div>
       </template>
