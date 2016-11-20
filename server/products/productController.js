@@ -7,14 +7,16 @@ var queryStrWithImages = `SELECT products.id, products.category_id, products.own
 
 var addImagesArray = function (result) {
   var resultWithImages = [];
-  for (var i = 0; i < result.rows.length; i++) {
-    if (!resultWithImages[i]){
-      var url = result.rows[i].url;
-      result.rows[i].url = [url];
-      resultWithImages.push(result.rows[i]);
-    } else {
-      resultWithImages[i].url.push(result.rows[i].url);
+  for (var i = 0; i < result.length; i++) {
+    for (var j = 0; j < resultWithImages.length; j++) {
+      if (resultWithImages[j].id === result[i].id) {
+        resultWithImages[j].url.push(result[i].url);
+        return resultWithImages;
+      }
     }
+    var url = result[i].url;
+    result[i].url = [url];
+    resultWithImages.push(result[i]);
   }
   return resultWithImages;
 }
@@ -42,7 +44,7 @@ module.exports = {
     pool.query(queryStr, [req.params.id], function(err, result) {
       if (err) return console.log(err);
       console.log('success', result);
-      res.json(addImagesArray(result));
+      res.json(addImagesArray(result.rows));
     })
   },
 
@@ -63,7 +65,7 @@ module.exports = {
     pool.query(queryStr, [id], function(err, result) {
       if (err) return console.log(err);
       console.log('success', result);
-      res.json(addImagesArray(result));
+      res.json(addImagesArray(result.rows));
     })
   },
 
