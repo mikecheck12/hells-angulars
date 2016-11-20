@@ -46,3 +46,13 @@ img {
   color: #579ed1
 }
 
+.btn-primary {
+  border: 1px solid #579ed1;
+  background-color: transparent;
+  color: #579ed1;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #579ed1;
+}
