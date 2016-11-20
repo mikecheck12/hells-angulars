@@ -7,3 +7,9 @@ describe('Array', function() {
   });
 });
 
+// describe('Server', function() {
+//   describe('app should exist in server', function() {
+
+//   });
+// });
+
