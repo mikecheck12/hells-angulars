@@ -50,11 +50,6 @@ var ng2Pkgs = ['core', 'compiler', 'common', 'http', 'platform-browser-dynamic',
       'ng2-file-upload': {
         defaultExtension: 'js'
       },
-      'dist': {
-        defaultExtension: false,
-        format: 'cjs',
-        map: Object.keys(window.__karma__.files).filter(onlyAppFiles).reduce(createPathRecords, {})
-      },
     }),
       meta: { "ui-router-ng2": { format: "cjs" } },
   });
