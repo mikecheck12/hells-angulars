@@ -7,11 +7,12 @@
   </div>
   <div class="modal-body">
 
-    <newprod-form></newprod-form>
+    <newprod-form #newprod></newprod-form>
 
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+    <button type="button" class="btn btn-primary" (click)="c('Close click')">Close</button>
+    <button type="button" class="btn btn-primary" (click)="newprod.onSubmit(newprod.model)">Submit</button>
   </div>
 </template>
 

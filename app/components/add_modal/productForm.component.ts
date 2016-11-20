@@ -6,6 +6,7 @@ import { NewProductService } from "./newProduct.service";
   moduleId: module.id,
   selector: "newprod-form",
   templateUrl: "newProd-form.component.html",
+  styleUrls: ["newProd-form.css"],
 })
 
 export class NewProductForm {
