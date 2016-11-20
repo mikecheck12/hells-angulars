@@ -4,7 +4,8 @@ import "rxjs/add/operator/toPromise";
 
 import { AUTH_PROVIDERS }          from "angular2-jwt";
 import { BrowserModule }           from "@angular/platform-browser";
-import { FormsModule }             from "@angular/forms";
+import { FormControl, FormsModule,
+  ReactiveFormsModule }            from "@angular/forms";
 import { HttpModule, JsonpModule } from "@angular/http";
 import { NgbModule }               from "@ng-bootstrap/ng-bootstrap";
 import { NgModule }                from "@angular/core";
@@ -23,6 +24,8 @@ import { NewProductForm }          from "./components/add_modal/productForm.comp
 import { Products }                from "./components/products/products";
 import { ProductDetails }          from "./components/product-details/product-details";
 import { ProfileComponent }        from "./components/profile/profile.component";
+
+import { GOOGLE_API_KEY }          from "./auth/googleMaps.config";
 
 import { NewProductService }       from "./components/add_modal/newProduct.service";
 import { ProductsService }         from "./components/products/products.service";
@@ -47,13 +50,15 @@ let INITIAL_STATES     =  [
 @NgModule({
   imports: [
     AgmCoreModule.forRoot({
-      libraries: ["places"]
+      apiKey: GOOGLE_API_KEY,
+      libraries: ["places"],
     }),
     BrowserModule,
     FormsModule,
     HttpModule,
     JsonpModule,
     NgbModule.forRoot(),
+    ReactiveFormsModule,
     UIRouterModule.forRoot({
       configClass: MyUIRouterConfig,
       states: INITIAL_STATES,
