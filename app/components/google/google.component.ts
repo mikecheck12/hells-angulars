@@ -1,10 +1,6 @@
-import { Component, NgModule, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
-// import { BrowserModule } from "@angular/platform-browser";
-import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
-
-
-
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from "@angular/forms";
+import { MapsAPILoader } from 'angular2-google-maps/core';
 
 @Component({
   moduleId: module.id,
@@ -20,6 +16,7 @@ export class Google {
   public searchControl: FormControl;
   public zoom: number;
 
+  // Note: This is looking for #search in the HTML template
   @ViewChild("search")
   public searchElementRef: ElementRef;
 
@@ -47,7 +44,7 @@ export class Google {
       autocomplete.addListener("place_changed", () => {
         //get the place result
         let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
+        console.log(place);
         //set latitude and longitude
         this.latitude = place.geometry.location.lat();
         this.longitude = place.geometry.location.lng();
