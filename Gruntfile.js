@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 
     ts: {
       base: {
-        src: ['app/**/*.ts'],
+        src: ['app/**/*.ts', 'spec/*.ts'],
         dest: 'dist',
         options: {
           "target": "es5",
@@ -49,7 +49,7 @@ module.exports = function(grunt) {
     },
     concurrent: {
       dev: {
-        tasks: ['nodemon', 'watch'],
+        tasks: ['nodemon', 'mochaTest', 'karma', 'watch'],
         options: {
           logConcurrentOutput: true
         }
@@ -64,7 +64,7 @@ module.exports = function(grunt) {
 
     watch: {
       ts: {
-        files: ['app/**/*.ts'],
+        files: ['app/**/*.ts', 'spec/*.ts'],
         tasks: ['ts']
       },
       copy: {
@@ -72,8 +72,24 @@ module.exports = function(grunt) {
         tasks: ['copy:css', 'copy:html']
       }
     },
-
-
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js',
+        autoWatch: true
+      }
+    },
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec',
+          captureFile: 'results.txt', // Optionally capture the reporter output to a file
+          quiet: false, // Optionally suppress output to standard out (defaults to false)
+          clearRequireCache: false, // Optionally clear the require cache before running tests (defaults to false)
+          noFail: false // Optionally set to not fail on failed tests (will still fail on other errors)
+        },
+        src: ['server/test/*.js']
+      }
+    },
   });
 
   grunt.loadNpmTasks('grunt-ts');
@@ -83,6 +99,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-concurrent');
   grunt.loadNpmTasks("grunt-tslint");
+  grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-mocha-test');
 
   grunt.registerTask('build', ['clean', 'tslint', 'ts','copy:css', 'copy:html']);
   grunt.registerTask('default', ['build', 'concurrent']);
