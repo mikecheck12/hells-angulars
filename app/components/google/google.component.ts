@@ -1,4 +1,10 @@
-import { Component } from "@angular/core";
+import { Component, NgModule, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
+// import { BrowserModule } from "@angular/platform-browser";
+import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
+
+
+
 
 @Component({
   moduleId: module.id,
@@ -8,7 +14,54 @@ import { Component } from "@angular/core";
 })
 
 export class Google {
-  title: string = 'My first angular2-google-maps project';
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+
+  public latitude: number;
+  public longitude: number;
+  public searchControl: FormControl;
+  public zoom: number;
+
+  @ViewChild("search")
+  public searchElementRef: ElementRef;
+
+  constructor(
+    private mapsAPILoader: MapsAPILoader
+  ) {}
+
+  ngOnInit() {
+    //set google maps defaults
+    this.zoom = 4;
+    this.latitude = 39.8282;
+    this.longitude = -98.5795;
+
+    //create search FormControl
+    this.searchControl = new FormControl();
+
+    //set current position
+    this.setCurrentPosition();
+
+    //load Places Autocomplete
+    this.mapsAPILoader.load().then(() => {
+      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+        types: ["address"]
+      });
+      autocomplete.addListener("place_changed", () => {
+        //get the place result
+        let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+
+        //set latitude and longitude
+        this.latitude = place.geometry.location.lat();
+        this.longitude = place.geometry.location.lng();
+      });
+    });
+  }
+
+  private setCurrentPosition() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+        this.zoom = 12;
+      });
+    }
+  }
 }
