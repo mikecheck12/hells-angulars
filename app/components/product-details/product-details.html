@@ -41,8 +41,12 @@
               </div>
             </div>
           </div>
-        <p *ngIf="totalAmount>0">Your total <span class="right">{{totalAmount}}</span></p>
-        <button class="rent btn btn-default pull-right" (click)="openCheckOut()">Rent</button>
+        <div *ngIf="totalAmount>0">
+          <p>{{product.priceperday}} x {{daysBetween}} days<span class="right">${{totalAmount}}</span></p>
+          <hr>
+          <p>Your total <span class="right">${{totalAmount}}</span></p>
+        </div>
+        <button class="rent btn btn-primary pull-right" (click)="openCheckOut()">Rent</button>
 
       </div>
     </div>
