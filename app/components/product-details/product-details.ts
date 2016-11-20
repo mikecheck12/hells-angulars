@@ -48,7 +48,6 @@ export class ProductDetails implements OnInit, DoCheck {
   }
 
   public onSelect(n: number) {
-    debugger;
     this.selectedPic = this.product.url[n];
   }
 
