@@ -4,6 +4,11 @@
       <label>Your overall rating</label>
       <div class="rating">
         <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" (click)="selected=hovered" [readonly]="readonly" ></ngb-rating>
+        <span *ngIf="hovered === 5">&nbsp; &nbsp;Excellent</span>
+        <span *ngIf="hovered === 4">&nbsp; &nbsp;Very Good</span>
+        <span *ngIf="hovered === 3">&nbsp; &nbsp;Average</span>
+        <span *ngIf="hovered === 2">&nbsp; &nbsp;Poor</span>
+        <span *ngIf="hovered === 1">&nbsp; &nbsp;Horrible</span>
       </div>
     </li>
     <li class="form-group">
