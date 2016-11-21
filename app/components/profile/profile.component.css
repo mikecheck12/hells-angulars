@@ -42,15 +42,13 @@ img {
   color: #579ed1
 }
 
-.btn-primary {
-  border: 1px solid #579ed1;
-  background-color: transparent;
-  color: #579ed1;
+.edit {
+  margin-top: 0;
 }
 
-.btn-primary:hover {
-  color: #fff;
-  background-color: #579ed1;
+.btn-danger {
+  margin-top: 5px;
+  padding: 0.4em;
 }
 a: visited {
   color: #607D8B

@@ -2,6 +2,7 @@
 
 * {
   margin: 0;
+  font-family: 'Raleway', serif;
 }
 
 html, body {
@@ -145,9 +146,7 @@ nav a.active {
   border-radius: 4px 0 0 4px;
 }
 /* everywhere else */
-* {
-  font-family: Arial, Helvetica, sans-serif;
-}
+
 .img {
   height: 200px;
 }
@@ -161,6 +160,6 @@ nav a.active {
 .btn-primary:hover {
   color: #fff;
   background-color: #579ed1;
-  border: none;
+  border: 1px solid #fff;
 }
 

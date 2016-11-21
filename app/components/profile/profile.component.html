@@ -40,12 +40,16 @@
                       <img [src]=product.url[0] />
                     </div>
                     <div class="row col-xs-9 description">
-                      <div class="col-xs-9">
+                      <div class="col-xs-6">
                         <h4 class="card-title">{{product.productname}}</h4>
                         <p class="primary card-text">{{product.description}}</p>
                       </div>
                       <div class="col-xs-3 price">
                         <p class="text-right"><strong>${{product.priceperday}}</strong> / day <br>{{product.location}}</p>
+                      </div>
+                      <div class="col-xs-3 edit">
+                        <button class="btn btn-primary pull-right">Edit Gear</button>
+                        <button class="btn btn-danger pull-right">Delete Gear</button>
                       </div>
                     </div>
                   </div>
