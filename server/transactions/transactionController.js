@@ -11,6 +11,7 @@ module.exports = {
       , transactions.status_id
       , products.productname
       , users.firstname
+      , transactions.buyer_id
       FROM transactions
       INNER JOIN products
           on products.id = transactions.product_id
@@ -34,6 +35,7 @@ module.exports = {
       , transactions.status_id
       , products.productname
       , users.firstname
+      , transactions.seller_id
       FROM transactions
       INNER JOIN products
           on products.id = transactions.product_id

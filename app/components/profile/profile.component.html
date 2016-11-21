@@ -66,20 +66,18 @@
             </div>
             <div *ngFor="let rental of rentals" class="card product">
                   <div class="row">
-                    <div class="col-xs-9 productImage">
-                      <p class="primary card-text">From {{rental.bookedfrom}} To {{rental.bookedto}}</p>
+                    <div class="col-xs-3">
+                      <p class="primary card-text date"> {{convertDate(rental.bookedfrom)}}<br>TO <br>{{convertDate(rental.bookedto)}}</p>
                     </div>
-                    <div class="row col-xs-4 description">
-                      <div class="col-xs-9">
-                        <h4 class="card-title">{{rental.product_id}}</h4>
-                        <p class="primary card-text">{{rental.seller_id}}</p>
-                      </div>
-                      <div class="col-xs-3 price">
-                        <p class="text-right"><strong>${{rental.totalValue}}</strong></p>
-                        <p *ngIf="rental.status_id===2">
-                          <button class="btn btn-primary pull-right">Add Review</button>
-                        </p>
-                      </div>
+                    <div class="col-xs-6">
+                      <h4 class="card-title">{{rental.productname}}</h4>
+                      <p class="primary card-text">Renting From {{rental.firstname}}</p>
+                    </div>
+                    <div class="col-xs-3 review">
+                      <h4><strong>${{rental.totalvalue}}</strong></h4>
+                      <p *ngIf="rental.status_id===1">
+                        <button class="btn btn-primary">Add Review</button>
+                      </p>
                     </div>
                   </div>
                 <hr>
@@ -137,4 +135,7 @@
     <button type="button" class="btn btn-primary" (click)="newprod.onSubmit(newprod.model)">Submit</button>
   </div>
 </template>
+
+
+
 

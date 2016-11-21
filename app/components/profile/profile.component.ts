@@ -70,7 +70,7 @@ export class ProfileComponent implements OnInit {
 
   getUserRentals(userId: number) {
     this.profileService
-      .getUserTransactions(userId)
+      .getUserRentals(userId)
       .then(response => {
         const rentals = JSON.parse(response._body);
         this.rentals = rentals;
@@ -98,5 +98,9 @@ export class ProfileComponent implements OnInit {
 
   public close() {
     this.addModalService.close();
+  }
+
+  public convertDate(date: string) {
+    return date.slice(0, 10);
   }
 }

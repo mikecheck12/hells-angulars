@@ -45,7 +45,9 @@ img {
 .edit {
   margin-top: 0;
 }
-
+.date, .review {
+  text-align: center;
+}
 .btn-danger {
   margin-top: 5px;
   padding: 0.4em;
