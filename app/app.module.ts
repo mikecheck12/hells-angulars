@@ -1,3 +1,4 @@
+/* tslint:disable:max-line-length */
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/toPromise";
 
@@ -9,9 +10,8 @@ import { NgbModule }               from "@ng-bootstrap/ng-bootstrap";
 import { NgModule }                from "@angular/core";
 import { UIRouterModule }          from "ui-router-ng2";
 
-
 import { About }                     from "./components/about/about.js";
-import { AddModalService }         from "./components/add_modal/addModal.service"
+import { AddModalService }         from "./components/add_modal/addModal.service";
 import { App }                     from "./components/app/app.js";
 import { Home }                    from "./components/home/home.js";
 import { NewProductForm }          from "./components/add_modal/productForm.component";

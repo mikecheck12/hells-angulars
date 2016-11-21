@@ -69,7 +69,7 @@ export class ProfileComponent implements OnInit {
         const transactions = JSON.parse(response._body);
         this.transactions = transactions;
         this.completedTransactions = transactions.filter(transaction => {
-          return transaction.status_id === 2
+          return transaction.status_id === 2;
         });
         this.getAvailableFunds();
         console.log(this.availableFunds);
@@ -80,7 +80,7 @@ export class ProfileComponent implements OnInit {
   getAvailableFunds() {
     let funds = 0;
     this.completedTransactions.forEach(transaction => {
-      funds += transaction.totalValue
+      funds += transaction.totalValue;
     });
     this.availableFunds = funds;
   }

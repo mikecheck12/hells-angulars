@@ -10,11 +10,7 @@ export class AddModalService {
 
   constructor(private modalService: NgbModal) { }
 
-  public open(content:any) {
-<<<<<<< 02543388d7a1ff6f2bf3f7b0610fb9d1d34bd683
-=======
-    debugger;
->>>>>>> Add new gear from profile page
+  public open(content: any) {
     this.modal = this.modalService.open(content);
     this.modal.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
