@@ -64,23 +64,24 @@
           <div class="card products">
             <div class="card-block">
             </div>
-            <div *ngFor="let product of products" class="card product">
-                <a href="#/product/{{product.id}}">
+            <div *ngFor="let rental of rentals" class="card product">
                   <div class="row">
-                    <div class="col-xs-4 productImage">
-                      <img [src]=product.url[0] />
+                    <div class="col-xs-9 productImage">
+                      <p class="primary card-text">From {{rental.bookedfrom}} To {{rental.bookedto}}</p>
                     </div>
-                    <div class="row col-xs-9 description">
+                    <div class="row col-xs-4 description">
                       <div class="col-xs-9">
-                        <h4 class="card-title">{{product.productname}}</h4>
-                        <p class="primary card-text">{{product.description}}</p>
+                        <h4 class="card-title">{{rental.product_id}}</h4>
+                        <p class="primary card-text">{{rental.seller_id}}</p>
                       </div>
                       <div class="col-xs-3 price">
-                        <p class="text-right"><strong>${{product.priceperday}}</strong> / day <br>{{product.location}}</p>
+                        <p class="text-right"><strong>${{rental.totalValue}}</strong></p>
+                        <p *ngIf="rental.status_id===2">
+                          <button class="btn btn-primary pull-right">Add Review</button>
+                        </p>
                       </div>
                     </div>
                   </div>
-                </a>
                 <hr>
             </div>
           </div>

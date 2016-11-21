@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit {
         this.user = user;
         this.stripeAccount = user.stripeaccountid;
         this.getUserProducts(this.user.id);
-        this.getUserRentals();
+        this.getUserRentals(this.user.id);
         this.getUserTransactions(this.user.id);
       })
       .catch(err => console.log(err));
@@ -53,15 +53,6 @@ export class ProfileComponent implements OnInit {
       .catch(err => console.log(err));
   }
 
-  getUserRentals() {
-    this.profileService
-      .getUserRentals()
-      .then(rentals => {
-        this.rentals = rentals;
-      })
-      .catch(err => console.log(err));
-  }
-
   getUserTransactions(userId: number) {
     this.profileService
       .getUserTransactions(userId)
@@ -73,6 +64,17 @@ export class ProfileComponent implements OnInit {
         });
         this.getAvailableFunds();
         console.log(this.availableFunds);
+      })
+      .catch(err => console.log(err));
+  }
+
+  getUserRentals(userId: number) {
+    this.profileService
+      .getUserTransactions(userId)
+      .then(response => {
+        const rentals = JSON.parse(response._body);
+        this.rentals = rentals;
+        console.log(this.rentals);
       })
       .catch(err => console.log(err));
   }
