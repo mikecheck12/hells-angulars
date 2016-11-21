@@ -4,7 +4,10 @@ export class NewProduct {
     public pricePerDay: number;
     public ownerId: number;
     public categoryId: number;
-    public location?: string;
     public imageLink?: string;
     public userId: string;
+    public placeId?: string;
+    public city?: string;
+    public state?: string;
+    public zip?: number;
 }
