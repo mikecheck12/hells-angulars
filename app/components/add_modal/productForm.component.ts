@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewChild, Output, EventEmitter }         from "@angular/core";
+import {
+  Component, OnInit, ViewChild, Output, EventEmitter, ElementRef,
+}                                        from "@angular/core";
 import { FormControl }                   from "@angular/forms";
-import { MapsAPILoader }                 from 'angular2-google-maps/core';
+import { MapsAPILoader }                 from "angular2-google-maps/core";
 
 import { NewProduct }        from "./newProduct";
 import { NewProductService } from "./newProduct.service";
@@ -22,7 +24,7 @@ export class NewProductForm {
   public zoom: number;
   public categories = [ "Backpacking", "Bike", "Surf", "Snowboard", "Ski", "SUP", "Kayak" ];
   public model = new NewProduct();
-  public place: string;
+  public place: any;
 
   // Note: This is looking for #search in the HTML template
   @ViewChild("search")
@@ -50,24 +52,25 @@ export class NewProductForm {
   };
 
   ngOnInit() {
-    //create search FormControl
+    // create search FormControl
     this.searchControl = new FormControl();
 
     // //set current position
     // this.setCurrentPosition();
 
-    //load Places Autocomplete
+    // load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ["address"]
+        types: ["address"],
       });
       autocomplete.addListener("place_changed", () => {
-        //get the place result
+        // get the place result
         let place: google.maps.places.PlaceResult = autocomplete.getPlace();
         console.log("place -->", place);
+        console.log(typeof place);
         this.place = place;
 
-        //set latitude and longitude
+        // set latitude and longitude
         this.latitude = place.geometry.location.lat();
         this.longitude = place.geometry.location.lng();
       });
