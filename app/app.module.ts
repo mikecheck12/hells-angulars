@@ -11,10 +11,16 @@ import { NgbModule }               from "@ng-bootstrap/ng-bootstrap";
 import { NgModule }                from "@angular/core";
 import { UIRouterModule }          from "ui-router-ng2";
 
+<<<<<<< 62d54b5fcb10364a2f9cc0c615c4ea71f3a430a1
 import { About }                     from "./components/about/about.js";
 import { AddReviewForm }           from "./components/add-review/add-review";
 import { AgmCoreModule }           from "angular2-google-maps/core";
 
+=======
+
+import { AddModalService }         from "./components/add_modal/addModal.service";
+import { About }                   from "./components/about/about.js";
+>>>>>>> spacing
 import { App }                     from "./components/app/app.js";
 import { Google }                  from "./components/google/google.component";
 import { Home }                    from "./components/home/home.js";
