@@ -1,27 +1,26 @@
-import { Component }                     from "@angular/core";
+import { Injectable }    from "@angular/core";
 
-import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal, ModalDismissReasons, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 
-@Component({
-  moduleId: module.id,
-  selector: "ngbd-modal-basic",
-  templateUrl: "addModal.html",
-})
-export class NgbdModalBasic {
+@Injectable()
+export class AddModalService {
 
-  // public ngbModal.keyboard = "lg";
   public closeResult: string;
+  public modal: NgbModalRef;
 
   constructor(private modalService: NgbModal) { }
 
-  // this.modalService.keyboard = "lg";
-
   public open(content: any) {
-    this.modalService.open(content).result.then((result) => {
+    this.modal = this.modalService.open(content);
+    this.modal.result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+  }
+
+  public close() {
+    this.modal.close("confirmed");
   }
 
   // function to determine whether modal was closed by clicking on backdrop, close button, or cross

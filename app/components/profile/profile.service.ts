@@ -10,7 +10,7 @@ export class ProfileService {
 
   constructor(
     private http: Http,
-    private authHttp: AuthHttp
+    private authHttp: AuthHttp,
   ) {}
 
   public getUserInfo(authId): Promise<any> {
@@ -42,6 +42,17 @@ export class ProfileService {
 
   public getUserRentals(): Promise<any> {
     return Promise.resolve(Rentals);
+  }
+
+  public getUserTransactions(userId): Promise<any> {
+
+    userId = JSON.stringify(userId);
+    return this.http.get(`/api/transactions/${userId}`)
+      .toPromise()
+      .then(response => {
+        return response;
+      })
+      .catch(this.handleError);
   }
 
   // public getUserRatingAsBuyer(): Promise<any> {
