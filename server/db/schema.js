@@ -1,8 +1,15 @@
 // CAUTION: This first query will delete all tables.
 // USAGE: Uncomment the query here, and uncomment "deleteTables + " from the module.exports at the bottom of this file.
-var deleteTables = `DROP TABLE IF EXISTS
- reviews
- ;`
+// var deleteTables = `DROP TABLE IF EXISTS
+//  reviews,
+//  transactions,
+//  products,
+//  images,
+//  users,
+//  categories,
+//  statuses,
+//  types
+//  ;`
 
 //this table is for review types: buyer review (a buyer reviewing a seller), and seller review (vice versa)
 var types = `CREATE TABLE IF NOT EXISTS types (
@@ -74,4 +81,4 @@ var images = `CREATE TABLE IF NOT EXISTS images (
   url             VARCHAR(2000) NOT NULL
 );`;
 
-module.exports =   deleteTables + types + statuses + categories + users + products + transactions + reviews + images;
+module.exports =   /*deleteTables +*/ types + statuses + categories + users + products + transactions + reviews + images;
