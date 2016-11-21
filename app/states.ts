@@ -1,3 +1,4 @@
+import { About }                  from "./components/about/about";
 import { Home }                  from "./components/home/home";
 import { NgbdModalBasic }        from "./components/add_modal/addModal";
 import { Products }              from "./components/products/products";
@@ -17,6 +18,12 @@ export const homeState = {
   component: Home,
   name: "home",
   url: "/",
+};
+
+export const aboutState = {
+  component: About,
+  name: "about",
+  url: "/about",
 };
 
 export const productsState = {
