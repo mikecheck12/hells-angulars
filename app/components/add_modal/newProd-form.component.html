@@ -20,9 +20,9 @@
       [(ngModel)]="model.imageLink" [ngModelOptions]="{standalone: true}">
     </li>
     <li class="form-group">
-      Location <input class="form-control" type="text" placeholder="City, State"
+      Location <input placeholder="search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl"
       required
-      [(ngModel)]="model.location" [ngModelOptions]="{standalone: true}">
+      [(ngModel)]="model.location">
     </li>
     <li>
       <div class="form-group">
