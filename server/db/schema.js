@@ -1,32 +1,25 @@
 // CAUTION: This first query will delete all tables.
 // USAGE: Uncomment the query here, and uncomment "deleteTables + " from the module.exports at the bottom of this file.
-// var deleteTables = `DROP TABLE IF EXISTS
-//  reviews,
-//  transactions,
-//  products,
-//  images,
-//  users,
-//  categories,
-//  statuses,
-//  types
-//  ;`
+var deleteTables = `DROP TABLE IF EXISTS
+ reviews
+ ;`
 
 //this table is for review types: buyer review (a buyer reviewing a seller), and seller review (vice versa)
 var types = `CREATE TABLE IF NOT EXISTS types (
   id              SERIAL        PRIMARY KEY,
   type            VARCHAR(30)   NOT NULL
-);`
+);`;
 
 // statuses might include: pending, in progress, completed, cancelled
 var statuses = `CREATE TABLE IF NOT EXISTS statuses (
   id              SERIAL        PRIMARY KEY,
   status          VARCHAR(30)   NOT NULL
-);`
+);`;
 
 var categories = `CREATE TABLE IF NOT EXISTS categories (
   id              SERIAL        PRIMARY KEY,
   category        VARCHAR(30)   NOT NULL
-);`
+);`;
 
 var users = `CREATE TABLE IF NOT EXISTS users (
   id              SERIAL        PRIMARY KEY,
@@ -38,7 +31,7 @@ var users = `CREATE TABLE IF NOT EXISTS users (
   stripeaccountid VARCHAR(255)  ,
   location        VARCHAR(255)  ,
   profilepic      VARCHAR(2000)
-);`
+);`;
 
 //this table stores info about each product available to rent
 //I've left the deposit field off of this. I think it might be easier to calculate a deposit based on a % of total transaction value
@@ -50,7 +43,7 @@ var products = `CREATE TABLE IF NOT EXISTS products (
   productname     VARCHAR(50)   NOT NULL,
   priceperday     INT           NOT NULL,
   location        VARCHAR(255)  NOT NULL
-);`
+);`;
 
 var transactions = `CREATE TABLE IF NOT EXISTS transactions (
   id              SERIAL        PRIMARY KEY,
@@ -61,23 +54,24 @@ var transactions = `CREATE TABLE IF NOT EXISTS transactions (
   product_id      INT           references products(id),
   bookedfrom      DATE          NOT NULL,
   bookedto        DATE          NOT NULL
-);`
+);`;
 
 var reviews = `CREATE TABLE IF NOT EXISTS reviews (
   id              SERIAL        PRIMARY KEY,
   transaction_id  INT           references transactions(id),
+  product_id      INT           references products(id),
   buyer_id        INT           references users(id),
   seller_id       INT           references users(id),
-  type_id         INT           references types(id),
+  author_id       INT           references users(id),
   text            TEXT          NOT NULL,
   rating          INT
-);`
+);`;
 
 
 var images = `CREATE TABLE IF NOT EXISTS images (
   id              SERIAL        PRIMARY KEY,
   product_id      INT           references products(id),
   url             VARCHAR(2000) NOT NULL
-);`
+);`;
 
-module.exports =   /*deleteTables +*/  types + statuses + categories + users + products + transactions + reviews + images;
+module.exports =   deleteTables + types + statuses + categories + users + products + transactions + reviews + images;
