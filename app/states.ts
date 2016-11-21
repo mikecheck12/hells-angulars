@@ -12,7 +12,7 @@ export const googleState = {
   component: Google,
   name: "google",
   url: "/google",
-}
+};
 
 export const homeState = {
   component: Home,
