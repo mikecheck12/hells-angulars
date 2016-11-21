@@ -17,6 +17,7 @@ server/db/dbConfig.js
 
 ## CONFIG FILES ##
 app/auth/auth.config.ts
+app/auth/googleMaps.config.ts
 server/config
 app/stripe/stripe.config.ts
 
