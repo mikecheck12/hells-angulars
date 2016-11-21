@@ -35,7 +35,7 @@ export class AddReviewForm {
     model.authorId = JSON.parse(localStorage.getItem("profile")).user_id;
     model.transactionId = this.transaction.id;
     model.productId = this.transaction.product_id;
-    model.buyerId = this.transaction.seller_id;
+    model.buyerId = this.transaction.buyer_id;
     model.sellerId = this.transaction.seller_id;
     model.rating = this.selected;
     console.log(this.model);

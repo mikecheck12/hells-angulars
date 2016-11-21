@@ -64,7 +64,7 @@ export class ProfileComponent implements OnInit {
           return transaction.status_id === 2;
         });
         this.getAvailableFunds();
-        console.log(this.availableFunds);
+        console.log(this.transactions);
       })
       .catch(err => console.log(err));
   }

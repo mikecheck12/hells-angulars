@@ -90,23 +90,22 @@
           <div class="card products">
             <div class="card-block">
             </div>
-            <div *ngFor="let product of products" class="card product">
-                <a href="#/product/{{product.id}}">
-                  <div class="row">
-                    <div class="col-xs-4 productImage">
-                      <img [src]=product.url[0] />
+            <div *ngFor="let transaction of transactions" class="card product">
+                <div class="row">
+                    <div class="col-xs-3">
+                      <p class="primary card-text date"> {{convertDate(transaction.bookedfrom)}}<br>TO <br>{{convertDate(transaction.bookedto)}}</p>
                     </div>
-                    <div class="row col-xs-9 description">
-                      <div class="col-xs-9">
-                        <h4 class="card-title">{{product.productname}}</h4>
-                        <p class="primary card-text">{{product.description}}</p>
-                      </div>
-                      <div class="col-xs-3 price">
-                        <p class="text-right"><strong>${{product.priceperday}}</strong> / day <br>{{product.location}}</p>
-                      </div>
+                    <div class="col-xs-6">
+                      <h4 class="card-title">{{transaction.productname}}</h4>
+                      <p class="primary card-text">Renting To {{transaction.firstname}}</p>
+                    </div>
+                    <div class="col-xs-3 review">
+                      <h4><strong>${{transaction.totalvalue}}</strong></h4>
+                      <p *ngIf="transaction.status_id===1">
+                        <button class="btn btn-primary" (click)="open(review)" (click)="onSelect(transaction)">Add Review</button>
+                      </p>
                     </div>
                   </div>
-                </a>
                 <hr>
             </div>
           </div>
