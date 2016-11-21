@@ -145,7 +145,7 @@
   </div>
   <div class="modal-body">
     <addreview-form #review (close)="close()" [transaction]=
-  "selectedTransaction"></addreview-form>
+  "selectedTransaction" [userId]="user.id"></addreview-form>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-primary" (click)="c('Close click')">Close</button>

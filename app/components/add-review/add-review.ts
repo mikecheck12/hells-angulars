@@ -14,6 +14,7 @@ import { NgbRatingConfig } from "@ng-bootstrap/ng-bootstrap";
 
 export class AddReviewForm {
   @Input() transaction;
+  @Input() userId;
   @Output()
   close: EventEmitter<any> = new EventEmitter();
 
@@ -32,20 +33,20 @@ export class AddReviewForm {
 
   public onSubmit(model: NewReview) {
 
-    model.authorId = JSON.parse(localStorage.getItem("profile")).user_id;
+    model.authorId = this.userId;
     model.transactionId = this.transaction.id;
     model.productId = this.transaction.product_id;
     model.buyerId = this.transaction.buyer_id;
     model.sellerId = this.transaction.seller_id;
     model.rating = this.selected;
-    console.log(this.model);
-    // this.addReivewService.addReivew(model)
-    //     .then(result => {
-    //       this.close.emit();
-    //     })
-    //     .catch(error => {
-    //       console.log(error);
-    //     });
+    console.log(model);
+    this.addReivewService.addReivew(model)
+        .then(result => {
+          this.close.emit();
+        })
+        .catch(error => {
+          console.log(error);
+        });
   };
 
 }

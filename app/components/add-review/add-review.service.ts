@@ -14,7 +14,7 @@ export class AddReviewService {
 
   constructor(private http: Http) { }
 
-  // adds a product to the database
+  // adds a review to the database
   public addReivew(newReview: NewReview): Promise<any> {
     return this.http.post("api/review", newReview, { headers: this.headers })
     .toPromise()
