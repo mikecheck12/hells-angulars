@@ -46,6 +46,7 @@ export class ProductDetails implements OnInit, DoCheck {
   public ngOnInit() {
     this.product = this.product[0];
     this.selectedPic = this.product.url[0];
+    console.log(this.product);
   }
 
   public onSelect(n: number) {

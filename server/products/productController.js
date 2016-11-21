@@ -64,7 +64,21 @@ module.exports = {
   getProductById: function(req, res, next) {
     var id = req.params.id;
     var body = req.body;
-    var queryStr = queryStrWithImages + `
+    var queryStr = `SELECT products.id
+      , products.category_id
+      , products.owner_id
+      , users.firstname
+      , users.profilepic
+      , products.description
+      , products.productname
+      , products.priceperday
+      , products.location
+      , images.url
+      FROM products
+      LEFT JOIN images
+        ON products.id=images.product_id
+      INNER JOIN users
+          on users.id = products.owner_id
       WHERE products.id = ($1)`;
     pool.query(queryStr, [id], function(err, result) {
       if (err) return console.log(err);
