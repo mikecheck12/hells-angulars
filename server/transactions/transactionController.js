@@ -5,13 +5,17 @@ var queryStringWithProducts =
 module.exports = {
 
   getTransactionsBySellerId: function (req, res) {
-    var queryStr = `SELECT transactions.bookedfrom
+    var queryStr = `SELECT transactions.id
+      , transactions.bookedfrom
       , transactions.bookedto
       , transactions.totalValue
       , transactions.status_id
+      , transactions.product_id
       , products.productname
       , users.firstname
+      , products.id
       , transactions.buyer_id
+      , transactions.seller_id
       FROM transactions
       INNER JOIN products
           on products.id = transactions.product_id
@@ -29,12 +33,15 @@ module.exports = {
   },
 
   getRentalsByBuyerId: function (req, res) {
-    var queryStr = `SELECT transactions.bookedfrom
+    var queryStr = `SELECT transactions.id
+      , transactions.bookedfrom
       , transactions.bookedto
       , transactions.totalValue
       , transactions.status_id
+      , transactions.product_id
       , products.productname
       , users.firstname
+      , transactions.buyer_id
       , transactions.seller_id
       FROM transactions
       INNER JOIN products
