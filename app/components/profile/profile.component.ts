@@ -59,6 +59,7 @@ export class ProfileComponent implements OnInit {
       .getUserTransactions(userId)
       .then(response => {
         const transactions = JSON.parse(response._body);
+        console.log('transaction': transactions)
         this.transactions = transactions;
         this.completedTransactions = transactions.filter(transaction => {
           return transaction.status_id === 2;
@@ -94,6 +95,7 @@ export class ProfileComponent implements OnInit {
   }
 
   onSelect(rental: any) {
+    console.log(rental);
     this.selectedTransaction = rental;
   }
   public open(content: any) {

@@ -39,7 +39,7 @@ export class AddReviewForm {
     model.buyerId = this.transaction.buyer_id;
     model.sellerId = this.transaction.seller_id;
     model.rating = this.selected;
-    console.log(model);
+    console.log(model)
     this.addReivewService.addReivew(model)
         .then(result => {
           this.close.emit();
@@ -47,6 +47,6 @@ export class AddReviewForm {
         .catch(error => {
           console.log(error);
         });
-  };
+  }
 
 }

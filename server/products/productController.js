@@ -128,9 +128,10 @@ module.exports = {
   },
 
   createReview: function(req, res, next) {
+    console.log(req.body);
     var body = req.body;
     var queryStr = `INSERT INTO reviews(transaction_id, product_id, buyer_id, seller_id, author_id, text, rating) VALUES ($1, $2, $3, $4, $5, $6, $7)`;
-    pool.query(queryStr, [body.transactionId, body.productId, body.buyerId, body.sellerId, body.userId, body.text, body.rating], function(err, result) {
+    pool.query(queryStr, [body.transactionId, body.productId, body.buyerId, body.sellerId, body.authorId, body.text, body.rating], function(err, result) {
       if (err) return console.error(err);
       res.status(201).send('Created review');
     });

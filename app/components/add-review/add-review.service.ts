@@ -16,7 +16,7 @@ export class AddReviewService {
 
   // adds a review to the database
   public addReivew(newReview: NewReview): Promise<any> {
-    return this.http.post("api/review", newReview, { headers: this.headers })
+    return this.http.post("/api/reviews", newReview, { headers: this.headers })
     .toPromise()
     .then(res => res)
     .catch(this.handleError);
