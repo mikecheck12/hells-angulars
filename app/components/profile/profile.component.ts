@@ -64,7 +64,6 @@ export class ProfileComponent implements OnInit {
           return transaction.status_id === 2;
         });
         this.getAvailableFunds();
-        console.log(this.transactions);
       })
       .catch(err => console.log(err));
   }
@@ -75,7 +74,6 @@ export class ProfileComponent implements OnInit {
       .then(response => {
         const rentals = JSON.parse(response._body);
         this.rentals = rentals;
-        console.log(this.rentals);
       })
       .catch(err => console.log(err));
   }
@@ -94,7 +92,6 @@ export class ProfileComponent implements OnInit {
   }
 
   onSelect(rental: any) {
-    console.log(rental);
     this.selectedTransaction = rental;
   }
   public open(content: any) {
