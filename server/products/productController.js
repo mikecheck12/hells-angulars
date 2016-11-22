@@ -22,7 +22,7 @@ var addImagesArray = function (result) {
     }
   }
   return resultWithImages;
-}
+};
 
 module.exports = {
 
@@ -39,7 +39,7 @@ module.exports = {
         res.send(err);
       }
       res.json(addImagesArray(result.rows));
-    })
+    });
   },
 
   getProductsByUser: function(req, res, next) {
@@ -48,8 +48,9 @@ module.exports = {
       if (err) return console.log(err);
       console.log('success', result);
       res.json(addImagesArray(result.rows));
-    })
+    });
   },
+
 
   // getImages: function(req, res, next) {
   //   var queryStr = `SELECT url FROM images WHERE product_id=${req.params.id}`;
@@ -69,7 +70,7 @@ module.exports = {
       if (err) return console.log(err);
       console.log('success', result);
       res.json(addImagesArray(result.rows));
-    })
+    });
   },
 
   createProduct: function (req, res, next) {
@@ -97,6 +98,30 @@ module.exports = {
 
   },
 
+  getReviewByProductId: function(req, res, next) {
+    var id = req.params.id;
+    var queryStr = `SELECT reviews.author_id, reviews.text, reviews.rating, users.profilepic, users.username, users.firstname, users.lastname
+      FROM reviews
+      INNER JOIN users
+        on users.id = reviews.author_id
+      WHERE product_id = ($1)
+    `;
+    pool.query(queryStr, [id], function(err, result) {
+      if (err) return console.log(err);
+      console.log('reviews ', result);
+      res.json(result.rows);
+    });
+  },
+
+  createReview: function(req, res, next) {
+    var body = req.body;
+    var queryStr = `INSERT INTO reviews(transaction_id, product_id, buyer_id, seller_id, author_id, text, rating) VALUES ($1, $2, $3, $4, $5, $6, $7)`;
+    pool.query(queryStr, [body.transactionId, body.productId, body.buyerId, body.sellerId, body.userId, body.text, body.rating], function(err, result) {
+      if (err) return console.error(err);
+      res.status(201).send('Created review');
+    });
+  },
+
   updateProduct: function (req, res, next) {
     var id = req.params.id;
     var body = req.body;
@@ -107,7 +132,7 @@ module.exports = {
       if (err) return console.log(err);
       console.log('success', result);
       res.status(201).send('updated product');
-    })
+    });
   }
-}
+};
 

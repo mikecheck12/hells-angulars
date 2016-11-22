@@ -33,8 +33,8 @@ module.exports = function(app, express) {
 
   //Review routes
   // app.get('/api/reviews', productController.getReviews);
-  // app.get('/api/reviews/:id', productController.getReviewByProductId);
-  // app.post('/api/reviews', productController.createReview);
+  app.get('/api/reviews/:id', productController.getReviewByProductId);
+  app.post('/api/reviews', productController.createReview);
 
   //Transaction routes
   app.get('/api/transactions/completed/:id', transactionController.getCompletedTransactionsByUser);
@@ -47,7 +47,7 @@ module.exports = function(app, express) {
   // Image Routes
 
 
-}
+};
 
 
 
