@@ -64,7 +64,21 @@ module.exports = {
   getProductById: function(req, res, next) {
     var id = req.params.id;
     var body = req.body;
-    var queryStr = queryStrWithImages + `
+    var queryStr = `SELECT products.id
+      , products.category_id
+      , products.owner_id
+      , users.firstname
+      , users.profilepic
+      , products.description
+      , products.productname
+      , products.priceperday
+      , products.location
+      , images.url
+      FROM products
+      LEFT JOIN images
+        ON products.id=images.product_id
+      INNER JOIN users
+          on users.id = products.owner_id
       WHERE products.id = ($1)`;
     pool.query(queryStr, [id], function(err, result) {
       if (err) return console.log(err);
@@ -116,7 +130,7 @@ module.exports = {
   createReview: function(req, res, next) {
     var body = req.body;
     var queryStr = `INSERT INTO reviews(transaction_id, product_id, buyer_id, seller_id, author_id, text, rating) VALUES ($1, $2, $3, $4, $5, $6, $7)`;
-    pool.query(queryStr, [body.transactionId, body.productId, body.buyerId, body.sellerId, body.userId, body.text, body.rating], function(err, result) {
+    pool.query(queryStr, [body.transactionId, body.productId, body.buyerId, body.sellerId, body.authorId, body.text, body.rating], function(err, result) {
       if (err) return console.error(err);
       res.status(201).send('Created review');
     });

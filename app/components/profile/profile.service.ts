@@ -40,14 +40,19 @@ export class ProfileService {
       .catch(this.handleError);
   }
 
-  public getUserRentals(): Promise<any> {
-    return Promise.resolve(Rentals);
+  public getUserRentals(userId): Promise<any> {
+    userId = JSON.stringify(userId);
+    return this.http.get(`/api/transactions/buyer/${userId}`)
+      .toPromise()
+      .then(response => {
+        return response;
+      })
+      .catch(this.handleError);
   }
 
   public getUserTransactions(userId): Promise<any> {
-
     userId = JSON.stringify(userId);
-    return this.http.get(`/api/transactions/${userId}`)
+    return this.http.get(`/api/transactions/seller/${userId}`)
       .toPromise()
       .then(response => {
         return response;
@@ -75,4 +80,5 @@ export class ProfileService {
   private handleError(error: any): Promise<any> {
     return Promise.reject(error.message || error);
   }
+
 };

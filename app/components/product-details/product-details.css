@@ -31,6 +31,7 @@ img {
   margin-top: 50px;
   padding: 3em;
   line-height: 1.5em;
+  border: none;
 }
 
 ngb-rating, .fa-map-marker{
@@ -52,7 +53,20 @@ ngb-rating, .fa-map-marker{
   font-weight: bold;
 }
 
-
 .right {
   float: right;
 }
+
+.img-circle {
+  height: 100px;
+  width: 100px;
+  border: 1px solid #FFFFFF;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+  margin-top: 0.5em;
+}
+

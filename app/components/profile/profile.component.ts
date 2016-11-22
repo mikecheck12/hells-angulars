@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   public products: Array<any>;
   public rentals: Array<any>;
   public transactions: Array<any>;
+  public selectedTransaction: any;
   public completedTransactions: Array<any>;
   public userId: string;
   public availableFunds: Number;
@@ -37,7 +38,7 @@ export class ProfileComponent implements OnInit {
         this.user = user;
         this.stripeAccount = user.stripeaccountid;
         this.getUserProducts(this.user.id);
-        this.getUserRentals();
+        this.getUserRentals(this.user.id);
         this.getUserTransactions(this.user.id);
       })
       .catch(err => console.log(err));
@@ -53,15 +54,6 @@ export class ProfileComponent implements OnInit {
       .catch(err => console.log(err));
   }
 
-  getUserRentals() {
-    this.profileService
-      .getUserRentals()
-      .then(rentals => {
-        this.rentals = rentals;
-      })
-      .catch(err => console.log(err));
-  }
-
   getUserTransactions(userId: number) {
     this.profileService
       .getUserTransactions(userId)
@@ -72,7 +64,16 @@ export class ProfileComponent implements OnInit {
           return transaction.status_id === 2;
         });
         this.getAvailableFunds();
-        console.log(this.availableFunds);
+      })
+      .catch(err => console.log(err));
+  }
+
+  getUserRentals(userId: number) {
+    this.profileService
+      .getUserRentals(userId)
+      .then(response => {
+        const rentals = JSON.parse(response._body);
+        this.rentals = rentals;
       })
       .catch(err => console.log(err));
   }
@@ -90,11 +91,18 @@ export class ProfileComponent implements OnInit {
     this.getUserInfo();
   }
 
+  onSelect(rental: any) {
+    this.selectedTransaction = rental;
+  }
   public open(content: any) {
     this.addModalService.open(content);
   }
 
   public close() {
     this.addModalService.close();
+  }
+
+  public convertDate(date: string) {
+    return date.slice(0, 10);
   }
 }

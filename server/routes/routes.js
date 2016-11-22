@@ -37,8 +37,8 @@ module.exports = function(app, express) {
   app.post('/api/reviews', productController.createReview);
 
   //Transaction routes
-  app.get('/api/transactions/completed/:id', transactionController.getCompletedTransactionsByUser);
-  app.get('/api/transactions/:id', transactionController.getAllTransactionsByUser);
+  app.get('/api/transactions/seller/:id', transactionController.getTransactionsBySellerId);
+  app.get('/api/transactions/buyer/:id', transactionController.getRentalsByBuyerId);
 
   // Stripe routes
   app.get('/connect', stripeController.getCode);
